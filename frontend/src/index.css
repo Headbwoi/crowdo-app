@@ -6,3 +6,7 @@ html,
 body {
   font-family: "Commissioner", sans-serif;
 }
+
+.mobile {
+  width: calc(100% - 48px);
+}

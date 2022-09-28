@@ -1,11 +1,13 @@
 type Props = {
   name: string
+  color: string
+  font: string
 }
-const Links = ({ name }: Props) => {
+const Links = ({ name, color, font }: Props) => {
   return (
     <a
       href={`/${name}`}
-      className="text-white text-base font-normal capitalize"
+      className={`text-${color} text-base font-${font} capitalize`}
     >
       {name}
     </a>
