@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { CloseIcon } from "../../icons/CloseIcon"
 import Hamburger from "../../icons/Hamburger"
 import Links from "./Links"
 import MobileMenu from "./MobileMenu"
@@ -16,8 +17,7 @@ function Header() {
           className="lg:hidden cursor-pointer"
           onClick={() => setIsOpen((prev) => !prev)}
         >
-            {/* {isOpe} */}
-          <Hamburger />
+          {isOpen ? <CloseIcon /> : <Hamburger />}
         </div>
         <div className="hidden lg:flex items-center space-x-10">
           <Links name="about" color="white" font="normal" />
