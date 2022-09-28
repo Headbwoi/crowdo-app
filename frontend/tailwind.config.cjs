@@ -10,6 +10,7 @@ module.exports = {
       darkCyan: "hsl(176, 72%, 28%)",
       Black: "hsl(0, 0%, 0%)",
       dark_Gray: "hsl(0, 0%, 48%)",
+      white: "hsl(0, 0%, 100%)"
     },
     fontFamily: {
       commissioner: [`'Commissioner', sans-serif`],
