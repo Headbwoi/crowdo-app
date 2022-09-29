@@ -19,7 +19,7 @@ function Header() {
         >
           {isOpen ? <CloseIcon /> : <Hamburger />}
         </div>
-        <div className="hidden lg:flex items-center space-x-10">
+        <div className="hidden lg:flex items-center space-x-10 text-white">
           <Links name="about" color="white" font="normal" />
           <Links name="discover" color="white" font="normal" />
           <Links name="get started" color="white" font="normal" />
