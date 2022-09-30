@@ -3,6 +3,7 @@ import { CloseIcon } from "../../icons/CloseIcon"
 import Hamburger from "../../icons/Hamburger"
 import Links from "./Links"
 import MobileMenu from "./MobileMenu"
+import { AnimatePresence } from "framer-motion"
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false)
@@ -25,7 +26,9 @@ function Header() {
           <Links name="get started" color="white" font="normal" />
         </div>
       </nav>
-      {isOpen && <MobileMenu />}
+      <AnimatePresence initial={false} mode="wait" onExitComplete={() => null}>
+        {isOpen && <MobileMenu />}
+      </AnimatePresence>
     </header>
   )
 }
