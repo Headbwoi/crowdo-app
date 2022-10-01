@@ -17,7 +17,7 @@ const FundHeader = () => {
         </p>
       </div>
       {/* buttons */}
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between mb-3">
         <button
           className="w-52 h-14 text-white text-lg font-medium bg-moderate_Cyan grid place-items-center rounded-full hover:bg-darkCyan duration-200"
           aria-label="Back this project"
@@ -25,10 +25,18 @@ const FundHeader = () => {
           Back this project
         </button>
         <button
-          className="h-14 w-14 md:w-52 text-white text-lg font-medium bg-light_Gray grid place-items-center rounded-full hover:bg-darkCyan duration-200"
+          className="h-14 w-14 md:w-48 bg-light_Gray  rounded-full duration-200 flex items-center hover:opacity-70"
           aria-label="Bookmark"
         >
-          Bookmark
+          <svg width="56" height="56" xmlns="http://www.w3.org/2000/svg">
+            <g fill="none" fill-rule="evenodd">
+              <circle fill="#2F2F2F" cx="28" cy="28" r="28" />
+              <path fill="#B1B1B1" d="M23 19v18l5-5.058L33 37V19z" />
+            </g>
+          </svg>
+          <span className="hidden md:grid place-items-center text-lg text-dark_Gray font-bold ml-4">
+            Bookmark
+          </span>
         </button>
       </div>
     </section>
