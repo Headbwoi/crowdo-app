@@ -16,6 +16,7 @@ module.exports = {
       darkCyan: "hsl(176, 72%, 28%)",
       black: "hsl(0, 0%, 0%)",
       dark_Gray: "hsl(0, 0%, 48%)",
+      light_Gray: "hsl(0, 0%, 96%)",
       white: "hsl(0, 0%, 100%)",
     },
     fontFamily: {
