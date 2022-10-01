@@ -16,7 +16,7 @@ const menuVariant = {
 const MobileMenu = () => {
   return (
     <motion.div
-      className="absolute top-20 left-1/2 -translate-x-1/2 bg-white rounded-lg h-56 mobile"
+      className="absolute top-20 left-1/2 -translate-x-1/2 bg-white rounded-lg h-56 mobile z-30 shadow-2xl"
       initial={{ opacity: 0, x: "-50%" }}
       variants={menuVariant}
       whileInView={"show"}

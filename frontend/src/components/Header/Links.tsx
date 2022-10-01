@@ -7,7 +7,7 @@ const Links = ({ name, color, font }: Props) => {
   return (
     <a
       href={`/${name}`}
-      className={`text-${color} text-base font-${font} capitalize`}
+      className={`text-${color} text-base font-${font} capitalize hover:text-${color}/80`}
     >
       {name}
     </a>
