@@ -6,7 +6,11 @@ const FundInfo = () => {
       <h2 className="sr-only">Statistics About the project</h2>
 
       <div className="flex items-center flex-col md:flex-row md:space-x-11">
-        <div className="text-center md:text-left ">
+        <div className="text-center md:text-left flex items-center md:items-baseline flex-col md:flex-row">
+          <p className="text-4xl text-black font-bold mb-2.5">$89,914</p>
+          <p className="text-base text-dark_Gray font-normal mb-5">
+            of $100,000 backed
+          </p>
           <Divider />
         </div>
       </div>
