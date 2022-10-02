@@ -4,7 +4,6 @@ import Hamburger from "../../icons/Hamburger"
 import Links from "./Links"
 import MobileMenu from "./MobileMenu"
 import { AnimatePresence } from "framer-motion"
-
 function Header() {
   const [isOpen, setIsOpen] = useState(false)
   return (
