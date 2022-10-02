@@ -26,7 +26,7 @@ const FundHeader = () => {
         </button>
         <button
           className="h-14 w-14 md:w-48 bg-light_Gray  rounded-full duration-200 flex items-center hover:opacity-70"
-          aria-label="Bookmark"
+          aria-label="Bookmark this project"
         >
           <svg width="56" height="56" xmlns="http://www.w3.org/2000/svg">
             <g fill="none" fillRule="evenodd">
