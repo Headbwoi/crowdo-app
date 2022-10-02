@@ -1,6 +1,6 @@
 const FundHeader = () => {
   return (
-    <section className="px-6 md:px-10 lg:px-12 bg-white rounded-lg w-full py-9 mt-[10.3125rem] md:mt-[12.5rem] shadow-xl relative">
+    <section className="px-6 md:px-10 lg:px-12 bg-white rounded-lg w-full py-9 mt-[10.3125rem] md:mt-[12.5rem] shadow-sm relative">
       <h1 className="sr-only">Name of Ptoject that Needs Funding</h1>
       <img
         src="/images/logo-mastercraft.svg"

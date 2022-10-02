@@ -5,7 +5,9 @@ function App() {
   return (
     <>
       <Header />
-      <MainSection />
+      <div className="bg-light_Gray">
+        <MainSection />
+      </div>
     </>
   )
 }
