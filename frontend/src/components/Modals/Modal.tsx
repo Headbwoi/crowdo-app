@@ -5,7 +5,7 @@ const Modal = (props: Props) => {
     <>
       <div className="modal bg-white w-full rounded-lg absolute -top-[8.5rem] md:-top-44 left-1/2 -translate-x-1/2 placeholder-moderate_Cyan p-5 md:p-7">
         <header>
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between mb-6 md:mb-8">
             <h4 className="text-lg md:text-xl text-black font-bold">
               Back this project
             </h4>
@@ -21,6 +21,10 @@ const Modal = (props: Props) => {
               </g>
             </svg>
           </div>
+          <p className="text-dark_Gray text-sm font-medium">
+            Want to support us in bringing Mastercraft Bamboo Monitor Riser out
+            in the world?
+          </p>
         </header>
       </div>
     </>

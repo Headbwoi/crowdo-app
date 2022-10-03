@@ -2,7 +2,7 @@ import PledgeCard from "../PledgeCard"
 
 const AboutFund = () => {
   return (
-    <section className="px-6 md:px-10 lg:px-12 bg-white rounded-lg w-full py-9  shadow-xl relative">
+    <section className="px-6 md:px-10 lg:px-12 bg-white rounded-lg w-full py-9  shadow-sm relative">
       <h3 className="text-lg md:text-xl text-black font-bold mb-10 md:mb-14">
         About this project
       </h3>
