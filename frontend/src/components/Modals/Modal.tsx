@@ -5,7 +5,7 @@ type Props = {}
 const Modal = (props: Props) => {
   return (
     <>
-      <div className="w-full min-h-full backdrop-brightness-50 absolute inset-0">
+      <div className="w-full min-h-full backdrop-brightness-50 absolute -top-8 left-0">
         <div className="modal md:w-[42.625rem] bg-white w-full rounded-lg  p-5 md:p-7 top-[8.5rem] md:top-44 left-1/2 -translate-x-1/2 absolute">
           <header className="mb-7 md:mb-10">
             <div className="flex items-center justify-between mb-6 md:mb-8">
@@ -46,7 +46,7 @@ const Modal = (props: Props) => {
                   Pledge with no reward
                 </p>
               </label>
-              <p className="text-dark_Gray text-sm md:text-base font-medium">
+              <p className="text-dark_Gray text-sm md:text-base font-medium md:pl-[3.2rem]">
                 Choose to support us without a reward if you simply believe in
                 our project. As a backer, you will be signed up to receive
                 product updates via email.

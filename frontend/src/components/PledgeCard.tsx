@@ -39,7 +39,7 @@ const PledgeCard = ({
       <div className="flex md:items-center flex-col md:flex-row md:justify-between">
         <div className="flex items-center space-x-2 mb-5 md:mb-0">
           <p className="text-black text-2xl font-bold">{stockLeft}</p>
-          <span className="text-dark_Gray text-xs">left</span>
+          <span className="text-dark_Gray text-xs font-medium">left</span>
         </div>
         <button
           className={`text-white text-sm rounded-full h-12 w-40 duration-200 cursor-pointer"
