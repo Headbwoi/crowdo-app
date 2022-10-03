@@ -1,3 +1,6 @@
+import ModalPledgeInput from "./ModalPledgeInput"
+import { useState } from "react"
+
 type Props = {
   pledgeHeading: string
   pledgeAmount: string
@@ -13,11 +16,13 @@ const ModalPledgeCard = ({
   stockLeft,
   completed,
 }: Props) => {
+  const [open, setOpen] = useState(false)
   return (
     <div
-      className={`rounded-lg border border-dark_Gray/30 w-full py-5 md:py-7 hover:border-dark_Gray/70 duration-300 relative ${
+      className={`rounded-lg border border-dark_Gray/30 w-full py-5 md:py-7 hover:border-dark_Gray/70 duration-300 relative cursor-pointer ${
         completed ? "opacity-50" : ""
       }`}
+      onClick={() => setOpen(!open)}
     >
       <div className="flex md:items-center mb-5 md:mb-7 group cursor-pointer px-5 md:px-7">
         <div className="flex items-center  space-x-4">
@@ -48,20 +53,10 @@ const ModalPledgeCard = ({
           <p className="text-black text-xl font-bold">{stockLeft}</p>
           <span className="text-dark_Gray text-xs font-medium">left</span>
         </div>
-
-        <span className="block h-[1px] w-full bg-dark_Gray/30"></span>
       </div>
+      {open && <ModalPledgeInput />}
     </div>
   )
 }
-
-//   <button
-//           className={`text-white text-sm rounded-full h-12 w-40 duration-200 cursor-pointer"
-//             aria-label="Select Reward ${
-//               completed ? "bg-dark_Gray" : "bg-moderate_Cyan hover:bg-darkCyan"
-//             }`}
-//         >
-//           {`${completed ? "Out Of Stock" : "Select Reward"}`}
-//         </button>
 
 export default ModalPledgeCard
