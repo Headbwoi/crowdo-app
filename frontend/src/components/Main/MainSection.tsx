@@ -9,7 +9,7 @@ const MainSection = () => {
       <FundHeader />
       <FundInfo />
       <AboutFund />
-      <Modal />
+      {/* <Modal /> */}
     </main>
   )
 }
