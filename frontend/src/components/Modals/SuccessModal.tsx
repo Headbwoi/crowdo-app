@@ -1,7 +1,13 @@
 import { motion } from "framer-motion"
+import { showVariant } from "../../variants/showVariant"
 export const SuccessModal = () => {
   return (
-    <div className="w-full min-h-full backdrop-brightness-50 fixed -top-8 left-0 ">
+    <motion.div
+      className="w-full min-h-full backdrop-brightness-50 fixed -top-8 left-0 "
+      initial={{ opacity: 0 }}
+      variants={showVariant}
+      exit={"exit"}
+    >
       <div className="modal md:w-[33.75rem] bg-white rounded-lg px-6 py-8 md:p-12 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
         <div className="mb-6 md:mb-11">
           <img
@@ -24,6 +30,6 @@ export const SuccessModal = () => {
           </button>
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 }
