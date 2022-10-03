@@ -1,3 +1,5 @@
+import { motion } from "framer-motion"
+import { toggleVariant } from "../../variants/toggleVariant"
 type Props = {
   completed?: string
 }
@@ -5,7 +7,13 @@ type Props = {
 const ModalPledgeInput = ({ completed }: Props) => {
   return (
     <>
-      <div className="pt-6 md:pt-5 border-t border-dark_Gray/30 px-5 md:px-7 flex items-center justify-between flex-col md:flex-row">
+      <motion.div
+        className="pt-6 md:pt-5 border-t border-dark_Gray/30 px-5 md:px-7 flex items-center justify-between flex-col md:flex-row"
+        initial={{ opacity: 0 }}
+        variants={toggleVariant}
+        whileInView={"show"}
+        exit={"exit"}
+      >
         <p className="text-dark_Gray font-medium text-sm mb-5 md:mb-0">
           Enter your pledge
         </p>
@@ -27,7 +35,7 @@ const ModalPledgeInput = ({ completed }: Props) => {
             Continue
           </button>
         </div>
-      </div>
+      </motion.div>
     </>
   )
 }

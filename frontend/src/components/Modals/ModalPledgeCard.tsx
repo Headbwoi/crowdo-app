@@ -1,5 +1,6 @@
 import ModalPledgeInput from "./ModalPledgeInput"
 import { useState } from "react"
+import { AnimatePresence } from "framer-motion"
 
 type Props = {
   pledgeHeading: string
@@ -54,7 +55,9 @@ const ModalPledgeCard = ({
           <span className="text-dark_Gray text-xs font-medium">left</span>
         </div>
       </div>
-      {open && <ModalPledgeInput />}
+      <AnimatePresence initial={false} mode="wait" onExitComplete={() => null}>
+        {open && <ModalPledgeInput />}
+      </AnimatePresence>
     </div>
   )
 }
