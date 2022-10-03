@@ -1,3 +1,4 @@
+import Modal from "../Modals/Modal"
 import AboutFund from "./AboutFund"
 import FundHeader from "./FundHeader"
 import FundInfo from "./FundInfo"
@@ -8,6 +9,7 @@ const MainSection = () => {
       <FundHeader />
       <FundInfo />
       <AboutFund />
+      <Modal />
     </main>
   )
 }

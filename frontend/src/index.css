@@ -10,3 +10,6 @@ body {
 .mobile {
   width: calc(100% - 48px);
 }
+.modal {
+  width: calc(100% - 48px);
+}
