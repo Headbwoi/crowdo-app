@@ -11,7 +11,7 @@ const MainSection = () => {
       <FundInfo />
       <AboutFund />
       {/* <Modal /> */}
-      <SuccessModal />
+      {/* <SuccessModal /> */}
     </main>
   )
 }
