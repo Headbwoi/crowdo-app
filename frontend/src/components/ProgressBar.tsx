@@ -20,7 +20,6 @@ const ProgressBar = ({ progress }: Props) => {
     borderRadius: 32,
     textAlign: "right",
   }
-  // hsl(176, 50%, 47%)
 
   return (
     <div className={`h-4 w-full bg-light_Gray rounded-full `}>
