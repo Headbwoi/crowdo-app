@@ -1,4 +1,5 @@
 import Modal from "../Modals/Modal"
+import { SuccessModal } from "../Modals/SuccessModal"
 import AboutFund from "./AboutFund"
 import FundHeader from "./FundHeader"
 import FundInfo from "./FundInfo"
@@ -10,6 +11,7 @@ const MainSection = () => {
       <FundInfo />
       <AboutFund />
       {/* <Modal /> */}
+      <SuccessModal />
     </main>
   )
 }
