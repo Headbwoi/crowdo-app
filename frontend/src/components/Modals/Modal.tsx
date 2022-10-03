@@ -1,9 +1,11 @@
+import ModalPledgeCard from "./ModalPledgeCard"
+
 type Props = {}
 
 const Modal = (props: Props) => {
   return (
     <>
-      <div className="w-full h-full backdrop-brightness-50 fixed -top-8 left-0">
+      <div className="w-full min-h-full backdrop-brightness-50 absolute inset-0">
         <div className="modal md:w-[42.625rem] bg-white w-full rounded-lg  p-5 md:p-7 top-[8.5rem] md:top-44 left-1/2 -translate-x-1/2 absolute">
           <header className="mb-7 md:mb-10">
             <div className="flex items-center justify-between mb-6 md:mb-8">
@@ -50,6 +52,12 @@ const Modal = (props: Props) => {
                 product updates via email.
               </p>
             </div>
+            <ModalPledgeCard
+              pledgeHeading="Bamboo Stand"
+              pledgeAmount="25"
+              aboutPledge="You get an ergonomic stand made of natural bamboo. You've helped us launch our promotional campaign, andyou’ll be added to a special Backer member list."
+              stockLeft="101"
+            />
           </div>
         </div>
       </div>
