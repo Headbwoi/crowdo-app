@@ -1,4 +1,5 @@
 import Divider from "../Divider"
+import ProgressBar from "../ProgressBar"
 
 const FundInfo = () => {
   return (
@@ -33,7 +34,7 @@ const FundInfo = () => {
           </div>
         </div>
       </div>
-      <progress></progress>
+      <ProgressBar progress="70" />
     </section>
   )
 }
