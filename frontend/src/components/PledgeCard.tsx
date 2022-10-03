@@ -21,7 +21,7 @@ const PledgeCard = ({
           {pledgeHeading}
         </p>
         <p
-          className="heading text-moderate_Cyan font-medium"
+          className="heading text-moderate_Cyan font-medium text-sm"
           aria-label="pledge amount: Pledge $25 or more"
         >
           Pledge {`$${pledgeAmount}`} or more
