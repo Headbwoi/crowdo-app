@@ -2,9 +2,10 @@ import { motion } from "framer-motion"
 import { toggleVariant } from "../../variants/toggleVariant"
 type Props = {
   completed?: string
+  value: string
 }
 
-const ModalPledgeInput = ({ completed }: Props) => {
+const ModalPledgeInput = ({ completed, value }: Props) => {
   return (
     <>
       <motion.div
@@ -23,7 +24,7 @@ const ModalPledgeInput = ({ completed }: Props) => {
             <input
               type={"number"}
               className=" placeholder:text-dark_Gray text-black text-sm w-10 font-bold outline-none"
-              value={25}
+              value={value}
             />
           </div>
           <button

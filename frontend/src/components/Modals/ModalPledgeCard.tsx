@@ -18,6 +18,9 @@ const ModalPledgeCard = ({
   completed,
 }: Props) => {
   const [open, setOpen] = useState(false)
+
+  stockLeft == "0" ? (completed = true) : (completed = false)
+
   return (
     <div
       className={`rounded-lg border border-dark_Gray/30 w-full py-5 md:py-7 hover:border-dark_Gray/70 duration-300 relative cursor-pointer ${
@@ -56,7 +59,7 @@ const ModalPledgeCard = ({
         </div>
       </div>
       <AnimatePresence initial={false} mode="wait" onExitComplete={() => null}>
-        {open && <ModalPledgeInput />}
+        {open && <ModalPledgeInput value={pledgeAmount} />}
       </AnimatePresence>
     </div>
   )

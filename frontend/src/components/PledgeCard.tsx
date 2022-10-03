@@ -13,6 +13,7 @@ const PledgeCard = ({
   stockLeft,
   completed,
 }: Props) => {
+  stockLeft == "0" ? (completed = true) : (completed = false)
   return (
     <div
       className={`rounded-lg border border-dark_Gray/30 w-full p-5 md:p-7 hover:border-dark_Gray/70 duration-300 ${
