@@ -6,7 +6,7 @@ import FundInfo from "./FundInfo"
 
 const MainSection = () => {
   return (
-    <main className=" w-full md:w-[45.625rem] mx-auto px-6 space-y-8  mb-10">
+    <main className=" w-full md:w-[45.625rem] mx-auto px-6 space-y-8  pb-10">
       <FundHeader />
       <FundInfo />
       <AboutFund />
