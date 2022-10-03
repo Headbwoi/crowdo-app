@@ -1,3 +1,5 @@
+import PledgeCard from "../PledgeCard"
+
 const AboutFund = () => {
   return (
     <section className="px-6 md:px-10 lg:px-12 bg-white rounded-lg w-full py-9  shadow-xl relative">
@@ -17,6 +19,14 @@ const AboutFund = () => {
           extra desk space below your computer to allow notepads, pens, and USB
           sticks to be stored under the stand.
         </p>
+      </div>
+      <div className="pledge-types ">
+        <PledgeCard
+          pledgeHeading="Bamboo Stand"
+          pledgeAmount="25"
+          aboutPledge="You get an ergonomic stand made of natural bamboo. You've helped us launch our promotional campaign, and you’ll be added to a special Backer member list."
+          stockLeft="101"
+        />
       </div>
     </section>
   )
