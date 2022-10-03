@@ -20,12 +20,25 @@ const AboutFund = () => {
           sticks to be stored under the stand.
         </p>
       </div>
-      <div className="pledge-types ">
+      <div className="pledge-types flex flex-col space-y-11">
         <PledgeCard
           pledgeHeading="Bamboo Stand"
           pledgeAmount="25"
           aboutPledge="You get an ergonomic stand made of natural bamboo. You've helped us launch our promotional campaign, and you’ll be added to a special Backer member list."
           stockLeft="101"
+        />
+        <PledgeCard
+          pledgeHeading="Black Edition Stand"
+          pledgeAmount="75"
+          aboutPledge="You get a Black Special Edition computer stand and a personal thank you. You’ll be added to our Backer member list. Shipping is included."
+          stockLeft="64"
+        />
+        <PledgeCard
+          pledgeHeading="Mahogany Special Edition"
+          pledgeAmount="200"
+          aboutPledge="You get two Special Edition Mahogany stands, a Backer T-Shirt, and a personal thank you. You’ll be added to our Backer member list. Shipping is included."
+          stockLeft="0"
+          completed={true}
         />
       </div>
     </section>

@@ -3,6 +3,7 @@ type Props = {
   pledgeAmount: string
   aboutPledge: string
   stockLeft: string
+  completed?: boolean
 }
 
 const PledgeCard = ({
@@ -10,9 +11,14 @@ const PledgeCard = ({
   pledgeAmount,
   aboutPledge,
   stockLeft,
+  completed,
 }: Props) => {
   return (
-    <div className="rounded-lg border border-dark_Gray/30 w-full p-5 md:p-7 hover:border-dark_Gray/70 duration-300 ">
+    <div
+      className={`rounded-lg border border-dark_Gray/30 w-full p-5 md:p-7 hover:border-dark_Gray/70 duration-300 ${
+        completed ? "opacity-50" : ""
+      }`}
+    >
       <div className="flex md:items-center flex-col md:flex-row md:justify-between mb-5 md:mb-7">
         <p
           className="heading text-black text-lg font-bold"
@@ -36,10 +42,12 @@ const PledgeCard = ({
           <span className="text-dark_Gray text-xs">left</span>
         </div>
         <button
-          className="bg-moderate_Cyan text-white text-sm rounded-full h-12 w-40 hover:bg-darkCyan duration-200 cursor-pointer"
-          aria-label="Select Reward"
+          className={`text-white text-sm rounded-full h-12 w-40 duration-200 cursor-pointer"
+          aria-label="Select Reward ${
+            completed ? "bg-dark_Gray" : "bg-moderate_Cyan hover:bg-darkCyan"
+          }`}
         >
-          Select Reward
+          {`${completed ? "Out Of Stock" : "Select Reward"}`}
         </button>
       </div>
     </div>
