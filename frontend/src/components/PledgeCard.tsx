@@ -4,6 +4,7 @@ type Props = {
   aboutPledge: string
   stockLeft: string
   completed?: boolean
+  handleModalToggle: () => void
 }
 
 const PledgeCard = ({
@@ -12,6 +13,7 @@ const PledgeCard = ({
   aboutPledge,
   stockLeft,
   completed,
+  handleModalToggle
 }: Props) => {
   stockLeft == "0" ? (completed = true) : (completed = false)
   return (
@@ -47,6 +49,7 @@ const PledgeCard = ({
           aria-label="Select Reward ${
             completed ? "bg-dark_Gray" : "bg-moderate_Cyan hover:bg-darkCyan"
           }`}
+          onClick={handleModalToggle}
         >
           {`${completed ? "Out Of Stock" : "Select Reward"}`}
         </button>
