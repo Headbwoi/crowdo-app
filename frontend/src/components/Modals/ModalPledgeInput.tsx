@@ -3,9 +3,20 @@ import { toggleVariant } from "../../variants/toggleVariant"
 type Props = {
   completed?: string
   value: string
+  handleModalToggle: () => void
+  handleSuccessModal: () => void
 }
 
-const ModalPledgeInput = ({ completed, value }: Props) => {
+const ModalPledgeInput = ({
+  completed,
+  value,
+  handleModalToggle,
+  handleSuccessModal,
+}: Props) => {
+  const handleSubmit = () => {
+    handleModalToggle()
+    handleSuccessModal()
+  }
   return (
     <>
       <motion.div
@@ -32,6 +43,7 @@ const ModalPledgeInput = ({ completed, value }: Props) => {
             aria-label="Select Reward ${
               completed ? "bg-dark_Gray" : "bg-moderate_Cyan hover:bg-darkCyan"
             }`}
+            onClick={handleSubmit}
           >
             Continue
           </button>

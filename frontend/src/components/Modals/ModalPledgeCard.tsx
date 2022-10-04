@@ -8,6 +8,8 @@ type Props = {
   aboutPledge: string
   stockLeft: string
   completed?: boolean
+  handleModalToggle: () => void
+  handleSuccessModal: () => void
 }
 
 const ModalPledgeCard = ({
@@ -16,6 +18,8 @@ const ModalPledgeCard = ({
   aboutPledge,
   stockLeft,
   completed,
+  handleModalToggle,
+  handleSuccessModal,
 }: Props) => {
   const [open, setOpen] = useState(false)
 
@@ -69,7 +73,13 @@ const ModalPledgeCard = ({
         </div>
       </div>
       <AnimatePresence initial={false} mode="wait" onExitComplete={() => null}>
-        {open && <ModalPledgeInput value={pledgeAmount} />}
+        {open && (
+          <ModalPledgeInput
+            value={pledgeAmount}
+            handleModalToggle={handleModalToggle}
+            handleSuccessModal={handleSuccessModal}
+          />
+        )}
       </AnimatePresence>
     </div>
   )

@@ -5,9 +5,14 @@ import { showVariant } from "../../variants/showVariant"
 type Props = {
   isModalOpen: boolean
   handleModalToggle: () => void
+  handleSuccessModal: () => void
 }
 
-const Modal = ({ isModalOpen, handleModalToggle }: Props) => {
+const Modal = ({
+  isModalOpen,
+  handleModalToggle,
+  handleSuccessModal,
+}: Props) => {
   return (
     <>
       {isModalOpen && (
@@ -70,13 +75,16 @@ const Modal = ({ isModalOpen, handleModalToggle }: Props) => {
                 pledgeAmount="25"
                 aboutPledge="You get an ergonomic stand made of natural bamboo. You've helped us launch our promotional campaign, andyou’ll be added to a special Backer member list."
                 stockLeft="101"
+                handleModalToggle={handleModalToggle}
+                handleSuccessModal={handleSuccessModal}
               />
               <ModalPledgeCard
                 pledgeHeading="Black Edition Stand"
                 pledgeAmount="75"
-                aboutPledge="You get a Black Special Edition computer stand and a personal thank you. You’ll be added to our Backer
-              member list. Shipping is included."
+                aboutPledge="You get a Black Special Edition computer stand and a personal thank you. You’ll be added to our Backer member list. Shipping is included."
                 stockLeft="64"
+                handleModalToggle={handleModalToggle}
+                handleSuccessModal={handleSuccessModal}
               />
               <ModalPledgeCard
                 pledgeHeading="Mahogany Special Edition"
@@ -84,6 +92,8 @@ const Modal = ({ isModalOpen, handleModalToggle }: Props) => {
                 aboutPledge="You get two Special Edition Mahogany stands, a Backer T-Shirt, and a personal thank you. You’ll be added
               to our Backer member list. Shipping is included."
                 stockLeft="0"
+                handleModalToggle={handleModalToggle}
+                handleSuccessModal={handleSuccessModal}
               />
             </div>
           </motion.div>

@@ -8,9 +8,13 @@ import { AnimatePresence } from "framer-motion"
 
 const MainSection = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [SuccessModalOpen, setSuccessModalOpen] = useState(false)
   const handleModalToggle = () => {
     setIsModalOpen((prev) => !prev)
     isModalOpen ? window.scrollTo(0, 0) : window.scrollTo(50, 50)
+  }
+  const handleSuccessModal = () => {
+    setSuccessModalOpen((prev) => !prev)
   }
   return (
     <main className=" w-full md:w-[45.625rem] mx-auto px-6 space-y-8  pb-10">
@@ -21,9 +25,13 @@ const MainSection = () => {
         <Modal
           isModalOpen={isModalOpen}
           handleModalToggle={handleModalToggle}
+          handleSuccessModal={handleSuccessModal}
         />
       </AnimatePresence>
-      {/* <SuccessModal /> */}
+      <SuccessModal
+        SuccessModalOpen={SuccessModalOpen}
+        handleSuccessModal={handleSuccessModal}
+      />
     </main>
   )
 }
