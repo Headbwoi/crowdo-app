@@ -1,7 +1,7 @@
 import React from "react"
 
 type Props = {
-  progress: string
+  progress: number
 }
 
 const ProgressBar = ({ progress }: Props) => {

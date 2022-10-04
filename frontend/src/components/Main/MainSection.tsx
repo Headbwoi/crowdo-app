@@ -15,7 +15,7 @@ const MainSection = () => {
   return (
     <main className=" w-full md:w-[45.625rem] mx-auto px-6 space-y-8  pb-10">
       <FundHeader handleModalToggle={handleModalToggle} />
-      <FundInfo />
+      <FundInfo pledged={89914} total={100000} />
       <AboutFund handleModalToggle={handleModalToggle} />
       <AnimatePresence initial={false} mode="wait" onExitComplete={() => null}>
         <Modal
