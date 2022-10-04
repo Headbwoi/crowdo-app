@@ -23,7 +23,7 @@ const ModalPledgeCard = ({
 
   return (
     <div
-      className={`rounded-lg w-full py-5 md:py-7  duration-300 relative cursor-pointer ${
+      className={`rounded-lg w-full py-5 md:py-7  duration-300 relative  ${
         completed ? "opacity-50" : ""
       } ${
         open
