@@ -23,15 +23,25 @@ const ModalPledgeCard = ({
 
   return (
     <div
-      className={`rounded-lg border border-dark_Gray/30 w-full py-5 md:py-7 hover:border-dark_Gray/70 duration-300 relative cursor-pointer ${
+      className={`rounded-lg w-full py-5 md:py-7  duration-300 relative cursor-pointer ${
         completed ? "opacity-50" : ""
+      } ${
+        open
+          ? "border-moderate_Cyan border-[3px] hover:border-moderate_Cyan"
+          : "border-dark_Gray/30 border hover:border-dark_Gray/70"
       }`}
-      onClick={() => setOpen(!open)}
     >
-      <div className="flex md:items-center mb-5 md:mb-7 group cursor-pointer px-5 md:px-7">
+      <div
+        className="flex md:items-center mb-5 md:mb-7 group cursor-pointer px-5 md:px-7"
+        onClick={() => setOpen(!open)}
+      >
         <div className="flex items-center  space-x-4">
           <div className="grid place-items-center w-7 h-7 rounded-full border border-dark_Gray/30">
-            <div className="w-4 h-4 rounded-full bg-white group-hover:bg-moderate_Cyan duration-200 group-focus:bg-moderate_Cyan"></div>
+            <div
+              className={`w-4 h-4 rounded-full ${
+                open ? "bg-moderate_Cyan" : "bg-white"
+              } group-hover:bg-moderate_Cyan duration-200 group-focus:bg-moderate_Cyan`}
+            ></div>
           </div>
           <div className="md:flex md:items-center md:space-x-4">
             <p
