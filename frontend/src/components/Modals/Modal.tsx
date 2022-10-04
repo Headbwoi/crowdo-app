@@ -1,4 +1,6 @@
 import ModalPledgeCard from "./ModalPledgeCard"
+import { motion } from "framer-motion"
+import { showVariant } from "../../variants/showVariant"
 
 type Props = {
   isModalOpen: boolean
@@ -10,7 +12,13 @@ const Modal = ({ isModalOpen, handleModalToggle }: Props) => {
     <>
       {isModalOpen && (
         <div className="w-full min-h-full backdrop-brightness-50 absolute -top-8 left-0 right-0">
-          <div className="modal md:w-[42.625rem] bg-white w-full rounded-lg  p-5 md:p-7 top-[8.5rem] md:top-44 left-1/2 -translate-x-1/2 absolute">
+          <motion.div
+            className="modal md:w-[42.625rem] bg-white w-full rounded-lg  p-5 md:p-7 top-[8.5rem] md:top-44 left-1/2 -translate-x-1/2 absolute"
+            initial={{ opacity: 0 }}
+            variants={showVariant}
+            whileInView={"show"}
+            exit={"exit"}
+          >
             <header className="mb-7 md:mb-10">
               <div className="flex items-center justify-between mb-6 md:mb-8">
                 <h4 className="text-lg md:text-xl text-black font-bold">
@@ -78,7 +86,7 @@ const Modal = ({ isModalOpen, handleModalToggle }: Props) => {
                 stockLeft="0"
               />
             </div>
-          </div>
+          </motion.div>
         </div>
       )}
     </>

@@ -13,7 +13,3 @@ body {
 .modal {
   width: calc(100% - 48px);
 }
-
-.hide{
-  overflow: hidden;
-}

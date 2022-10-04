@@ -4,6 +4,7 @@ import { SuccessModal } from "../Modals/SuccessModal"
 import AboutFund from "./AboutFund"
 import FundHeader from "./FundHeader"
 import FundInfo from "./FundInfo"
+import { AnimatePresence } from "framer-motion"
 
 const MainSection = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -16,7 +17,12 @@ const MainSection = () => {
       <FundHeader handleModalToggle={handleModalToggle} />
       <FundInfo />
       <AboutFund handleModalToggle={handleModalToggle} />
-      <Modal isModalOpen={isModalOpen} handleModalToggle={handleModalToggle} />
+      <AnimatePresence initial={false} mode="wait" onExitComplete={() => null}>
+        <Modal
+          isModalOpen={isModalOpen}
+          handleModalToggle={handleModalToggle}
+        />
+      </AnimatePresence>
       {/* <SuccessModal /> */}
     </main>
   )
