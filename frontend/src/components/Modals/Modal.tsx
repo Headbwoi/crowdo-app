@@ -11,12 +11,12 @@ const Modal = ({ isModalOpen, handleModalToggle }: Props) => {
   return (
     <>
       {isModalOpen && (
-        <div className="w-full min-h-full backdrop-brightness-50 absolute -top-8 left-0 right-0">
+        <div className="w-screen min-h-full backdrop-brightness-50 absolute -top-8 left-0 right-0">
           <motion.div
             className="modal md:w-[42.625rem] bg-white w-full rounded-lg  p-5 md:p-7 top-[8.5rem] md:top-44 left-1/2 -translate-x-1/2 absolute"
             initial={{ opacity: 0 }}
             variants={showVariant}
-            whileInView={"show"}
+            animate={"show"}
             exit={"exit"}
           >
             <header className="mb-7 md:mb-10">
