@@ -2,13 +2,14 @@ import ModalPledgeCard from "./ModalPledgeCard"
 
 type Props = {
   isModalOpen: boolean
+  handleModalToggle: () => void
 }
 
-const Modal = ({ isModalOpen }: Props) => {
+const Modal = ({ isModalOpen, handleModalToggle }: Props) => {
   return (
     <>
       {isModalOpen && (
-        <div className="w-full min-h-full backdrop-brightness-50 absolute -top-8 left-0">
+        <div className="w-full min-h-full backdrop-brightness-50 absolute -top-8 left-0 right-0">
           <div className="modal md:w-[42.625rem] bg-white w-full rounded-lg  p-5 md:p-7 top-[8.5rem] md:top-44 left-1/2 -translate-x-1/2 absolute">
             <header className="mb-7 md:mb-10">
               <div className="flex items-center justify-between mb-6 md:mb-8">
@@ -20,6 +21,7 @@ const Modal = ({ isModalOpen }: Props) => {
                   height="15"
                   xmlns="http://www.w3.org/2000/svg"
                   className="text-dark_Gray hover:text-black duration-200 cursor-pointer"
+                  onClick={handleModalToggle}
                 >
                   <g fill="currentColor" fillRule="evenodd">
                     <path d="M2.404.782l11.314 11.314-2.122 2.122L.282 2.904z" />
