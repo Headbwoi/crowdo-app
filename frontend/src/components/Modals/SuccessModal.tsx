@@ -2,7 +2,7 @@ import { motion } from "framer-motion"
 import { showVariant } from "../../variants/showVariant"
 import { popVariant } from "../../variants/popvariant"
 import { useContext } from "react"
-import { AppContext } from "../Main/MainSection"
+import { AppContext } from "../context/AppContext"
 
 export const SuccessModal = () => {
   //@ts-ignore

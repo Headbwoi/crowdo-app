@@ -1,5 +1,5 @@
 import { useContext } from "react"
-import { AppContext } from "./MainSection"
+import { AppContext } from "../context/AppContext"
 const FundHeader = () => {
   //@ts-ignore
   const { handleModalToggle } = useContext(AppContext)
