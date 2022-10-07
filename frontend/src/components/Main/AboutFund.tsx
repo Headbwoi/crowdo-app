@@ -1,9 +1,6 @@
 import PledgeCard from "../PledgeCard"
-type Props = {
-  handleModalToggle: () => void
-}
 
-const AboutFund = ({ handleModalToggle }: Props) => {
+const AboutFund = () => {
   return (
     <section className="px-6 md:px-10 lg:px-12 bg-white rounded-lg w-full py-9  shadow-sm relative">
       <h3 className="text-lg md:text-xl text-black font-bold mb-10 md:mb-14">
@@ -29,21 +26,18 @@ const AboutFund = ({ handleModalToggle }: Props) => {
           pledgeAmount="25"
           aboutPledge="You get an ergonomic stand made of natural bamboo. You've helped us launch our promotional campaign, and you’ll be added to a special Backer member list."
           stockLeft="101"
-          handleModalToggle={handleModalToggle}
         />
         <PledgeCard
           pledgeHeading="Black Edition Stand"
           pledgeAmount="75"
           aboutPledge="You get a Black Special Edition computer stand and a personal thank you. You’ll be added to our Backer member list. Shipping is included."
           stockLeft="64"
-          handleModalToggle={handleModalToggle}
         />
         <PledgeCard
           pledgeHeading="Mahogany Special Edition"
           pledgeAmount="200"
           aboutPledge="You get two Special Edition Mahogany stands, a Backer T-Shirt, and a personal thank you. You’ll be added to our Backer member list. Shipping is included."
           stockLeft="0"
-          handleModalToggle={handleModalToggle}
         />
       </div>
     </section>

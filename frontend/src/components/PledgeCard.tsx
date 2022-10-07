@@ -1,10 +1,11 @@
+import { useContext } from "react"
+import { AppContext } from "../components/Main/MainSection"
 type Props = {
   pledgeHeading: string
   pledgeAmount: string
   aboutPledge: string
   stockLeft: string
   completed?: boolean
-  handleModalToggle: () => void
 }
 
 const PledgeCard = ({
@@ -13,9 +14,11 @@ const PledgeCard = ({
   aboutPledge,
   stockLeft,
   completed,
-  handleModalToggle
 }: Props) => {
   stockLeft == "0" ? (completed = true) : (completed = false)
+  //@ts-ignore
+  const { handleModalToggle } = useContext(AppContext)
+
   return (
     <div
       className={`rounded-lg border border-dark_Gray/30 w-full p-5 md:p-7 hover:border-dark_Gray/70 duration-300 ${

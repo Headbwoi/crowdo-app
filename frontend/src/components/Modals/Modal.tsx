@@ -1,18 +1,13 @@
 import ModalPledgeCard from "./ModalPledgeCard"
 import { motion } from "framer-motion"
 import { showVariant } from "../../variants/showVariant"
+import { useContext } from "react"
+import { AppContext } from "../Main/MainSection"
 
-type Props = {
-  isModalOpen: boolean
-  handleModalToggle: () => void
-  handleSuccessModal: () => void
-}
-
-const Modal = ({
-  isModalOpen,
-  handleModalToggle,
-  handleSuccessModal,
-}: Props) => {
+const Modal = () => {
+  //@ts-ignore
+  const { isModalOpen, handleModalToggle, handleSuccessModal } =
+    useContext(AppContext)
   return (
     <>
       {isModalOpen && (

@@ -1,14 +1,12 @@
 import { motion } from "framer-motion"
 import { showVariant } from "../../variants/showVariant"
 import { popVariant } from "../../variants/popvariant"
-type Props = {
-  SuccessModalOpen: boolean
-  handleSuccessModal: () => void
-}
-export const SuccessModal = ({
-  SuccessModalOpen,
-  handleSuccessModal,
-}: Props) => {
+import { useContext } from "react"
+import { AppContext } from "../Main/MainSection"
+
+export const SuccessModal = () => {
+  //@ts-ignore
+  const { SuccessModalOpen, handleSuccessModal } = useContext(AppContext)
   return (
     <>
       {SuccessModalOpen && (
