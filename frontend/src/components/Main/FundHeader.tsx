@@ -22,7 +22,7 @@ const FundHeader = () => {
       {/* buttons */}
       <div className="flex items-center justify-between mb-3">
         <button
-          className="w-52 h-14 text-white text-lg font-medium bg-moderate_Cyan grid place-items-center rounded-full hover:bg-darkCyan duration-200"
+          className="px-4 sm:px-0 sm:w-44 md:w-52 h-14 text-white text-lg font-medium bg-moderate_Cyan grid place-items-center rounded-full hover:bg-darkCyan duration-200"
           aria-label="Back this project"
           onClick={modalContext?.handleModalToggle}
         >
