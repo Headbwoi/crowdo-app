@@ -16,8 +16,7 @@ const PledgeCard = ({
   completed,
 }: Props) => {
   stockLeft == "0" ? (completed = true) : (completed = false)
-  //@ts-ignore
-  const { handleModalToggle } = useContext(AppContext)
+  const modalContext = useContext(AppContext)
 
   return (
     <div
@@ -52,7 +51,7 @@ const PledgeCard = ({
           aria-label="Select Reward ${
             completed ? "bg-dark_Gray" : "bg-moderate_Cyan hover:bg-darkCyan"
           }`}
-          onClick={handleModalToggle}
+          onClick={modalContext?.handleModalToggle}
         >
           {`${completed ? "Out Of Stock" : "Select Reward"}`}
         </button>

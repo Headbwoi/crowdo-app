@@ -5,12 +5,10 @@ import { useContext } from "react"
 import { AppContext } from "../context/AppContext"
 
 const Modal = () => {
-  //@ts-ignore
-  const { isModalOpen, handleModalToggle, handleSuccessModal } =
-    useContext(AppContext)
+  const modalContext = useContext(AppContext)
   return (
     <>
-      {isModalOpen && (
+      {modalContext?.isModalOpen && (
         <div className="w-screen min-h-full backdrop-brightness-50 absolute -top-8 left-0 right-0">
           <motion.div
             className="modal md:w-[42.625rem] bg-white w-full rounded-lg  p-5 md:p-7 top-[8.5rem] md:top-44 left-1/2 -translate-x-1/2 absolute"
@@ -29,7 +27,7 @@ const Modal = () => {
                   height="15"
                   xmlns="http://www.w3.org/2000/svg"
                   className="text-dark_Gray hover:text-black duration-200 cursor-pointer"
-                  onClick={handleModalToggle}
+                  onClick={modalContext.handleModalToggle}
                 >
                   <g fill="currentColor" fillRule="evenodd">
                     <path d="M2.404.782l11.314 11.314-2.122 2.122L.282 2.904z" />
@@ -70,16 +68,16 @@ const Modal = () => {
                 pledgeAmount="25"
                 aboutPledge="You get an ergonomic stand made of natural bamboo. You've helped us launch our promotional campaign, andyou’ll be added to a special Backer member list."
                 stockLeft="101"
-                handleModalToggle={handleModalToggle}
-                handleSuccessModal={handleSuccessModal}
+                handleModalToggle={modalContext.handleModalToggle}
+                handleSuccessModal={modalContext.handleSuccessModal}
               />
               <ModalPledgeCard
                 pledgeHeading="Black Edition Stand"
                 pledgeAmount="75"
                 aboutPledge="You get a Black Special Edition computer stand and a personal thank you. You’ll be added to our Backer member list. Shipping is included."
                 stockLeft="64"
-                handleModalToggle={handleModalToggle}
-                handleSuccessModal={handleSuccessModal}
+                handleModalToggle={modalContext.handleModalToggle}
+                handleSuccessModal={modalContext.handleSuccessModal}
               />
               <ModalPledgeCard
                 pledgeHeading="Mahogany Special Edition"
@@ -87,8 +85,8 @@ const Modal = () => {
                 aboutPledge="You get two Special Edition Mahogany stands, a Backer T-Shirt, and a personal thank you. You’ll be added
               to our Backer member list. Shipping is included."
                 stockLeft="0"
-                handleModalToggle={handleModalToggle}
-                handleSuccessModal={handleSuccessModal}
+                handleModalToggle={modalContext.handleModalToggle}
+                handleSuccessModal={modalContext.handleSuccessModal}
               />
             </div>
           </motion.div>

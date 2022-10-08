@@ -5,11 +5,10 @@ import { useContext } from "react"
 import { AppContext } from "../context/AppContext"
 
 export const SuccessModal = () => {
-  //@ts-ignore
-  const { SuccessModalOpen, handleSuccessModal } = useContext(AppContext)
+  const modalContext = useContext(AppContext)
   return (
     <>
-      {SuccessModalOpen && (
+      {modalContext?.SuccessModalOpen && (
         <motion.div
           className="w-full min-h-full backdrop-brightness-50 fixed -top-8 left-0 "
           initial={{ opacity: 0 }}
@@ -42,7 +41,7 @@ export const SuccessModal = () => {
               </p>
               <button
                 className="h-12 w-28 bg-moderate_Cyan grid place-items-center hover:bg-darkCyan duration-300 text-sm text-white rounded-full mx-auto"
-                onClick={handleSuccessModal}
+                onClick={modalContext.handleSuccessModal}
               >
                 Got it!
               </button>

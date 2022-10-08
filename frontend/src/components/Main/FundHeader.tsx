@@ -1,8 +1,7 @@
 import { useContext } from "react"
 import { AppContext } from "../context/AppContext"
 const FundHeader = () => {
-  //@ts-ignore
-  const { handleModalToggle } = useContext(AppContext)
+  const modalContext = useContext(AppContext)
   return (
     <section className="px-6 md:px-10 lg:px-12 bg-white rounded-lg w-full py-9 mt-[10.3125rem] md:mt-[12.5rem] shadow-sm relative">
       <h1 className="sr-only">Name of Ptoject that Needs Funding</h1>
@@ -25,7 +24,7 @@ const FundHeader = () => {
         <button
           className="w-52 h-14 text-white text-lg font-medium bg-moderate_Cyan grid place-items-center rounded-full hover:bg-darkCyan duration-200"
           aria-label="Back this project"
-          onClick={handleModalToggle}
+          onClick={modalContext?.handleModalToggle}
         >
           Back this project
         </button>

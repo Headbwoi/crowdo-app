@@ -1,4 +1,3 @@
-import React, { useState } from "react"
 import Modal from "../Modals/Modal"
 import { SuccessModal } from "../Modals/SuccessModal"
 import AboutFund from "./AboutFund"
