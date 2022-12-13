@@ -8,6 +8,8 @@ const {
   registerProductOwner,
   loginProductOwner,
 } = require("../controllers/userController")
-router.get("/", getProductUserData)
-router.post("/", registerProductOwner)
-router.post("/", loginProductOwner)
+router.get("/me", getProductUserData)
+router.post("/register", registerProductOwner)
+router.post("/login", loginProductOwner)
+
+module.exports = router

@@ -6,4 +6,4 @@ const router: Router = express.Router()
 
 router.get("/", getAllProducts)
 
-module.exports = { router }
+module.exports = router
