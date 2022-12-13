@@ -7,7 +7,7 @@ const {
   getProductUserData,
   registerProductOwner,
   loginProductOwner,
-} = require("../controllers/getstartedController")
+} = require("../controllers/userController")
 router.get("/", getProductUserData)
 router.post("/", registerProductOwner)
 router.post("/", loginProductOwner)
