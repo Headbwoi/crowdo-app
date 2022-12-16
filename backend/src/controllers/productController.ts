@@ -20,4 +20,13 @@ const createProduct = async (req: Request, res: Response) => {
   }
 }
 
-module.exports = { getAllProducts, createProduct }
+const deleteProduct = async (req: Request, res: Response): Promise<void> => {
+  const product = await Product.findById(req.params.id)
+  if (!product) {
+    res.status(404).json({ message: "Product not found" })
+  }
+  await Product.deleteOne(req.params._id)
+  res.status(200).json({ message: `${req.params.id} deleted successfully` })
+}
+
+module.exports = { getAllProducts, createProduct, deleteProduct }

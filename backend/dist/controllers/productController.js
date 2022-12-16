@@ -29,4 +29,12 @@ const createProduct = (req, res) => __awaiter(void 0, void 0, void 0, function* 
         res.status(404).json(error);
     }
 });
-module.exports = { getAllProducts, createProduct };
+const deleteProduct = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const product = yield Product.findById(req.params.id);
+    if (!product) {
+        res.status(404).json({ message: "Product not found" });
+    }
+    yield Product.deleteOne(req.params._id);
+    res.status(200).json({ message: `${req.params.id} deleted successfully` });
+});
+module.exports = { getAllProducts, createProduct, deleteProduct };
