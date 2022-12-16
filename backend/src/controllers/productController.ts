@@ -25,7 +25,7 @@ const deleteProduct = async (req: Request, res: Response): Promise<void> => {
   if (!product) {
     res.status(404).json({ message: "Product not found" })
   }
-  await Product.deleteOne(req.params._id)
+  await Product.deleteOne(product)
   res.status(200).json({ message: `${req.params.id} deleted successfully` })
 }
 

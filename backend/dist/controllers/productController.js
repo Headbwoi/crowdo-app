@@ -34,7 +34,7 @@ const deleteProduct = (req, res) => __awaiter(void 0, void 0, void 0, function* 
     if (!product) {
         res.status(404).json({ message: "Product not found" });
     }
-    yield Product.deleteOne(req.params._id);
+    yield Product.deleteOne(product);
     res.status(200).json({ message: `${req.params.id} deleted successfully` });
 });
 module.exports = { getAllProducts, createProduct, deleteProduct };
