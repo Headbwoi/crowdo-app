@@ -7,6 +7,7 @@ const {
 const express = require("express")
 const router: Router = express.Router()
 
-router.get("/", getAllProducts).post("/", createProduct)
+router.get("/", getAllProducts)
+router.post("/", createProduct)
 
 module.exports = router
