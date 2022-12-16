@@ -1,19 +1,15 @@
 import { Request, Response } from "express"
-import Product from "../models/productModel"
+const Product = require("../models/productModel")
 
 const getAllProducts = async (req: Request, res: Response) => {
-  const products = await Product.find()
-  res.status(200).json(products)
-}
-
-const createProduct = async (req: Request, res: Response) => {
-  const product = new Product(req.body)
   try {
-    const newTodo = await product.save()
-    res.status(201).json(newTodo)
+    const products = await Product.find()
+    res.status(200).json(products)
   } catch (error) {
-    res.status(404).json({ error })
+    res.status(404).json(error)
   }
 }
+
+const createProduct = async (req: Request, res: Response) => {}
 
 module.exports = { getAllProducts, createProduct }
