@@ -10,6 +10,14 @@ const getAllProducts = async (req: Request, res: Response) => {
   }
 }
 
-const createProduct = async (req: Request, res: Response) => {}
+const createProduct = async (req: Request, res: Response) => {
+  const product = new Product(req.body)
+  try {
+    const newProduct = await product.save()
+    res.status(201).json(newProduct)
+  } catch (error) {
+    res.status(404).json(error)
+  }
+}
 
 module.exports = { getAllProducts, createProduct }

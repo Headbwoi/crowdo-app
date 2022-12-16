@@ -10,6 +10,8 @@ const port = process.env.PORT || 5000
 
 connectDB()
 
+app.use(express.json())
+app.use(express.urlencoded({ extended: false }))
 
 app.use("/products", require("./routes/productRoutes"))
 app.use("/user", require("./routes/userRoutes"))

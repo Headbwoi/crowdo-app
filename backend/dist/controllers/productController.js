@@ -19,5 +19,14 @@ const getAllProducts = (req, res) => __awaiter(void 0, void 0, void 0, function*
         res.status(404).json(error);
     }
 });
-const createProduct = (req, res) => __awaiter(void 0, void 0, void 0, function* () { });
+const createProduct = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const product = new Product(req.body);
+    try {
+        const newProduct = yield product.save();
+        res.status(201).json(newProduct);
+    }
+    catch (error) {
+        res.status(404).json(error);
+    }
+});
 module.exports = { getAllProducts, createProduct };
