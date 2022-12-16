@@ -12,4 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const getAllProducts = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     res.status(200).json({ message: "get products" });
 });
-module.exports = { getAllProducts };
+const createProduct = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    res.status(201).json({ message: "product created" });
+});
+module.exports = { getAllProducts, createProduct };

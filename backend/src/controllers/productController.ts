@@ -4,4 +4,8 @@ const getAllProducts = async (req: Request, res: Response) => {
   res.status(200).json({ message: "get products" })
 }
 
-module.exports = { getAllProducts }
+const createProduct = async (req: Request, res: Response) => {
+  res.status(201).json({ message: "product created" })
+}
+
+module.exports = { getAllProducts, createProduct }
