@@ -2,6 +2,9 @@ import { Request, Response } from "express"
 import Product from "../models/productModel.js"
 import asyncHandler from "express-async-handler"
 
+//@desc     Gets all Products
+//@route    GET /api/products
+//@access   public
 export const getAllProducts = asyncHandler(
   async (req: Request, res: Response) => {
     try {
@@ -13,6 +16,9 @@ export const getAllProducts = asyncHandler(
   }
 )
 
+//@desc     Creates a Product
+//@route    POST /api/products
+//@access   private
 export const createProduct = asyncHandler(
   async (req: Request, res: Response) => {
     const product = new Product(req.body)
@@ -25,6 +31,9 @@ export const createProduct = asyncHandler(
   }
 )
 
+//@desc     Updates a Product
+//@route    PUT /api/products/:id
+//@access   private
 export const updateProduct = asyncHandler(
   async (req: Request, res: Response) => {
     const product = await Product.findById(req.params.id)
@@ -44,6 +53,9 @@ export const updateProduct = asyncHandler(
   }
 )
 
+//@desc     Deletes a Product
+//@route    DELETE /api/products/:id
+//@access   private
 export const deleteProduct = asyncHandler(
   async (req: Request, res: Response): Promise<void> => {
     const product = await Product.findById(req.params.id)

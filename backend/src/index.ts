@@ -15,8 +15,8 @@ connectDB()
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
-app.use("/products", productRoutes)
-app.use("/user", userRoutes)
+app.use("/api/products", productRoutes)
+app.use("/api/user", userRoutes)
 
 app.use(errorHandler)
 app.listen(port, () => console.log(`app listening on port ${port}!`))

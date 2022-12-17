@@ -9,6 +9,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 import Product from "../models/productModel.js";
 import asyncHandler from "express-async-handler";
+//@desc     Gets all Products
+//@route    GET /api/products
+//@access   public
 export const getAllProducts = asyncHandler((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const products = yield Product.find();
@@ -18,6 +21,9 @@ export const getAllProducts = asyncHandler((req, res) => __awaiter(void 0, void 
         res.status(404).json(error);
     }
 }));
+//@desc     Creates a Product
+//@route    POST /api/products
+//@access   private
 export const createProduct = asyncHandler((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const product = new Product(req.body);
     try {
@@ -28,6 +34,9 @@ export const createProduct = asyncHandler((req, res) => __awaiter(void 0, void 0
         res.status(404).json(error);
     }
 }));
+//@desc     Updates a Product
+//@route    PUT /api/products/:id
+//@access   private
 export const updateProduct = asyncHandler((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const product = yield Product.findById(req.params.id);
     if (!product) {
@@ -39,6 +48,9 @@ export const updateProduct = asyncHandler((req, res) => __awaiter(void 0, void 0
     });
     res.status(200).json(updatedProduct);
 }));
+//@desc     Deletes a Product
+//@route    DELETE /api/products/:id
+//@access   private
 export const deleteProduct = asyncHandler((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const product = yield Product.findById(req.params.id);
     if (!product) {

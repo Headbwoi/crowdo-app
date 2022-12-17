@@ -9,6 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 import mongoose from "mongoose";
 mongoose.set("strictQuery", true);
+// Conects to Database - MONGODB
 const connectDB = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
         yield mongoose
