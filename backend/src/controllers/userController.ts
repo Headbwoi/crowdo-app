@@ -1,5 +1,11 @@
 import { Request, Response } from "express"
-const getProductUserData = async (req: Request, res: Response) => {
+import { IUser } from "../models/userModel"
+const User = require("../models/userModel")
+
+const getProductUserData = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
   res.status(200).json({ message: "get products" })
 }
 const registerProductOwner = async (req: Request, res: Response) => {
