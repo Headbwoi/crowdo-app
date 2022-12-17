@@ -7,12 +7,21 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+//@desc     Gets User Data
+//@route    GET /api/user/:userID
+//@access   private
 export const getProductUserData = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    res.status(200).json({ message: "get products" });
+    res.status(200).json({ message: "get user" });
 });
+//@desc     Registers a User
+//@route    PUT /api/products/:id
+//@access   private
 export const registerProductOwner = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     res.status(200).json({ message: "get products" });
 });
+//@desc     Updates a Product
+//@route    PUT /api/products/:id
+//@access   private
 export const loginProductOwner = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     res.status(200).json({ message: "get products" });
 });

@@ -1,4 +1,4 @@
-import { Document, Mongoose } from "mongoose"
+import { Document } from "mongoose"
 
 import mongoose from "mongoose"
 export interface IUser extends Document {
