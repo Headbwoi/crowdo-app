@@ -1,8 +1,8 @@
 import { Request, Response } from "express"
-const Product = require("../models/productModel")
-const asyncHandler = require("express-async-handler")
+import Product from "../models/productModel.js"
+import asyncHandler from "express-async-handler"
 
-const getAllProducts = asyncHandler(async (req: Request, res: Response) => {
+export const getAllProducts = asyncHandler(async (req: Request, res: Response) => {
   try {
     const products = await Product.find()
     res.status(200).json(products)
@@ -11,7 +11,7 @@ const getAllProducts = asyncHandler(async (req: Request, res: Response) => {
   }
 })
 
-const createProduct = asyncHandler(async (req: Request, res: Response) => {
+export const createProduct = asyncHandler(async (req: Request, res: Response) => {
   const product = new Product(req.body)
   try {
     const newProduct = await product.save()
@@ -21,7 +21,7 @@ const createProduct = asyncHandler(async (req: Request, res: Response) => {
   }
 })
 
-const updateProduct = asyncHandler(async (req: Request, res: Response) => {
+export const updateProduct = asyncHandler(async (req: Request, res: Response) => {
   const product = await Product.findById(req.params.id)
   if (!product) {
     res.status(404)
@@ -38,16 +38,16 @@ const updateProduct = asyncHandler(async (req: Request, res: Response) => {
   res.status(200).json(updatedProduct)
 })
 
-const deleteProduct = asyncHandler(
+export const deleteProduct = asyncHandler(
   async (req: Request, res: Response): Promise<void> => {
     const product = await Product.findById(req.params.id)
     if (!product) {
       res.status(404)
       throw new Error("product not found")
     }
-    await Product.deleteOne(product)
+    await Product.deleteOne(product._id)
     res.status(200).json({ message: `${req.params.id} deleted successfully` })
   }
 )
 
-module.exports = { getAllProducts, createProduct, updateProduct, deleteProduct }
+// module.exports = { getAllProducts, createProduct, updateProduct, deleteProduct }

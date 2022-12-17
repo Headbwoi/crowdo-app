@@ -1,15 +1,17 @@
 import { Router } from "express"
-const {
+import {
   getAllProducts,
   createProduct,
   deleteProduct,
-  updateProduct
-} = require("../controllers/productController")
+  updateProduct,
+} from "../controllers/productController.js"
 
-const express = require("express")
+import express from "express"
 const router: Router = express.Router()
 
 router.get("/", getAllProducts).post("/", createProduct)
 router.delete("/:id", deleteProduct).put("/:id", updateProduct)
 
-module.exports = router
+const productRoutes = router
+
+export default productRoutes

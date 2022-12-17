@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express"
 
-const errorHandler = (
+export const errorHandler = (
   err: Error,
   req: Request,
   res: Response,
@@ -14,5 +14,3 @@ const errorHandler = (
     stack: process.env.NODE_ENV === "production" ? null : err.stack,
   })
 }
-
-module.exports = { errorHandler }

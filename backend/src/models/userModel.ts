@@ -1,6 +1,6 @@
 import { Document, Mongoose } from "mongoose"
 
-const mongoose: Mongoose = require("mongoose")
+import mongoose from "mongoose"
 export interface IUser extends Document {
   firstName: string
   lastName: string
@@ -28,4 +28,4 @@ const userSchema = new mongoose.Schema<IUser>({
   },
 })
 
-module.exports = mongoose.model<IUser>("User", userSchema)
+export default mongoose.model<IUser>("User", userSchema)

@@ -1,8 +1,7 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const { getAllProducts, createProduct, deleteProduct, updateProduct } = require("../controllers/productController");
-const express = require("express");
+import { getAllProducts, createProduct, deleteProduct, updateProduct, } from "../controllers/productController.js";
+import express from "express";
 const router = express.Router();
 router.get("/", getAllProducts).post("/", createProduct);
 router.delete("/:id", deleteProduct).put("/:id", updateProduct);
-module.exports = router;
+const productRoutes = router;
+export default productRoutes;

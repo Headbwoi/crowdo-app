@@ -1,6 +1,4 @@
-import { Mongoose } from "mongoose"
-
-const mongoose: Mongoose = require("mongoose")
+import mongoose from "mongoose"
 
 mongoose.set("strictQuery", true)
 const connectDB = async () => {
@@ -14,5 +12,4 @@ const connectDB = async () => {
     process.exit(1)
   }
 }
-
-module.exports = connectDB
+export default connectDB

@@ -1,15 +1,16 @@
 import { Router } from "express"
 
-const express = require("express")
+import express from "express"
 const router: Router = express.Router()
 
-const {
+import {
   getProductUserData,
   registerProductOwner,
   loginProductOwner,
-} = require("../controllers/userController")
+} from "../controllers/userController.js"
 router.get("/me", getProductUserData)
 router.post("/register", registerProductOwner)
 router.post("/login", loginProductOwner)
 
-module.exports = router
+const userRoutes = router
+export default userRoutes

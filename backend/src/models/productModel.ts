@@ -1,6 +1,6 @@
-import { Document, Mongoose, Schema } from "mongoose"
+import { Document, Schema } from "mongoose"
 
-const mongoose: Mongoose = require("mongoose")
+import mongoose from "mongoose"
 
 export interface IProduct extends Document {
   title: string
@@ -105,4 +105,4 @@ const ProductSchema: Schema = new mongoose.Schema<IProduct>({
   },
 })
 
-module.exports = mongoose.model<IProduct>("Product", ProductSchema)
+export default mongoose.model<IProduct>("Product", ProductSchema)

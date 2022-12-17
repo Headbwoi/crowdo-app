@@ -1,4 +1,3 @@
-"use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -8,10 +7,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-const Product = require("../models/productModel");
-const asyncHandler = require("express-async-handler");
-const getAllProducts = asyncHandler((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+import Product from "../models/productModel.js";
+import asyncHandler from "express-async-handler";
+export const getAllProducts = asyncHandler((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const products = yield Product.find();
         res.status(200).json(products);
@@ -20,7 +18,7 @@ const getAllProducts = asyncHandler((req, res) => __awaiter(void 0, void 0, void
         res.status(404).json(error);
     }
 }));
-const createProduct = asyncHandler((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+export const createProduct = asyncHandler((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const product = new Product(req.body);
     try {
         const newProduct = yield product.save();
@@ -30,7 +28,7 @@ const createProduct = asyncHandler((req, res) => __awaiter(void 0, void 0, void 
         res.status(404).json(error);
     }
 }));
-const updateProduct = asyncHandler((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+export const updateProduct = asyncHandler((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const product = yield Product.findById(req.params.id);
     if (!product) {
         res.status(404);
@@ -41,13 +39,13 @@ const updateProduct = asyncHandler((req, res) => __awaiter(void 0, void 0, void 
     });
     res.status(200).json(updatedProduct);
 }));
-const deleteProduct = asyncHandler((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+export const deleteProduct = asyncHandler((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const product = yield Product.findById(req.params.id);
     if (!product) {
         res.status(404);
         throw new Error("product not found");
     }
-    yield Product.deleteOne(product);
+    yield Product.deleteOne(product._id);
     res.status(200).json({ message: `${req.params.id} deleted successfully` });
 }));
-module.exports = { getAllProducts, createProduct, updateProduct, deleteProduct };
+// module.exports = { getAllProducts, createProduct, updateProduct, deleteProduct }
