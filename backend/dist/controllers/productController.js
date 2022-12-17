@@ -48,4 +48,3 @@ export const deleteProduct = asyncHandler((req, res) => __awaiter(void 0, void 0
     yield Product.deleteOne(product._id);
     res.status(200).json({ message: `${req.params.id} deleted successfully` });
 }));
-// module.exports = { getAllProducts, createProduct, updateProduct, deleteProduct }
