@@ -1,8 +1,35 @@
-import { Mongoose } from "mongoose"
+import { Document, Mongoose, Schema } from "mongoose"
 
 const mongoose: Mongoose = require("mongoose")
 
-const productSchema = new mongoose.Schema({
+export interface IProduct extends Document {
+  title: string
+  briefIntro: string
+  about: string
+  amount: Number
+  variations: {
+    firstVariation: {
+      name: string
+      about: string
+      quantity: Number
+      pledgeMinimum: Number
+    }
+    secondVariation: {
+      name: string
+      about: string
+      quantity: Number
+      pledgeMinimum: Number
+    }
+    thirdVariation: {
+      name: string
+      about: string
+      quantity: Number
+      pledgeMinimum: Number
+    }
+  }
+}
+
+const ProductSchema: Schema = new mongoose.Schema<IProduct>({
   title: {
     type: String,
     required: true,
@@ -78,4 +105,4 @@ const productSchema = new mongoose.Schema({
   },
 })
 
-module.exports = mongoose.model("Product", productSchema)
+module.exports = mongoose.model<IProduct>("Product", ProductSchema)
