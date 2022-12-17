@@ -10,7 +10,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const Product = require("../models/productModel");
-const getAllProducts = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+const asyncHandler = require("express-async-handler");
+const getAllProducts = asyncHandler((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const products = yield Product.find();
         res.status(200).json(products);
@@ -18,8 +19,8 @@ const getAllProducts = (req, res) => __awaiter(void 0, void 0, void 0, function*
     catch (error) {
         res.status(404).json(error);
     }
-});
-const createProduct = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+}));
+const createProduct = asyncHandler((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const product = new Product(req.body);
     try {
         const newProduct = yield product.save();
@@ -28,13 +29,25 @@ const createProduct = (req, res) => __awaiter(void 0, void 0, void 0, function* 
     catch (error) {
         res.status(404).json(error);
     }
-});
-const deleteProduct = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+}));
+const updateProduct = asyncHandler((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const product = yield Product.findById(req.params.id);
     if (!product) {
-        res.status(404).json({ message: "Product not found" });
+        res.status(404);
+        throw new Error("Product not found");
+    }
+    const updatedProduct = yield Product.findByIdAndUpdate(req.params.id, req.body, {
+        new: true,
+    });
+    res.status(200).json(updatedProduct);
+}));
+const deleteProduct = asyncHandler((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const product = yield Product.findById(req.params.id);
+    if (!product) {
+        res.status(404);
+        throw new Error("product not found");
     }
     yield Product.deleteOne(product);
     res.status(200).json({ message: `${req.params.id} deleted successfully` });
-});
-module.exports = { getAllProducts, createProduct, deleteProduct };
+}));
+module.exports = { getAllProducts, createProduct, updateProduct, deleteProduct };
