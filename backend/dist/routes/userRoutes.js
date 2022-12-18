@@ -1,8 +1,9 @@
 import express from "express";
 const router = express.Router();
-import { getProductUserData, registerProductOwner, loginProductOwner, } from "../controllers/userController.js";
-router.get("/me", getProductUserData);
-router.post("/register", registerProductOwner);
-router.post("/login", loginProductOwner);
+import { getUserData, registerUser, loginUser, } from "../controllers/userController.js";
+import { protectRoute } from "../middleware/authMiddleware.js";
+router.get("/user", protectRoute, getUserData);
+router.post("/register", registerUser);
+router.post("/login", loginUser);
 const userRoutes = router;
 export default userRoutes;

@@ -8,7 +8,8 @@ import {
   registerUser,
   loginUser,
 } from "../controllers/userController.js"
-router.get("/me", getUserData)
+import { protectRoute } from "../middleware/authMiddleware.js"
+router.get("/user", protectRoute, getUserData)
 router.post("/register", registerUser)
 router.post("/login", loginUser)
 
