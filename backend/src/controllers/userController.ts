@@ -14,7 +14,23 @@ export const getUserData = async (
 //@route    POST /api/user/
 //@access   public
 export const registerUser = async (req: Request, res: Response) => {
-  res.status(200).json({ message: "get products" })
+  const { firstName, lastName, email, password } = req.body
+
+  if (!firstName || !lastName || !email || !password) {
+    res.status(400)
+    throw new Error("Please Enter All fields")
+  }
+
+  // checks if user exists
+  const userExists = await User.findOne({ email })
+
+  if (userExists) {
+    res.status(400)
+    throw new Error("User Already Exists")
+  }
+
+  
+  // res.status(200).json({ message: "get products" })
 }
 //@desc     Login a User
 //@route    POST /api/user/
