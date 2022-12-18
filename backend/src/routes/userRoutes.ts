@@ -4,13 +4,13 @@ import express from "express"
 const router: Router = express.Router()
 
 import {
-  getProductUserData,
-  registerProductOwner,
-  loginProductOwner,
+  getUserData,
+  registerUser,
+  loginUser,
 } from "../controllers/userController.js"
-router.get("/me", getProductUserData)
-router.post("/register", registerProductOwner)
-router.post("/login", loginProductOwner)
+router.get("/me", getUserData)
+router.post("/register", registerUser)
+router.post("/login", loginUser)
 
 const userRoutes = router
 export default userRoutes
