@@ -1,11 +1,10 @@
 import { Request, Response } from "express"
 import asyncHandler from "express-async-handler"
 import Product from "../models/productModel.js"
-import User from "../models/userModel.js"
 
 //@desc     Gets all Products
 //@route    GET /api/products
-//@access   public
+//@access   private
 export const getAllProducts = asyncHandler(
   async (req: Request, res: Response) => {
     try {
@@ -22,7 +21,6 @@ export const getAllProducts = asyncHandler(
 //@access   private
 export const createProduct = asyncHandler(
   async (req: Request, res: Response) => {
-    // const product = new Product(req.body)
     try {
       const newProduct = await Product.create({
         ...req.body,

@@ -11,7 +11,7 @@ import asyncHandler from "express-async-handler";
 import Product from "../models/productModel.js";
 //@desc     Gets all Products
 //@route    GET /api/products
-//@access   public
+//@access   private
 export const getAllProducts = asyncHandler((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const products = yield Product.find({ user: req.user.id });
@@ -25,7 +25,6 @@ export const getAllProducts = asyncHandler((req, res) => __awaiter(void 0, void 
 //@route    POST /api/products
 //@access   private
 export const createProduct = asyncHandler((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    // const product = new Product(req.body)
     try {
         const newProduct = yield Product.create(Object.assign(Object.assign({}, req.body), { user: req.user.id }));
         res.status(201).json(newProduct);
