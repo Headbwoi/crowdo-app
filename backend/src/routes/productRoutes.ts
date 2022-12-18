@@ -7,10 +7,15 @@ import {
 } from "../controllers/productController.js"
 
 import express from "express"
+import { protectRoute } from "../middleware/authMiddleware.js"
 const router: Router = express.Router()
 
-router.get("/", getAllProducts).post("/", createProduct)
-router.delete("/:id", deleteProduct).put("/:id", updateProduct)
+router
+  .get("/", protectRoute, getAllProducts)
+  .post("/", protectRoute, createProduct)
+router
+  .delete("/:id", protectRoute, deleteProduct)
+  .put("/:id", protectRoute, updateProduct)
 
 const productRoutes = router
 

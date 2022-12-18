@@ -7,14 +7,14 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import Product from "../models/productModel.js";
 import asyncHandler from "express-async-handler";
+import Product from "../models/productModel.js";
 //@desc     Gets all Products
 //@route    GET /api/products
 //@access   public
 export const getAllProducts = asyncHandler((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const products = yield Product.find();
+        const products = yield Product.find({ user: req.user.id });
         res.status(200).json(products);
     }
     catch (error) {
@@ -25,9 +25,9 @@ export const getAllProducts = asyncHandler((req, res) => __awaiter(void 0, void 
 //@route    POST /api/products
 //@access   private
 export const createProduct = asyncHandler((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const product = new Product(req.body);
+    // const product = new Product(req.body)
     try {
-        const newProduct = yield product.save();
+        const newProduct = yield Product.create(Object.assign(Object.assign({}, req.body), { user: req.user.id }));
         res.status(201).json(newProduct);
     }
     catch (error) {
@@ -43,6 +43,16 @@ export const updateProduct = asyncHandler((req, res) => __awaiter(void 0, void 0
         res.status(404);
         throw new Error("Product not found");
     }
+    // check fpr user
+    if (!req.user) {
+        res.status(401);
+        throw new Error("user not found");
+    }
+    // makes sure the logged in user matches the product user
+    if (product.user.toString() !== req.user.id) {
+        res.status(401);
+        throw new Error("user not authorised");
+    }
     const updatedProduct = yield Product.findByIdAndUpdate(req.params.id, req.body, {
         new: true,
     });
@@ -55,8 +65,18 @@ export const deleteProduct = asyncHandler((req, res) => __awaiter(void 0, void 0
     const product = yield Product.findById(req.params.id);
     if (!product) {
         res.status(404);
-        throw new Error("product not found");
+        throw new Error("Product not found");
     }
-    yield Product.deleteOne(product._id);
+    // check fpr user
+    if (!req.user) {
+        res.status(401);
+        throw new Error("user not found");
+    }
+    // makes sure the logged in user matches the product user
+    if (product.user.toString() !== req.user.id) {
+        res.status(401);
+        throw new Error("user not authorised");
+    }
+    yield product.deleteOne();
     res.status(200).json({ message: `${req.params.id} deleted successfully` });
 }));

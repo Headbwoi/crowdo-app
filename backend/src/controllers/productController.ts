@@ -1,6 +1,7 @@
 import { Request, Response } from "express"
-import Product from "../models/productModel.js"
 import asyncHandler from "express-async-handler"
+import Product from "../models/productModel.js"
+import User from "../models/userModel.js"
 
 //@desc     Gets all Products
 //@route    GET /api/products
@@ -8,7 +9,7 @@ import asyncHandler from "express-async-handler"
 export const getAllProducts = asyncHandler(
   async (req: Request, res: Response) => {
     try {
-      const products = await Product.find()
+      const products = await Product.find({ user: req.user.id })
       res.status(200).json(products)
     } catch (error) {
       res.status(404).json(error)
@@ -21,9 +22,12 @@ export const getAllProducts = asyncHandler(
 //@access   private
 export const createProduct = asyncHandler(
   async (req: Request, res: Response) => {
-    const product = new Product(req.body)
+    // const product = new Product(req.body)
     try {
-      const newProduct = await product.save()
+      const newProduct = await Product.create({
+        ...req.body,
+        user: req.user.id,
+      })
       res.status(201).json(newProduct)
     } catch (error) {
       res.status(404).json(error)
@@ -40,6 +44,18 @@ export const updateProduct = asyncHandler(
     if (!product) {
       res.status(404)
       throw new Error("Product not found")
+    }
+
+    // check fpr user
+    if (!req.user) {
+      res.status(401)
+      throw new Error("user not found")
+    }
+
+    // makes sure the logged in user matches the product user
+    if (product.user.toString() !== req.user.id) {
+      res.status(401)
+      throw new Error("user not authorised")
     }
 
     const updatedProduct = await Product.findByIdAndUpdate(
@@ -61,9 +77,22 @@ export const deleteProduct = asyncHandler(
     const product = await Product.findById(req.params.id)
     if (!product) {
       res.status(404)
-      throw new Error("product not found")
+      throw new Error("Product not found")
     }
-    await Product.deleteOne(product._id)
+
+    // check fpr user
+    if (!req.user) {
+      res.status(401)
+      throw new Error("user not found")
+    }
+
+    // makes sure the logged in user matches the product user
+    if (product.user.toString() !== req.user.id) {
+      res.status(401)
+      throw new Error("user not authorised")
+    }
+
+    await product.deleteOne()
     res.status(200).json({ message: `${req.params.id} deleted successfully` })
   }
 )

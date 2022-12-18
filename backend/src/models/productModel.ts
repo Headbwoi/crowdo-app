@@ -3,6 +3,7 @@ import { Document, Schema } from "mongoose"
 import mongoose from "mongoose"
 
 export interface IProduct extends Document {
+  user: {}
   title: string
   briefIntro: string
   about: string
@@ -30,6 +31,11 @@ export interface IProduct extends Document {
 }
 
 const ProductSchema: Schema = new mongoose.Schema<IProduct>({
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: "User",
+  },
   title: {
     type: String,
     required: true,

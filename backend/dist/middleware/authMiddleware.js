@@ -28,4 +28,8 @@ export const protectRoute = asyncHandler((req, res, next) => __awaiter(void 0, v
             throw new Error("Not authorised to access this route");
         }
     }
+    if (!token) {
+        res.status(400);
+        throw new Error("not authorised, no token");
+    }
 }));
