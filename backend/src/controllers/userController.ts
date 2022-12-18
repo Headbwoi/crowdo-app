@@ -5,7 +5,7 @@ import jwt from "jsonwebtoken"
 import { ObjectId } from "mongoose"
 import asyncHandler from "express-async-handler"
 
-const generateToken = (id: ObjectId) => {
+const generateToken = (id: ObjectId): String => {
   //@ts-ignore
   return jwt.sign({ id }, process.env.JWT_SECRET, {
     expiresIn: "30d",
@@ -57,11 +57,11 @@ export const registerUser = asyncHandler(
 
     if (newUser) {
       res.status(201).json({
-        _id: newUser.id,
+        _id: <ObjectId>newUser.id,
         firstName: newUser.firstName,
         lastName: newUser.lastName,
         email: newUser.email,
-        token: generateToken(newUser._id),
+        token: generateToken(newUser.id),
       })
     } else {
       throw new Error("failed to create user")

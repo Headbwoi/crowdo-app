@@ -54,7 +54,7 @@ export const registerUser = asyncHandler((req, res) => __awaiter(void 0, void 0,
             firstName: newUser.firstName,
             lastName: newUser.lastName,
             email: newUser.email,
-            token: generateToken(newUser._id),
+            token: generateToken(newUser.id),
         });
     }
     else {
