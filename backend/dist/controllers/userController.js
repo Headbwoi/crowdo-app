@@ -21,7 +21,7 @@ const generateToken = (id) => {
 //@route    GET /api/user/:userID
 //@access   private
 export const getUserData = asyncHandler((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    // res.status(200).json(req.user)
+    res.status(200).json(req.user);
 }));
 //@desc     Registers a User
 //@route    POST /api/user/

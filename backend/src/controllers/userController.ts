@@ -17,7 +17,7 @@ const generateToken = (id: ObjectId): String => {
 //@access   private
 export const getUserData = asyncHandler(
   async (req: Request, res: Response): Promise<void> => {
-    // res.status(200).json(req.user)
+    res.status(200).json(req.user)
   }
 )
 
