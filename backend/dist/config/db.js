@@ -14,7 +14,7 @@ const connectDB = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
         yield mongoose
             //@ts-ignore
-            .connect(process.env.MONGO_LOCAL_URI)
+            .connect(`${process.env.MONGO_URI}`)
             .then(() => console.log(`MongoDb connected ${mongoose.connection.collection.name}`));
     }
     catch (error) {
