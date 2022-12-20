@@ -1,5 +1,3 @@
-import { Header, MainSection } from "../components"
-
 function Product() {
   return (
     <>
