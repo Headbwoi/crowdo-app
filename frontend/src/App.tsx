@@ -1,16 +1,17 @@
-import Header from "./components/Header/Header"
-import MainSection from "./components/Main/MainSection"
-import { AppContextProvider } from "./components/context/AppContext"
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import { About, Discover, GetStarted, Product } from "./pages"
 
 function App() {
   return (
     <>
-      <Header />
-      <div className="bg-light_Gray">
-        <AppContextProvider>
-          <MainSection />
-        </AppContextProvider>
-      </div>
+      <Router>
+        <Routes>
+          <Route path="/discover" element={<Discover />} />
+          <Route path="/getstarted" element={<GetStarted />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/:id" element={<Product />} />
+        </Routes>
+      </Router>
     </>
   )
 }
