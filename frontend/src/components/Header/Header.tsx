@@ -10,9 +10,7 @@ function Header() {
     <header className="container px-6 md:px-10 xl:px-0 relative py-7 md:py-10">
       <nav className="flex items-center justify-between">
         <div className="logo">
-          <div className="text-white text-2xl md:text-4xl font-bold font-commissioner">
-            Crowdo
-          </div>
+          <img src="/icons/Logo.svg" alt="logo" className="h-20 w-36" />
         </div>
         {/* hamburger */}
         <div

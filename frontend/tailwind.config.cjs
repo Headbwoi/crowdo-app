@@ -18,6 +18,9 @@ module.exports = {
       dark_Gray: "hsl(0, 0%, 48%)",
       light_Gray: "hsl(0, 0%, 96%)",
       white: "hsl(0, 0%, 100%)",
+      background_home: "hsl(261, 100%, 5%)",
+      green_Text: "hsl(126,96%,50%)",
+      light_Text: "hsl(0,0%,85%)",
     },
     fontFamily: {
       commissioner: [`'Commissioner', sans-serif`],
