@@ -3,7 +3,7 @@ import { Button, Header } from "./components"
 function App() {
   return (
     <>
-      <main className="bg-background_home w-full h-screen">
+      <main className="bg-background_home w-full min-h-screen">
         <Header />
 
         <section className="flex items-center flex-col font-commissioner container  text-center gap-20 px-5 pt-14 md:pt-20 lg:w-3/4">
