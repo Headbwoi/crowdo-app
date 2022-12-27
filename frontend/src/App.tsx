@@ -3,6 +3,7 @@ import {
   GettingStarted,
   HeroSection,
   SecurityTrust,
+  StartNow,
 } from "./components/HomePage"
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
 
       <GettingStarted />
       <SecurityTrust />
+      <StartNow />
     </>
   )
 }
