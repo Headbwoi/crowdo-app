@@ -13,6 +13,9 @@ const menuVariant = {
     transition: { duration: 0.5 },
   },
 }
+
+const navItems: string[] = ["home", "about", "discover", "get started"]
+
 const MobileMenu = () => {
   return (
     <motion.div
@@ -23,15 +26,11 @@ const MobileMenu = () => {
       exit={"exit"}
     >
       <div className="flex flex-col items-start justify-between h-full w-full">
-        <li className="list-none h-[70px] flex items-center px-6 border-b border-dark_Gray w-full hover:bg-dark_Gray/10">
-          <Links name="about" color="black" font="medium" />
-        </li>
-        <li className="list-none h-[70px] flex items-center px-6 border-b border-dark_Gray w-full hover:bg-dark_Gray/10">
-          <Links name="discover" color="black" font="medium" />
-        </li>
-        <li className="list-none h-[70px] flex items-center px-6  w-full hover:bg-dark_Gray/10">
-          <Links name="get started" color="black" font="medium" />
-        </li>
+        {navItems.map((item) => (
+          <li className="list-none h-[70px] flex items-center px-6 border-b border-dark_Gray w-full hover:bg-dark_Gray/10">
+            <Links name={item} color="black" font="medium" />
+          </li>
+        ))}
       </div>
     </motion.div>
   )

@@ -4,6 +4,9 @@ import Hamburger from "../../icons/Hamburger"
 import Links from "./Links"
 import MobileMenu from "./MobileMenu"
 import { AnimatePresence } from "framer-motion"
+
+const navItems: string[] = ["home", "about", "discover", "get started"]
+
 function Header() {
   const [isOpen, setIsOpen] = useState(false)
   return (
@@ -20,9 +23,9 @@ function Header() {
           {isOpen ? <CloseIcon /> : <Hamburger />}
         </div>
         <div className="hidden lg:flex items-center space-x-10 text-white">
-          <Links name="about" color="white" font="normal" />
-          <Links name="discover" color="white" font="normal" />
-          <Links name="get started" color="white" font="normal" />
+          {navItems.map((item) => (
+            <Links name={item} color="white" font="normal" />
+          ))}
         </div>
       </nav>
       <AnimatePresence initial={false} mode="wait" onExitComplete={() => null}>
