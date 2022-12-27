@@ -1,5 +1,11 @@
+import { Layout } from "../components"
+
 function About() {
-  return <div>About</div>
+  return (
+    <Layout>
+      <div>about</div>
+    </Layout>
+  )
 }
 
 export default About

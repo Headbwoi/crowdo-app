@@ -1,13 +1,12 @@
-import { Header, MainSection } from "../components"
+import { Layout, MainSection } from "../components"
 
 function DashBoard() {
   return (
-    <>
-      <Header />
+    <Layout>
       <div className="bg-light_Gray">
         <MainSection />
       </div>
-    </>
+    </Layout>
   )
 }
 

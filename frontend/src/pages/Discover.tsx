@@ -1,5 +1,11 @@
+import { Layout } from "../components"
+
 function Discover() {
-  return <div>Discover</div>
+  return (
+    <Layout>
+      <div>Discover</div>
+    </Layout>
+  )
 }
 
 export default Discover
