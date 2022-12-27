@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { linksOne, linksThree, linksTwo } from "./helper"
+import { linksOne, linksThree, linksTwo } from "../HomePage/helper"
 
 type LinkEl = {
   name: string
