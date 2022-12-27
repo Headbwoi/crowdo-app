@@ -7,7 +7,7 @@ import { AnimatePresence } from "framer-motion"
 function Header() {
   const [isOpen, setIsOpen] = useState(false)
   return (
-    <header className="container px-6 md:px-10 xl:px-0 relative py-2 md:py-10">
+    <header className="container px-6 md:px-10 xl:px-0 relative py-2 md:py-3 z-20">
       <nav className="flex items-center justify-between">
         <div className="logo">
           <img src="/icons/logo.svg" alt="logo" className="h-20 w-36" />

@@ -1,30 +1,12 @@
-import { Button, Header } from "./components"
+import { Header, HeroSection } from "./components"
 
 function App() {
   return (
     <>
-      <main className="bg-background_home w-full min-h-screen">
+      <main className="relative w-full min-h-screen bg-background">
+        <div className="before:absolute before:w-full before:h-full before:inset-0 before:bg-[url('/images/hero-image.svg')] before:md:bg-[url('/images/hero-image-desktop.svg')] before:bg-no-repeat before:bg-cover before:bg-center before:-z-10 opacity-20 "></div>
         <Header />
-
-        <section className="flex items-center flex-col font-commissioner container  text-center gap-20 px-5 pt-14 md:pt-20 lg:w-3/4">
-          <div>
-            <h1 className="font-bold text-4xl md:text-6xl lg:text-7xl text-white text-center leading-normal">
-              Want To <span className="text-green_Text">Fund</span> Something
-              But Short on Funds?
-            </h1>
-          </div>
-          <div className="lg:w-3/4">
-            <p className="text-xl md:text-3xl text-light_Text font-semibold leading-normal">
-              We got you covered. Show what you want to be funded and let the
-              generous public fund you
-            </p>
-          </div>
-
-          <div className="flex items-center gap-6 mb-10">
-            <Button name="Get Started" />
-            <Button name="Explore" />
-          </div>
-        </section>
+        <HeroSection />
       </main>
     </>
   )
