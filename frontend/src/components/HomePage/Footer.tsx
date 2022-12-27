@@ -6,8 +6,8 @@ type LinkEl = {
 }
 function Footer() {
   return (
-    <footer className="">
-      <section className="flex flex-col md:flex-row items-center md:items-start container px-5 md:px-0">
+    <footer>
+      <section className="flex flex-col md:flex-row items-center md:items-start container px-5 xl:px-0 md:gap-10 lg:gap-24 xl:gap-32">
         {/* logo */}
         <div className="w-56 mb-10">
           <img src="/icons/logo.svg" alt="logo" className="w-full h-full" />
@@ -24,7 +24,9 @@ function Footer() {
 
         {/* links two */}
         <div className="mb-5 md:mb-0">
-          <p className="text-darkCyan mb-4 text-center">Learn More</p>
+          <p className="text-darkCyan mb-4 text-center md:text-start">
+            Learn More
+          </p>
           <div className="flex flex-col gap-1">
             {linksTwo.map((item) => (
               <LinkEl name={item} key={item} />
