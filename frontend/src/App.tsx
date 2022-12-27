@@ -1,4 +1,4 @@
-import { Footer, Header, Layout } from "./components"
+import { Layout } from "./components"
 import {
   GettingStarted,
   HeroSection,
