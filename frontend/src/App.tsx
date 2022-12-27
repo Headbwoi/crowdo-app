@@ -1,5 +1,9 @@
 import { Header } from "./components"
-import { GettingStarted, HeroSection } from "./components/HomePage"
+import {
+  GettingStarted,
+  HeroSection,
+  SecurityTrust,
+} from "./components/HomePage"
 
 function App() {
   return (
@@ -11,6 +15,7 @@ function App() {
       </div>
 
       <GettingStarted />
+      <SecurityTrust />
     </>
   )
 }
