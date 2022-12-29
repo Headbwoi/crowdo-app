@@ -21,7 +21,7 @@ module.exports = {
       background: "hsl(261, 100%, 5%)",
       background2: "hsl(259, 100%, 9%)",
       green_Text: "hsl(126,96%,50%)",
-      dark_green: "hsl(126, 96%, 50%)",
+      dark_green: "hsl(126, 96%, 20%)",
       light_Text: "hsl(0,0%,85%)",
     },
     fontFamily: {

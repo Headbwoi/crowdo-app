@@ -1,0 +1,12 @@
+.getstarted {
+  @apply my-40 bg-background2 w-full px-5 md:px-6 lg:px-7 max-w-[35.5625rem] min-h-[28.125rem] py-10 mx-auto rounded-lg lg:rounded-xl;
+}
+.form-input {
+  @apply p-3.5 rounded-md bg-background outline-none focus:ring-1 focus:ring-dark_Gray text-base placeholder:text-sm text-white;
+}
+.heading {
+  @apply text-center text-2xl md:text-3xl lg:text-4xl text-light_Text font-bold mb-14;
+}
+.btn {
+  @apply p-3.5 rounded-md  w-full mt-4 outline-none focus:ring-1 focus:ring-dark_Gray text-lg text-white font-semibold tracking-wide disabled:bg-dark_green/50 hover:bg-green_Text/50 duration-300;
+}
