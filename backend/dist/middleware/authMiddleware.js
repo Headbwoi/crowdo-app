@@ -18,8 +18,8 @@ export const protectRoute = asyncHandler((req, res, next) => __awaiter(void 0, v
             //gets the token
             token = req.headers.authorization.split(" ")[1];
             //verify token
-            //@ts-ignore
             const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
+            //@ts-ignore
             req.user = yield User.findById(decodedToken.id).select("-password");
             next();
         }
