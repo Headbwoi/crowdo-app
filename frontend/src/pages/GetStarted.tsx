@@ -6,20 +6,21 @@ function GetStarted() {
   const handleChange = () => {
     userState === "signup" ? setUserState("") : setUserState("signup")
   }
+  const handleInfo = () => {
+    return userState === "signup" ? "Sign Up" : "Login"
+  }
 
   return (
     <Layout>
       <section className="getstarted">
-        <div className="heading">
-          {userState === "signup" ? "Sign Up" : "Login"}
-        </div>
+        <div className="heading">{handleInfo()}</div>
         <form className="flex flex-col gap-3">
           {userState === "signup" ? <Signup /> : <Login />}
           <button type="submit" className="btn bg-dark_green">
-            {userState === "signup" ? "Sign Up" : "Login"}
+            {handleInfo()}
           </button>
         </form>
-        <div className="mt-4 flex items-center gap-10 justify-center">
+        <div className="mt-4 flex items-center gap-6 justify-center font-normal">
           {userState === "signup" ? (
             <p className="capitalize text-white">already have an account?</p>
           ) : (
@@ -27,10 +28,10 @@ function GetStarted() {
           )}
 
           <button
-            className="text-green_Text hover:text-green_Text/50 duration-300"
+            className="text-green_Text hover:text-green_Text/50 duration-300 font-semibold"
             onClick={handleChange}
           >
-            {userState === "signup" ? "Sign Up Here" : "Login Here"}
+            {handleInfo()}
           </button>
         </div>
       </section>
