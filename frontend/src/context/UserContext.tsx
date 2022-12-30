@@ -1,0 +1,6 @@
+type userContextType = {
+
+}
+type userContextProvider = {
+
+}

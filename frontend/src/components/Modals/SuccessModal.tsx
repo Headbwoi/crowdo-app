@@ -2,7 +2,7 @@ import { motion } from "framer-motion"
 import { showVariant } from "../../variants/showVariant"
 import { popVariant } from "../../variants/popvariant"
 import { useContext } from "react"
-import { AppContext } from "../context/AppContext"
+import { AppContext } from "../../context/AppContext"
 
 export const SuccessModal = () => {
   const modalContext = useContext(AppContext)

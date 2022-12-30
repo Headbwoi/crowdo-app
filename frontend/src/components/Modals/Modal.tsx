@@ -2,7 +2,7 @@ import ModalPledgeCard from "./ModalPledgeCard"
 import { motion } from "framer-motion"
 import { showVariant } from "../../variants/showVariant"
 import { useContext } from "react"
-import { AppContext } from "../context/AppContext"
+import { AppContext } from "../../context/AppContext"
 
 const Modal = () => {
   const modalContext = useContext(AppContext)
