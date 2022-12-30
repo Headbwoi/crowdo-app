@@ -1,17 +1,20 @@
 import { ReactNode } from "react"
 import Header from "../Header/Header"
 import Footer from "../Footer/Footer"
+import { UserContextProvider } from "../../context"
 
 type Layout = {
   children: ReactNode
 }
 function Layout({ children }: Layout) {
   return (
-    <section className="bg-background min-h-screen">
-      <Header />
-      {children}
-      <Footer />
-    </section>
+    <UserContextProvider>
+      <section className="bg-background min-h-screen">
+        <Header />
+        {children}
+        <Footer />
+      </section>
+    </UserContextProvider>
   )
 }
 
