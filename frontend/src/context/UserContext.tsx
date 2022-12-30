@@ -8,5 +8,5 @@ type userContextProviderType = {
 export const UserContext = createContext<userContextType>({} as userContextType)
 
 export const UserContextProvider = ({ children }: userContextProviderType) => {
-  ;<UserContext.Provider value={{}}>{children}</UserContext.Provider>
+  return <UserContext.Provider value={{}}>{children}</UserContext.Provider>
 }
