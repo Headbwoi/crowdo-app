@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { FormEvent, useState } from "react"
 import { Layout, Login, Signup } from "../components"
 
 function GetStarted() {
@@ -10,15 +10,17 @@ function GetStarted() {
     return userState === "signup" ? "Sign Up" : "Login"
   }
 
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault()
+  }
+
   return (
     <Layout>
       <section className="getstarted">
         <div className="heading">{handleInfo()}</div>
-        <form className="flex flex-col gap-3">
+        <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
           {userState === "signup" ? <Signup /> : <Login />}
-          <button type="submit" className="btn bg-dark_green">
-            {handleInfo()}
-          </button>
+          <button className="btn bg-dark_green">{handleInfo()}</button>
         </form>
         <div className="mt-4 flex items-center gap-6 justify-center font-normal">
           {userState === "signup" ? (
@@ -31,7 +33,7 @@ function GetStarted() {
             className="text-green_Text hover:text-green_Text/50 duration-300 font-semibold"
             onClick={handleChange}
           >
-            {handleInfo()}
+            {userState === "signup" ? "Login" : "Sign Up"}
           </button>
         </div>
       </section>

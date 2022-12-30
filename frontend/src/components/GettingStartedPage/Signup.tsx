@@ -16,7 +16,7 @@ function Signup() {
           name="firstname"
           placeholder="Enter Your First Name"
           className="form-input"
-          value={formValues.firstname}
+          value={formValues?.firstname}
           onChange={handleChange}
         />
       </div>
@@ -30,7 +30,7 @@ function Signup() {
           name="lastname"
           placeholder="Enter Your Last Name"
           className="form-input"
-          value={formValues.lastname}
+          value={formValues?.lastname}
           onChange={handleChange}
         />
       </div>
@@ -44,7 +44,7 @@ function Signup() {
           name="email"
           placeholder="Enter Your Email"
           className="form-input"
-          value={formValues.email}
+          value={formValues?.email}
           onChange={handleChange}
         />
       </div>
@@ -58,7 +58,7 @@ function Signup() {
           name="password"
           placeholder="Enter Your Password"
           className="form-input"
-          value={formValues.password}
+          value={formValues?.password}
           onChange={handleChange}
         />
       </div>
@@ -72,7 +72,7 @@ function Signup() {
           name="cpassword"
           placeholder="Re-enter your Password"
           className="form-input"
-          value={formValues.cpassword}
+          value={formValues?.cpassword}
           onChange={handleChange}
         />
       </div>

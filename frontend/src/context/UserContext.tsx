@@ -42,14 +42,15 @@ export const UserContext = createContext<userContextType>({} as userContextType)
 
 export const UserContextProvider = ({ children }: userContextProviderType) => {
   const [formValues, setFormValues] = useState(initialValues)
+
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     let newValues = {
       ...formValues,
       [e.target.name]: e.target.value,
     }
     setFormValues(newValues)
-    // console.log(newValues)
   }
+
   return (
     <UserContext.Provider
       value={{ initialValues, formValues, setFormValues, handleChange }}
