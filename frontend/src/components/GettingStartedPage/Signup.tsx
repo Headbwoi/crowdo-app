@@ -55,7 +55,7 @@ function Signup() {
         </label>
         <input
           type="password"
-          name="Password"
+          name="password"
           placeholder="Enter Your Password"
           className="form-input"
           value={formValues.password}
@@ -69,7 +69,7 @@ function Signup() {
         </label>
         <input
           type="password"
-          name="cPassword"
+          name="cpassword"
           placeholder="Re-enter your Password"
           className="form-input"
           value={formValues.cpassword}

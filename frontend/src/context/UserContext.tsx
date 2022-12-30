@@ -48,7 +48,7 @@ export const UserContextProvider = ({ children }: userContextProviderType) => {
       [e.target.name]: e.target.value,
     }
     setFormValues(newValues)
-    console.log(newValues)
+    // console.log(newValues)
   }
   return (
     <UserContext.Provider

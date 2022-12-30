@@ -1,5 +1,9 @@
+import { useContext } from "react"
 import "./formstyle.css"
+import { UserContext } from "../../context"
 function Login() {
+  const { formValues, handleChange } = useContext(UserContext)
+
   return (
     <>
       <div className="flex flex-col gap-1.5">
@@ -11,6 +15,8 @@ function Login() {
           name="email"
           placeholder="Enter Your Email"
           className="form-input"
+          value={formValues.email}
+          onChange={handleChange}
         />
       </div>
       {/* password */}
@@ -23,6 +29,8 @@ function Login() {
           name="Password"
           placeholder="Enter Your Password"
           className="form-input"
+          value={formValues.password}
+          onChange={handleChange}
         />
       </div>
     </>
