@@ -1,5 +1,5 @@
 .getstarted {
-  @apply my-40 bg-background2 w-full px-5 md:px-6 lg:px-7 max-w-[35.5625rem] min-h-[28.125rem] py-10 mx-auto rounded-lg lg:rounded-xl;
+  @apply my-36 bg-background2 w-full px-5 md:px-6 lg:px-7 max-w-[35.5625rem] min-h-[28.125rem] py-10 mx-auto rounded-lg lg:rounded-xl;
 }
 .form-input {
   @apply p-3.5 rounded-md bg-background outline-none focus:ring-1 focus:ring-dark_Gray text-base placeholder:text-sm text-white;
