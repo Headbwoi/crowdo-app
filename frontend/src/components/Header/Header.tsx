@@ -24,7 +24,7 @@ function Header() {
         </div>
         <div className="hidden lg:flex items-center space-x-10 text-white">
           {navItems.map((item) => (
-            <Links name={item} color="white" font="normal" />
+            <Links name={item} color="white" font="normal" key={item} />
           ))}
         </div>
       </nav>
