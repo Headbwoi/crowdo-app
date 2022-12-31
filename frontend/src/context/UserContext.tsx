@@ -87,11 +87,13 @@ export const UserContextProvider = ({ children }: userContextProviderType) => {
   }
 
   const handleLoginValues = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target
     const newValues = {
-      ...signUpValues,
-      [e.target.name]: e.target.value,
+      ...loginValues,
+      [name]: value,
     }
     setLoginValues(newValues)
+    console.log(loginValues)
   }
 
   return (

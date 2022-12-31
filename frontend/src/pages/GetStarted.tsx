@@ -4,7 +4,7 @@ import { UserContext } from "../context"
 
 function GetStarted() {
   const { signUpValues, loginValues, setErrors } = useContext(UserContext)
-  const [loginState, setLoginState] = useState(false)
+  const [loginState, setLoginState] = useState(true)
 
   const handleChange = () => {
     loginState ? setLoginState(false) : setLoginState(true)
@@ -26,7 +26,7 @@ function GetStarted() {
       <section className="getstarted">
         <div className="heading">{loginState ? "Login" : "Sign Up"}</div>
         {loginState ? (
-          <Login loginState={loginState} handleLogin={handleLogin} />
+          <Login loginState={loginState} />
         ) : (
           <Signup loginState={loginState} handleSignup={handleSignup} />
         )}

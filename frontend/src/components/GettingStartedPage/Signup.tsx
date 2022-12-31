@@ -21,12 +21,12 @@ function Signup({ loginState, handleSignup }: SIGNUP) {
           name="firstname"
           placeholder="Enter Your First Name"
           className={`form-input ${
-            errors.firstname ? "border-error" : "border-lightGrayishViolet"
+            errors?.firstname ? "border-error" : "border-lightGrayishViolet"
           }`}
-          value={signUpValues.firstname}
+          value={signUpValues?.firstname}
           onChange={handleSignUpValues}
         />
-        {errors.firstname && <p className="error-val">{errors.firstname}</p>}
+        {/* {errors.firstname && <p className="error-val">{errors.firstname}</p>} */}
       </div>
       {/* last name */}
       <div className="flex flex-col gap-1.5">
@@ -38,7 +38,7 @@ function Signup({ loginState, handleSignup }: SIGNUP) {
           name="lastname"
           placeholder="Enter Your Last Name"
           className="form-input"
-          value={signUpValues.lastname}
+          value={signUpValues?.lastname}
           onChange={handleSignUpValues}
         />
       </div>
@@ -52,7 +52,7 @@ function Signup({ loginState, handleSignup }: SIGNUP) {
           name="email"
           placeholder="Enter Your Email"
           className="form-input"
-          value={signUpValues.email}
+          value={signUpValues?.email}
           onChange={handleSignUpValues}
         />
       </div>
@@ -66,7 +66,7 @@ function Signup({ loginState, handleSignup }: SIGNUP) {
           name="password"
           placeholder="Enter Your Password"
           className="form-input"
-          value={signUpValues.password}
+          value={signUpValues?.password}
           onChange={handleSignUpValues}
         />
       </div>
@@ -80,7 +80,7 @@ function Signup({ loginState, handleSignup }: SIGNUP) {
           name="cpassword"
           placeholder="Re-enter your Password"
           className="form-input"
-          value={signUpValues.cpassword}
+          value={signUpValues?.cpassword}
           onChange={handleSignUpValues}
         />
       </div>
