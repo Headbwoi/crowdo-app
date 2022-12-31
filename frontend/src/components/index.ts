@@ -5,4 +5,7 @@ export { default as Footer } from "./Footer/Footer"
 export { default as Layout } from "./Layout/Layout"
 export { default as Login } from "./GettingStartedPage/Login"
 export { default as Signup } from "./GettingStartedPage/Signup"
-export { default as useValidate } from "./GettingStartedPage/FormValidation"
+export {
+  validateSignUp,
+  validateLogin,
+} from "./GettingStartedPage/FormValidation"

@@ -12,25 +12,23 @@ function Signup({ loginState, handleSignup }: SIGNUP) {
   return (
     <form className="flex flex-col gap-3" onSubmit={handleSignup}>
       {/* first name */}
-      <div className="flex flex-col gap-1.5">
-        <label htmlFor="firstname" className="text-light_Gray">
+      <div className="flex flex-col">
+        <label htmlFor="firstname" className="text-light_Gray mb-1">
           First Name
         </label>
         <input
           type="text"
           name="firstname"
           placeholder="Enter Your First Name"
-          className={`form-input ${
-            errors.firstname ? "border-error" : "border-lightGrayishViolet"
-          }`}
+          className="form-input"
           value={signUpValues?.firstname}
           onChange={handleSignUpValues}
         />
-        {<p className="text-error">{errors.firstname}</p>}
+        {<p className="text-error text-sm italic">{errors.firstname}</p>}
       </div>
       {/* last name */}
-      <div className="flex flex-col gap-1.5">
-        <label htmlFor="lastname" className="text-light_Gray">
+      <div className="flex flex-col">
+        <label htmlFor="lastname" className="text-light_Gray mb-1">
           Last Name
         </label>
         <input
@@ -41,11 +39,11 @@ function Signup({ loginState, handleSignup }: SIGNUP) {
           value={signUpValues?.lastname}
           onChange={handleSignUpValues}
         />
-        {<p className="text-error">{errors.lastname}</p>}
+        {<p className="text-error text-sm italic">{errors.lastname}</p>}
       </div>
       {/* email */}
-      <div className="flex flex-col gap-1.5">
-        <label htmlFor="email" className="text-light_Gray">
+      <div className="flex flex-col">
+        <label htmlFor="email" className="text-light_Gray mb-1">
           Email
         </label>
         <input
@@ -56,11 +54,11 @@ function Signup({ loginState, handleSignup }: SIGNUP) {
           value={signUpValues?.email}
           onChange={handleSignUpValues}
         />
-        {<p className="text-error">{errors.email}</p>}
+        {<p className="text-error text-sm italic">{errors.email}</p>}
       </div>
       {/* password */}
-      <div className="flex flex-col gap-1.5">
-        <label htmlFor="Password" className="text-light_Gray">
+      <div className="flex flex-col">
+        <label htmlFor="Password" className="text-light_Gray mb-1">
           Password
         </label>
         <input
@@ -71,11 +69,11 @@ function Signup({ loginState, handleSignup }: SIGNUP) {
           value={signUpValues?.password}
           onChange={handleSignUpValues}
         />
-        {<p className="text-error">{errors.password}</p>}
+        {<p className="text-error text-sm italic">{errors.password}</p>}
       </div>
       {/* confirm password */}
-      <div className="flex flex-col gap-1.5">
-        <label htmlFor="cPassword" className="text-light_Gray">
+      <div className="flex flex-col">
+        <label htmlFor="cPassword" className="text-light_Gray mb-1">
           Confirm Password
         </label>
         <input
@@ -86,11 +84,11 @@ function Signup({ loginState, handleSignup }: SIGNUP) {
           value={signUpValues?.cpassword}
           onChange={handleSignUpValues}
         />
-        {<p className="text-error">{errors.cpassword}</p>}
+        {<p className="text-error text-sm italic">{errors.cpassword}</p>}
       </div>
 
       <button className="btn bg-dark_green">
-        {loginState ? "Sign Up" : "Login"}
+        {loginState ? "Login" : "Sign Up"}
       </button>
     </form>
   )

@@ -1,5 +1,11 @@
 import { FormEvent, useContext, useState } from "react"
-import { Layout, Login, Signup, useValidate } from "../components"
+import {
+  Layout,
+  Login,
+  Signup,
+  validateLogin,
+  validateSignUp,
+} from "../components"
 import { UserContext } from "../context"
 
 function GetStarted() {
@@ -13,13 +19,15 @@ function GetStarted() {
 
   const handleSignup = (e: FormEvent) => {
     e.preventDefault()
-    setErrors(useValidate(signUpValues, setCheckNoErrors))
-    console.log(errors)
-    console.log(signUpValues)
+    setErrors(validateSignUp(signUpValues, setCheckNoErrors))
+    // console.log(errors)
+    // console.log(signUpValues)
   }
   const handleLogin = (e: FormEvent) => {
     e.preventDefault()
-    console.log(loginValues)
+    setErrors(validateLogin(loginValues, setCheckNoErrors))
+    // console.log(errors)
+    // console.log(loginValues)
   }
 
   return (

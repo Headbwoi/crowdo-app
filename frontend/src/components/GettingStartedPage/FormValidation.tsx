@@ -15,7 +15,7 @@ const errors = {
 export const emailRegex =
   /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
-function useValidate(
+export function validateSignUp(
   values: initialValues,
   setCheckNoErrors: React.Dispatch<React.SetStateAction<boolean>>
 ) {
@@ -56,7 +56,7 @@ function useValidate(
   if (!values.cpassword) {
     errors.cpassword = "Please Confirm Your Password"
   } else if (Number(values.password) !== Number(values.cpassword)) {
-    errors.password = "Passwords do not match"
+    errors.cpassword = "Passwords do not match"
   } else {
     errors.cpassword = ""
   }
@@ -76,8 +76,29 @@ function useValidate(
   return errors
 }
 
-// // const toggleError = () => {
-// //   setCheckNoErrors(false)
-// // }
+export function validateLogin(
+  values: { email: string; password: string },
+  setCheckNoErrors: React.Dispatch<React.SetStateAction<boolean>>
+) {
+  if (!values.email) {
+    errors.email = "Please Enter Your Email"
+  } else if (!values.email.match(emailRegex)) {
+    errors.email = "Please Enter A Valid Email"
+  } else {
+    errors.email = ""
+  }
 
-export default useValidate
+  if (!values.password) {
+    errors.password = "Please Enter Your Password"
+  } else if (Number(values.password.length) < 8) {
+    errors.password = "Password is too short"
+  } else {
+    errors.password = ""
+  }
+  if (errors.email == "" && errors.password == "") {
+    setCheckNoErrors(true)
+  } else {
+    setCheckNoErrors(false)
+  }
+  return errors
+}
