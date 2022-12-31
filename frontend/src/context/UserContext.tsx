@@ -93,7 +93,6 @@ export const UserContextProvider = ({ children }: userContextProviderType) => {
       [name]: value,
     }
     setLoginValues(newValues)
-    console.log(loginValues)
   }
 
   return (

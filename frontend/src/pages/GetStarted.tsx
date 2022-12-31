@@ -26,7 +26,7 @@ function GetStarted() {
       <section className="getstarted">
         <div className="heading">{loginState ? "Login" : "Sign Up"}</div>
         {loginState ? (
-          <Login loginState={loginState} />
+          <Login loginState={loginState} handleLogin={handleLogin} />
         ) : (
           <Signup loginState={loginState} handleSignup={handleSignup} />
         )}
