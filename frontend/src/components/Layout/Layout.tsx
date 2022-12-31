@@ -8,11 +8,11 @@ type Layout = {
 function Layout({ children }: Layout) {
   return (
     <>
-      <section className="bg-background min-h-screen">
+      <main className="bg-background min-h-screen">
         <Header />
         {children}
         <Footer />
-      </section>
+      </main>
     </>
   )
 }
