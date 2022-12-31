@@ -23,6 +23,8 @@ module.exports = {
       green_Text: "hsl(126,96%,50%)",
       dark_green: "hsl(126, 96%, 20%)",
       light_Text: "hsl(0,0%,85%)",
+      error: "hsl(0,61%,54%)",
+      success: "hsl(126, 96%, 30%)",
     },
     fontFamily: {
       commissioner: [`'Commissioner', sans-serif`],

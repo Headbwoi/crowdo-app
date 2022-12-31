@@ -21,7 +21,7 @@ function Login({ loginState, handleLogin }: LOGIN) {
           name="email"
           placeholder="Enter Your Email"
           className="form-input"
-          value={loginValues?.email}
+          value={loginValues.email}
           onChange={handleLoginValues}
         />
       </div>
@@ -35,7 +35,7 @@ function Login({ loginState, handleLogin }: LOGIN) {
           name="password"
           placeholder="Enter Your Password"
           className="form-input"
-          value={loginValues?.password}
+          value={loginValues.password}
           onChange={handleLoginValues}
         />
       </div>

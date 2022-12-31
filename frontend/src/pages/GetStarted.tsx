@@ -1,10 +1,11 @@
 import { FormEvent, useContext, useState } from "react"
-import { Layout, Login, Signup, validate } from "../components"
+import { Layout, Login, Signup, useValidate } from "../components"
 import { UserContext } from "../context"
 
 function GetStarted() {
-  const { signUpValues, loginValues, setErrors } = useContext(UserContext)
-  const [loginState, setLoginState] = useState(true)
+  const { signUpValues, loginValues, setErrors, errors, setCheckNoErrors } =
+    useContext(UserContext)
+  const [loginState, setLoginState] = useState(false)
 
   const handleChange = () => {
     loginState ? setLoginState(false) : setLoginState(true)
@@ -12,12 +13,12 @@ function GetStarted() {
 
   const handleSignup = (e: FormEvent) => {
     e.preventDefault()
-    // setErrors(validate(signUpValues))
+    setErrors(useValidate(signUpValues, setCheckNoErrors))
+    console.log(errors)
     console.log(signUpValues)
   }
   const handleLogin = (e: FormEvent) => {
     e.preventDefault()
-    // setErrors(validate(loginValues))
     console.log(loginValues)
   }
 

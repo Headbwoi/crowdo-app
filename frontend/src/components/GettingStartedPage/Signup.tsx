@@ -21,12 +21,12 @@ function Signup({ loginState, handleSignup }: SIGNUP) {
           name="firstname"
           placeholder="Enter Your First Name"
           className={`form-input ${
-            errors?.firstname ? "border-error" : "border-lightGrayishViolet"
+            errors.firstname ? "border-error" : "border-lightGrayishViolet"
           }`}
           value={signUpValues?.firstname}
           onChange={handleSignUpValues}
         />
-        {/* {errors.firstname && <p className="error-val">{errors.firstname}</p>} */}
+        {<p className="text-error">{errors.firstname}</p>}
       </div>
       {/* last name */}
       <div className="flex flex-col gap-1.5">
@@ -41,6 +41,7 @@ function Signup({ loginState, handleSignup }: SIGNUP) {
           value={signUpValues?.lastname}
           onChange={handleSignUpValues}
         />
+        {<p className="text-error">{errors.lastname}</p>}
       </div>
       {/* email */}
       <div className="flex flex-col gap-1.5">
@@ -55,6 +56,7 @@ function Signup({ loginState, handleSignup }: SIGNUP) {
           value={signUpValues?.email}
           onChange={handleSignUpValues}
         />
+        {<p className="text-error">{errors.email}</p>}
       </div>
       {/* password */}
       <div className="flex flex-col gap-1.5">
@@ -69,6 +71,7 @@ function Signup({ loginState, handleSignup }: SIGNUP) {
           value={signUpValues?.password}
           onChange={handleSignUpValues}
         />
+        {<p className="text-error">{errors.password}</p>}
       </div>
       {/* confirm password */}
       <div className="flex flex-col gap-1.5">
@@ -83,6 +86,7 @@ function Signup({ loginState, handleSignup }: SIGNUP) {
           value={signUpValues?.cpassword}
           onChange={handleSignUpValues}
         />
+        {<p className="text-error">{errors.cpassword}</p>}
       </div>
 
       <button className="btn bg-dark_green">
