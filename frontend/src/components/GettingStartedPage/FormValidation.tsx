@@ -1,13 +1,13 @@
 type initialValues = {
-  firstname?: string
-  lastname?: string
+  firstName?: string
+  lastName?: string
   email: string
   password: string
   cpassword?: string
 }
 const errors = {
-  firstname: "",
-  lastname: "",
+  firstName: "",
+  lastName: "",
   email: "",
   password: "",
   cpassword: "",
@@ -21,20 +21,20 @@ export function validateSignUp(
 ) {
   const nameRegex = /[0-9]/g
 
-  if (!values.firstname || values.firstname == "") {
-    errors.firstname = "Please Enter Your First Name"
-  } else if (values.firstname.match(nameRegex)) {
-    errors.firstname = "Please Enter Your First Name, No numbers allowed"
+  if (!values.firstName || values.firstName == "") {
+    errors.firstName = "Please Enter Your First Name"
+  } else if (values.firstName.match(nameRegex)) {
+    errors.firstName = "Please Enter Your First Name, No numbers allowed"
   } else {
-    errors.firstname = ""
+    errors.firstName = ""
   }
 
-  if (!values.lastname) {
-    errors.lastname = "Please Enter Your Last Name"
-  } else if (values.lastname.match(nameRegex)) {
-    errors.lastname = "Please Enter Your Last Name, No numbers allowed"
+  if (!values.lastName) {
+    errors.lastName = "Please Enter Your Last Name"
+  } else if (values.lastName.match(nameRegex)) {
+    errors.lastName = "Please Enter Your Last Name, No numbers allowed"
   } else {
-    errors.lastname = ""
+    errors.lastName = ""
   }
 
   if (!values.email) {
@@ -62,8 +62,8 @@ export function validateSignUp(
   }
 
   if (
-    errors.firstname == "" &&
-    errors.lastname == "" &&
+    errors.firstName == "" &&
+    errors.lastName == "" &&
     errors.email == "" &&
     errors.password == "" &&
     errors.cpassword == ""

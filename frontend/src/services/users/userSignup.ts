@@ -1,11 +1,10 @@
 import { makeRequest } from "../makeRequest"
 
 export function userSignUp(bodyData: {
-  firstname: string
-  lastname: string
+  firstName: string
+  lastName: string
   email: string
   password: string
-  cpassword: string
 }) {
-  return makeRequest("/user", { method: "POST", data: bodyData })
+  return makeRequest("/register", { method: "POST", data: bodyData })
 }

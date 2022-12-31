@@ -1,7 +1,7 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from "axios"
 
 const api = axios.create({
-  baseURL: import.meta.env.VITE_DATABASE_URL,
+  baseURL: import.meta.env.VITE_USER_API,
   withCredentials: true,
 })
 

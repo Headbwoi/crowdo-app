@@ -2,8 +2,8 @@ import { ChangeEvent, ReactNode, createContext, useState } from "react"
 
 type userContextType = {
   initialValues: {
-    firstname: string
-    lastname: string
+    firstName: string
+    lastName: string
     email: string
     password: string
     cpassword: string
@@ -11,16 +11,16 @@ type userContextType = {
   handleSignUpValues: (e: ChangeEvent<HTMLInputElement>) => void
   handleLoginValues: (e: ChangeEvent<HTMLInputElement>) => void
   errors: {
-    firstname: string
-    lastname: string
+    firstName: string
+    lastName: string
     email: string
     password: string
     cpassword: string
   }
   setErrors: React.Dispatch<
     React.SetStateAction<{
-      firstname: string
-      lastname: string
+      firstName: string
+      lastName: string
       email: string
       password: string
       cpassword: string
@@ -29,16 +29,16 @@ type userContextType = {
   checkNoErrors: boolean
   setCheckNoErrors: React.Dispatch<React.SetStateAction<boolean>>
   signUpValues: {
-    firstname: string
-    lastname: string
+    firstName: string
+    lastName: string
     email: string
     password: string
     cpassword: string
   }
   setSignUpValues: React.Dispatch<
     React.SetStateAction<{
-      firstname: string
-      lastname: string
+      firstName: string
+      lastName: string
       email: string
       password: string
       cpassword: string
@@ -61,8 +61,8 @@ type userContextProviderType = {
 }
 
 const initialValues = {
-  firstname: "",
-  lastname: "",
+  firstName: "",
+  lastName: "",
   email: "",
   password: "",
   cpassword: "",

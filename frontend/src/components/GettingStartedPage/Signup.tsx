@@ -13,33 +13,33 @@ function Signup({ loginState, handleSignup }: SIGNUP) {
     <form className="flex flex-col gap-3" onSubmit={handleSignup}>
       {/* first name */}
       <div className="flex flex-col">
-        <label htmlFor="firstname" className="text-light_Gray mb-1">
+        <label htmlFor="firstName" className="text-light_Gray mb-1">
           First Name
         </label>
         <input
           type="text"
-          name="firstname"
+          name="firstName"
           placeholder="Enter Your First Name"
           className="form-input"
-          value={signUpValues?.firstname}
+          value={signUpValues?.firstName}
           onChange={handleSignUpValues}
         />
-        {<p className="text-error text-sm italic">{errors.firstname}</p>}
+        {<p className="text-error text-sm italic">{errors.firstName}</p>}
       </div>
       {/* last name */}
       <div className="flex flex-col">
-        <label htmlFor="lastname" className="text-light_Gray mb-1">
+        <label htmlFor="lastName" className="text-light_Gray mb-1">
           Last Name
         </label>
         <input
           type="text"
-          name="lastname"
+          name="lastName"
           placeholder="Enter Your Last Name"
           className="form-input"
-          value={signUpValues?.lastname}
+          value={signUpValues?.lastName}
           onChange={handleSignUpValues}
         />
-        {<p className="text-error text-sm italic">{errors.lastname}</p>}
+        {<p className="text-error text-sm italic">{errors.lastName}</p>}
       </div>
       {/* email */}
       <div className="flex flex-col">

@@ -23,15 +23,13 @@ function GetStarted() {
     loginState ? setLoginState(false) : setLoginState(true)
   }
 
-  const handleSignup = async (e: FormEvent) => {
+  const handleSignup = (e: FormEvent) => {
     e.preventDefault()
     setErrors(validateSignUp(signUpValues, setCheckNoErrors))
 
     if (checkNoErrors) {
-      await userSignUp(signUpValues)
+      userSignUp(signUpValues).then((res) => console.log(res))
     } else return
-    // console.log(errors)
-    // console.log(signUpValues)
   }
   const handleLogin = (e: FormEvent) => {
     e.preventDefault()
