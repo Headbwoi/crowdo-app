@@ -11,7 +11,9 @@ import { userSignUp } from "../services"
 
 function GetStarted() {
   const {
+    initialValues,
     signUpValues,
+    setSignUpValues,
     loginValues,
     setErrors,
     checkNoErrors,
@@ -30,6 +32,7 @@ function GetStarted() {
     if (checkNoErrors) {
       userSignUp(signUpValues).then((res) => console.log(res))
     } else return
+    setSignUpValues(initialValues)
   }
   const handleLogin = (e: FormEvent) => {
     e.preventDefault()
