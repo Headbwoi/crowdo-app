@@ -7,14 +7,16 @@ import {
   validateSignUp,
 } from "../components"
 import { UserContext } from "../context"
-import { userSignUp } from "../services"
+import { userLogin, userSignUp } from "../services"
 
 function GetStarted() {
   const {
     initialValues,
+    loginVal,
     signUpValues,
     setSignUpValues,
     loginValues,
+    setLoginValues,
     setErrors,
     checkNoErrors,
     setCheckNoErrors,
@@ -37,8 +39,13 @@ function GetStarted() {
   const handleLogin = (e: FormEvent) => {
     e.preventDefault()
     setErrors(validateLogin(loginValues, setCheckNoErrors))
-    // console.log(errors)
-    // console.log(loginValues)
+
+    if (checkNoErrors) {
+      userLogin(loginValues)
+        .then((res) => console.log(res))
+        .catch((error) => console.log(error?.response?.data.message))
+    } else return
+    // setLoginValues(loginVal)
   }
 
   return (

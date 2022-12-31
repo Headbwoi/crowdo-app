@@ -8,6 +8,10 @@ type userContextType = {
     password: string
     cpassword: string
   }
+  loginVal: {
+    email: string
+    password: string
+  }
   handleSignUpValues: (e: ChangeEvent<HTMLInputElement>) => void
   handleLoginValues: (e: ChangeEvent<HTMLInputElement>) => void
   errors: {
@@ -99,6 +103,7 @@ export const UserContextProvider = ({ children }: userContextProviderType) => {
     <UserContext.Provider
       value={{
         initialValues,
+        loginVal,
         signUpValues,
         setSignUpValues,
         loginValues,
