@@ -1,11 +1,17 @@
-import { useContext } from "react"
+import { FormEvent, useContext } from "react"
 import "./formstyle.css"
 import { UserContext } from "../../context"
-function Login() {
-  const { formValues, handleChange } = useContext(UserContext)
+
+type LOGIN = {
+  loginState: boolean
+  handleLogin: (e: FormEvent) => void
+}
+
+function Login({ loginState, handleLogin }: LOGIN) {
+  const { loginValues, handleLoginValues } = useContext(UserContext)
 
   return (
-    <>
+    <form className="flex flex-col gap-3" onSubmit={handleLogin}>
       <div className="flex flex-col gap-1.5">
         <label htmlFor="email" className="text-light_Gray">
           Email
@@ -15,8 +21,8 @@ function Login() {
           name="email"
           placeholder="Enter Your Email"
           className="form-input"
-          value={formValues.email}
-          onChange={handleChange}
+          value={loginValues.email}
+          onChange={handleLoginValues}
         />
       </div>
       {/* password */}
@@ -26,14 +32,17 @@ function Login() {
         </label>
         <input
           type="password"
-          name="Password"
+          name="password"
           placeholder="Enter Your Password"
           className="form-input"
-          value={formValues.password}
-          onChange={handleChange}
+          value={loginValues.password}
+          onChange={handleLoginValues}
         />
       </div>
-    </>
+      <button className="btn bg-dark_green">
+        {loginState ? "Sign Up" : "Login"}
+      </button>
+    </form>
   )
 }
 

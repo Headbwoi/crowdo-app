@@ -8,14 +8,16 @@ type userContextType = {
     password: string
     cpassword: string
   }
-  formValues: {
+  handleSignUpValues: (e: ChangeEvent<HTMLInputElement>) => void
+  handleLoginValues: (e: ChangeEvent<HTMLInputElement>) => void
+  errors: {
     firstname: string
     lastname: string
     email: string
     password: string
     cpassword: string
   }
-  setFormValues: React.Dispatch<
+  setErrors: React.Dispatch<
     React.SetStateAction<{
       firstname: string
       lastname: string
@@ -24,8 +26,36 @@ type userContextType = {
       cpassword: string
     }>
   >
-  handleChange: (e: ChangeEvent<HTMLInputElement>) => void
+  checkNoErrors: boolean
+  setCheckNoErrors: React.Dispatch<React.SetStateAction<boolean>>
+  signUpValues: {
+    firstname: string
+    lastname: string
+    email: string
+    password: string
+    cpassword: string
+  }
+  setSignUpValues: React.Dispatch<
+    React.SetStateAction<{
+      firstname: string
+      lastname: string
+      email: string
+      password: string
+      cpassword: string
+    }>
+  >
+  loginValues: {
+    email: string
+    password: string
+  }
+  setLoginValues: React.Dispatch<
+    React.SetStateAction<{
+      email: string
+      password: string
+    }>
+  >
 }
+
 type userContextProviderType = {
   children: ReactNode
 }
@@ -37,23 +67,48 @@ const initialValues = {
   password: "",
   cpassword: "",
 }
+const signUpVal = initialValues
+const loginVal = { email: "", password: "" }
 
 export const UserContext = createContext<userContextType>({} as userContextType)
 
 export const UserContextProvider = ({ children }: userContextProviderType) => {
-  const [formValues, setFormValues] = useState(initialValues)
+  const [signUpValues, setSignUpValues] = useState(signUpVal)
+  const [loginValues, setLoginValues] = useState(loginVal)
+  const [errors, setErrors] = useState(initialValues)
+  const [checkNoErrors, setCheckNoErrors] = useState(false)
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    let newValues = {
-      ...formValues,
+  const handleSignUpValues = (e: ChangeEvent<HTMLInputElement>) => {
+    const newValues = {
+      ...signUpValues,
       [e.target.name]: e.target.value,
     }
-    setFormValues(newValues)
+    setSignUpValues(newValues)
+  }
+
+  const handleLoginValues = (e: ChangeEvent<HTMLInputElement>) => {
+    const newValues = {
+      ...signUpValues,
+      [e.target.name]: e.target.value,
+    }
+    setLoginValues(newValues)
   }
 
   return (
     <UserContext.Provider
-      value={{ initialValues, formValues, setFormValues, handleChange }}
+      value={{
+        initialValues,
+        signUpValues,
+        setSignUpValues,
+        loginValues,
+        setLoginValues,
+        handleSignUpValues,
+        handleLoginValues,
+        errors,
+        setErrors,
+        checkNoErrors,
+        setCheckNoErrors,
+      }}
     >
       {children}
     </UserContext.Provider>

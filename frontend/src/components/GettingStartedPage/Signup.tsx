@@ -1,11 +1,16 @@
-import { useContext } from "react"
+import { FormEvent, useContext } from "react"
 import "./formstyle.css"
 import { UserContext } from "../../context"
 
-function Signup() {
-  const { formValues, handleChange } = useContext(UserContext)
+type SIGNUP = {
+  loginState: boolean
+  handleSignup: (e: FormEvent) => void
+}
+
+function Signup({ loginState, handleSignup }: SIGNUP) {
+  const { signUpValues, handleSignUpValues, errors } = useContext(UserContext)
   return (
-    <>
+    <form className="flex flex-col gap-3" onSubmit={handleSignup}>
       {/* first name */}
       <div className="flex flex-col gap-1.5">
         <label htmlFor="firstname" className="text-light_Gray">
@@ -15,10 +20,13 @@ function Signup() {
           type="text"
           name="firstname"
           placeholder="Enter Your First Name"
-          className="form-input"
-          value={formValues?.firstname}
-          onChange={handleChange}
+          className={`form-input ${
+            errors.firstname ? "border-error" : "border-lightGrayishViolet"
+          }`}
+          value={signUpValues.firstname}
+          onChange={handleSignUpValues}
         />
+        {errors.firstname && <p className="error-val">{errors.firstname}</p>}
       </div>
       {/* last name */}
       <div className="flex flex-col gap-1.5">
@@ -30,8 +38,8 @@ function Signup() {
           name="lastname"
           placeholder="Enter Your Last Name"
           className="form-input"
-          value={formValues?.lastname}
-          onChange={handleChange}
+          value={signUpValues.lastname}
+          onChange={handleSignUpValues}
         />
       </div>
       {/* email */}
@@ -44,8 +52,8 @@ function Signup() {
           name="email"
           placeholder="Enter Your Email"
           className="form-input"
-          value={formValues?.email}
-          onChange={handleChange}
+          value={signUpValues.email}
+          onChange={handleSignUpValues}
         />
       </div>
       {/* password */}
@@ -58,8 +66,8 @@ function Signup() {
           name="password"
           placeholder="Enter Your Password"
           className="form-input"
-          value={formValues?.password}
-          onChange={handleChange}
+          value={signUpValues.password}
+          onChange={handleSignUpValues}
         />
       </div>
       {/* confirm password */}
@@ -72,11 +80,15 @@ function Signup() {
           name="cpassword"
           placeholder="Re-enter your Password"
           className="form-input"
-          value={formValues?.cpassword}
-          onChange={handleChange}
+          value={signUpValues.cpassword}
+          onChange={handleSignUpValues}
         />
       </div>
-    </>
+
+      <button className="btn bg-dark_green">
+        {loginState ? "Sign Up" : "Login"}
+      </button>
+    </form>
   )
 }
 
