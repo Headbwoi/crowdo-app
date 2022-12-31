@@ -11,7 +11,7 @@ function StartNow() {
         </div>
         <div className="flex items-center gap-5 px-10">
           <Button name="Get Started" />
-          <Button name="How It Works" />
+          <Button name="How It Works" link="about" />
         </div>
       </div>
     </section>

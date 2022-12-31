@@ -24,6 +24,7 @@ function GetStarted() {
   const [loginState, setLoginState] = useState(false)
 
   const handleChange = () => {
+    scrollTo(0, 0)
     loginState ? setLoginState(false) : setLoginState(true)
   }
 

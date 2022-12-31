@@ -18,7 +18,7 @@ function HeroSection() {
 
       <div className="flex items-center gap-6 mb-10">
         <Button name="Get Started" />
-        <Button name="Explore" />
+        <Button name="Explore" link="about" />
       </div>
     </section>
   )
