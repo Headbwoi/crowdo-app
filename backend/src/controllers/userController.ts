@@ -78,6 +78,11 @@ export const loginUser = asyncHandler(async (req: Request, res: Response) => {
 
   const user = await User.findOne({ email })
 
+  if (!user) {
+    res.status(404)
+    throw new Error("user not found")
+  }
+
   if (user && (await bcrypt.compare(password, user.password))) {
     res.status(200).json({
       _id: user.id,

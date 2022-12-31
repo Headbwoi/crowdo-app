@@ -67,6 +67,10 @@ export const registerUser = asyncHandler((req, res) => __awaiter(void 0, void 0,
 export const loginUser = asyncHandler((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { email, password } = req.body;
     const user = yield User.findOne({ email });
+    if (!user) {
+        res.status(404);
+        throw new Error("user not found");
+    }
     if (user && (yield bcrypt.compare(password, user.password))) {
         res.status(200).json({
             _id: user.id,
