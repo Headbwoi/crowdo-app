@@ -27,7 +27,10 @@ const MobileMenu = () => {
     >
       <div className="flex flex-col items-start justify-between h-full w-full">
         {navItems.map((item) => (
-          <li className="list-none h-[70px] flex items-center px-6 border-b border-dark_Gray w-full hover:bg-dark_Gray/10">
+          <li
+            className="list-none h-[70px] flex items-center px-6 border-b border-dark_Gray w-full hover:bg-dark_Gray/10"
+            key={item}
+          >
             <Links name={item} color="black" font="medium" />
           </li>
         ))}
