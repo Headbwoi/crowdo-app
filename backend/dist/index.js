@@ -18,13 +18,14 @@ const whitelist = [
 const corsOptions = {
     origin: function (origin, callback) {
         //@ts-ignore
-        if (whitelist.indexOf(origin) !== -1 || !origin) {
+        if (whitelist.indexOf(origin) !== -1) {
             callback(null, true);
         }
         else {
             callback(new Error("Not allowed by CORS"));
         }
     },
+    credentials: true,
 };
 app.use(cors(corsOptions));
 app.use(express.json());

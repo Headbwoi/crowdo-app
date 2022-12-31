@@ -7,19 +7,29 @@ import {
   validateSignUp,
 } from "../components"
 import { UserContext } from "../context"
+import { userSignUp } from "../services"
 
 function GetStarted() {
-  const { signUpValues, loginValues, setErrors, errors, setCheckNoErrors } =
-    useContext(UserContext)
+  const {
+    signUpValues,
+    loginValues,
+    setErrors,
+    checkNoErrors,
+    setCheckNoErrors,
+  } = useContext(UserContext)
   const [loginState, setLoginState] = useState(false)
 
   const handleChange = () => {
     loginState ? setLoginState(false) : setLoginState(true)
   }
 
-  const handleSignup = (e: FormEvent) => {
+  const handleSignup = async (e: FormEvent) => {
     e.preventDefault()
     setErrors(validateSignUp(signUpValues, setCheckNoErrors))
+
+    if (checkNoErrors) {
+      await userSignUp(signUpValues)
+    } else return
     // console.log(errors)
     // console.log(signUpValues)
   }
