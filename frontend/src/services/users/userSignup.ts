@@ -1,4 +1,4 @@
-import { makeRequest } from "../makeRequest"
+import { userRequest } from "../makeRequest"
 
 export function userSignUp(bodyData: {
   firstName: string
@@ -6,5 +6,5 @@ export function userSignUp(bodyData: {
   email: string
   password: string
 }) {
-  return makeRequest("/register", { method: "POST", data: bodyData })
+  return userRequest("/register", { method: "POST", data: bodyData })
 }
