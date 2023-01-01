@@ -1,6 +1,5 @@
 import { ReactNode } from "react"
-import Header from "../components/Header/Header"
-import Footer from "../components/Footer/Footer"
+import { Footer, Header } from "../components"
 
 type Layout = {
   children: ReactNode

@@ -1,5 +1,10 @@
 import { FormEvent, useContext, useState } from "react"
-import { Login, Signup, validateLogin, validateSignUp } from "../components"
+import {
+  Login,
+  Signup,
+  validateLogin,
+  validateSignUp,
+} from "../components/GettingStartedPage"
 import { UserContext } from "../context"
 import { userLogin, userSignUp } from "../services"
 import Layout from "../Layout/Layout"
@@ -28,7 +33,9 @@ function GetStarted() {
     setErrors(validateSignUp(signUpValues, setCheckNoErrors))
 
     if (checkNoErrors) {
-      userSignUp(signUpValues).then((res) => console.log(res))
+      userSignUp(signUpValues)
+        .then((res) => console.log(res))
+        .catch((error) => console.log(error?.response?.data.message))
     } else return
     setSignUpValues(initialValues)
   }
@@ -41,7 +48,7 @@ function GetStarted() {
         .then((res) => console.log(res))
         .catch((error) => console.log(error?.response?.data.message))
     } else return
-    // setLoginValues(loginVal)
+    setLoginValues(loginVal)
   }
 
   return (
