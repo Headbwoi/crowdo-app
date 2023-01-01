@@ -1,4 +1,5 @@
-import { Layout, MainSection } from "../components"
+import Layout from "../Layout/Layout"
+import { MainSection } from "../components"
 
 function DashBoard() {
   return (

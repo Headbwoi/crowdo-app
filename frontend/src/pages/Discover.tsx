@@ -1,4 +1,4 @@
-import { Layout } from "../components"
+import Layout from "../Layout/Layout"
 
 function Discover() {
   return (

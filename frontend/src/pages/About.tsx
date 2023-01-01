@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import { Layout } from "../components"
+import Layout from "../Layout/Layout"
 
 function About() {
   useEffect(() => {

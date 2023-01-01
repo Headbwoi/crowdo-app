@@ -1,13 +1,8 @@
 import { FormEvent, useContext, useState } from "react"
-import {
-  Layout,
-  Login,
-  Signup,
-  validateLogin,
-  validateSignUp,
-} from "../components"
+import { Login, Signup, validateLogin, validateSignUp } from "../components"
 import { UserContext } from "../context"
 import { userLogin, userSignUp } from "../services"
+import Layout from "../Layout/Layout"
 
 function GetStarted() {
   const {
