@@ -29,7 +29,7 @@ export function validateSignUp(
     errors.firstName = ""
   }
 
-  if (!values.lastName) {
+  if (!values.lastName || values.lastName == "") {
     errors.lastName = "Please Enter Your Last Name"
   } else if (values.lastName.match(nameRegex)) {
     errors.lastName = "Please Enter Your Last Name, No numbers allowed"
@@ -37,7 +37,7 @@ export function validateSignUp(
     errors.lastName = ""
   }
 
-  if (!values.email) {
+  if (!values.email || values.email == "") {
     errors.email = "Please Enter Your Email"
   } else if (!values.email.match(emailRegex)) {
     errors.email = "Please Enter A Valid Email"
@@ -45,7 +45,7 @@ export function validateSignUp(
     errors.email = ""
   }
 
-  if (!values.password) {
+  if (!values.password || values.password == "") {
     errors.password = "Please Enter Your Password"
   } else if (Number(values.password.length) < 8) {
     errors.password = "Password is too short"
@@ -53,9 +53,9 @@ export function validateSignUp(
     errors.password = ""
   }
 
-  if (!values.cpassword) {
+  if (!values.cpassword || values.cpassword == "") {
     errors.cpassword = "Please Confirm Your Password"
-  } else if (Number(values.password) !== Number(values.cpassword)) {
+  } else if (values.password !== values.cpassword) {
     errors.cpassword = "Passwords do not match"
   } else {
     errors.cpassword = ""
@@ -80,7 +80,7 @@ export function validateLogin(
   values: { email: string; password: string },
   setCheckNoErrors: React.Dispatch<React.SetStateAction<boolean>>
 ) {
-  if (!values.email) {
+  if (!values.email || values.email == "") {
     errors.email = "Please Enter Your Email"
   } else if (!values.email.match(emailRegex)) {
     errors.email = "Please Enter A Valid Email"
@@ -88,7 +88,7 @@ export function validateLogin(
     errors.email = ""
   }
 
-  if (!values.password) {
+  if (!values.password || values.password == "") {
     errors.password = "Please Enter Your Password"
   } else if (Number(values.password.length) < 8) {
     errors.password = "Password is too short"

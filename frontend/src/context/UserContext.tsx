@@ -1,4 +1,11 @@
-import { ChangeEvent, ReactNode, createContext, useState } from "react"
+import {
+  ChangeEvent,
+  ReactNode,
+  createContext,
+  useEffect,
+  useState,
+} from "react"
+import { validateLogin, validateSignUp } from "../components/GettingStartedPage"
 
 type userContextType = {
   initialValues: {
@@ -14,20 +21,30 @@ type userContextType = {
   }
   handleSignUpValues: (e: ChangeEvent<HTMLInputElement>) => void
   handleLoginValues: (e: ChangeEvent<HTMLInputElement>) => void
-  errors: {
+  signUpErrors: {
     firstName: string
     lastName: string
     email: string
     password: string
     cpassword: string
   }
-  setErrors: React.Dispatch<
+  setSignUpErrors: React.Dispatch<
     React.SetStateAction<{
       firstName: string
       lastName: string
       email: string
       password: string
       cpassword: string
+    }>
+  >
+  loginErrors: {
+    email: string
+    password: string
+  }
+  setLoginErrors: React.Dispatch<
+    React.SetStateAction<{
+      email: string
+      password: string
     }>
   >
   checkNoErrors: boolean
@@ -79,7 +96,8 @@ export const UserContext = createContext<userContextType>({} as userContextType)
 export const UserContextProvider = ({ children }: userContextProviderType) => {
   const [signUpValues, setSignUpValues] = useState(signUpVal)
   const [loginValues, setLoginValues] = useState(loginVal)
-  const [errors, setErrors] = useState(initialValues)
+  const [signUpErrors, setSignUpErrors] = useState(initialValues)
+  const [loginErrors, setLoginErrors] = useState(loginVal)
   const [checkNoErrors, setCheckNoErrors] = useState(false)
 
   const handleSignUpValues = (e: ChangeEvent<HTMLInputElement>) => {
@@ -88,6 +106,7 @@ export const UserContextProvider = ({ children }: userContextProviderType) => {
       [e.target.name]: e.target.value,
     }
     setSignUpValues(newValues)
+    setSignUpErrors(validateSignUp(newValues, setCheckNoErrors))
   }
 
   const handleLoginValues = (e: ChangeEvent<HTMLInputElement>) => {
@@ -97,6 +116,7 @@ export const UserContextProvider = ({ children }: userContextProviderType) => {
       [name]: value,
     }
     setLoginValues(newValues)
+    setLoginErrors(validateLogin(newValues, setCheckNoErrors))
   }
 
   return (
@@ -110,8 +130,10 @@ export const UserContextProvider = ({ children }: userContextProviderType) => {
         setLoginValues,
         handleSignUpValues,
         handleLoginValues,
-        errors,
-        setErrors,
+        signUpErrors,
+        setSignUpErrors,
+        loginErrors,
+        setLoginErrors,
         checkNoErrors,
         setCheckNoErrors,
       }}

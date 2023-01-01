@@ -1,10 +1,5 @@
 import { FormEvent, useContext, useState } from "react"
-import {
-  Login,
-  Signup,
-  validateLogin,
-  validateSignUp,
-} from "../components/GettingStartedPage"
+import { Login, Signup } from "../components/GettingStartedPage"
 import { UserContext } from "../context"
 import { userLogin, userSignUp } from "../services"
 import Layout from "../Layout/Layout"
@@ -17,9 +12,7 @@ function GetStarted() {
     setSignUpValues,
     loginValues,
     setLoginValues,
-    setErrors,
     checkNoErrors,
-    setCheckNoErrors,
   } = useContext(UserContext)
   const [loginState, setLoginState] = useState(false)
 
@@ -30,8 +23,6 @@ function GetStarted() {
 
   const handleSignup = (e: FormEvent) => {
     e.preventDefault()
-    setErrors(validateSignUp(signUpValues, setCheckNoErrors))
-
     if (checkNoErrors) {
       userSignUp(signUpValues)
         .then((res) => console.log(res))
@@ -41,8 +32,6 @@ function GetStarted() {
   }
   const handleLogin = (e: FormEvent) => {
     e.preventDefault()
-    setErrors(validateLogin(loginValues, setCheckNoErrors))
-
     if (checkNoErrors) {
       userLogin(loginValues)
         .then((res) => console.log(res))

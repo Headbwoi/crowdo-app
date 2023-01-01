@@ -8,7 +8,8 @@ type LOGIN = {
 }
 
 function Login({ loginState, handleLogin }: LOGIN) {
-  const { loginValues, handleLoginValues, errors } = useContext(UserContext)
+  const { loginValues, handleLoginValues, loginErrors, checkNoErrors } =
+    useContext(UserContext)
 
   return (
     <form className="flex flex-col gap-3" onSubmit={handleLogin}>
@@ -24,7 +25,7 @@ function Login({ loginState, handleLogin }: LOGIN) {
           value={loginValues.email}
           onChange={handleLoginValues}
         />
-        {<p className="text-error">{errors.email}</p>}
+        {<p className="text-error">{loginErrors.email}</p>}
       </div>
       {/* password */}
       <div className="flex flex-col gap-1.5">
@@ -39,9 +40,9 @@ function Login({ loginState, handleLogin }: LOGIN) {
           value={loginValues.password}
           onChange={handleLoginValues}
         />
-        {<p className="text-error">{errors.password}</p>}
+        {<p className="text-error">{loginErrors.password}</p>}
       </div>
-      <button className="btn bg-dark_green">
+      <button className="btn bg-dark_green" disabled={!checkNoErrors}>
         {loginState ? "Login" : "Sign Up"}
       </button>
     </form>

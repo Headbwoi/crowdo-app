@@ -8,7 +8,8 @@ type SIGNUP = {
 }
 
 function Signup({ loginState, handleSignup }: SIGNUP) {
-  const { signUpValues, handleSignUpValues, errors } = useContext(UserContext)
+  const { signUpValues, handleSignUpValues, signUpErrors, checkNoErrors } =
+    useContext(UserContext)
   return (
     <form className="flex flex-col gap-3" onSubmit={handleSignup}>
       {/* first name */}
@@ -24,7 +25,7 @@ function Signup({ loginState, handleSignup }: SIGNUP) {
           value={signUpValues?.firstName}
           onChange={handleSignUpValues}
         />
-        {<p className="text-error text-sm italic">{errors.firstName}</p>}
+        {<p className="text-error text-sm italic">{signUpErrors.firstName}</p>}
       </div>
       {/* last name */}
       <div className="flex flex-col">
@@ -39,7 +40,7 @@ function Signup({ loginState, handleSignup }: SIGNUP) {
           value={signUpValues?.lastName}
           onChange={handleSignUpValues}
         />
-        {<p className="text-error text-sm italic">{errors.lastName}</p>}
+        {<p className="text-error text-sm italic">{signUpErrors.lastName}</p>}
       </div>
       {/* email */}
       <div className="flex flex-col">
@@ -54,7 +55,7 @@ function Signup({ loginState, handleSignup }: SIGNUP) {
           value={signUpValues?.email}
           onChange={handleSignUpValues}
         />
-        {<p className="text-error text-sm italic">{errors.email}</p>}
+        {<p className="text-error text-sm italic">{signUpErrors.email}</p>}
       </div>
       {/* password */}
       <div className="flex flex-col">
@@ -69,7 +70,7 @@ function Signup({ loginState, handleSignup }: SIGNUP) {
           value={signUpValues?.password}
           onChange={handleSignUpValues}
         />
-        {<p className="text-error text-sm italic">{errors.password}</p>}
+        {<p className="text-error text-sm italic">{signUpErrors.password}</p>}
       </div>
       {/* confirm password */}
       <div className="flex flex-col">
@@ -84,10 +85,10 @@ function Signup({ loginState, handleSignup }: SIGNUP) {
           value={signUpValues?.cpassword}
           onChange={handleSignUpValues}
         />
-        {<p className="text-error text-sm italic">{errors.cpassword}</p>}
+        {<p className="text-error text-sm italic">{signUpErrors.cpassword}</p>}
       </div>
 
-      <button className="btn bg-dark_green">
+      <button className="btn bg-dark_green" disabled={!checkNoErrors}>
         {loginState ? "Login" : "Sign Up"}
       </button>
     </form>
