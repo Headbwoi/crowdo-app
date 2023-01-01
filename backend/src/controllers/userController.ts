@@ -6,7 +6,6 @@ import { ObjectId } from "mongoose"
 import asyncHandler from "express-async-handler"
 
 const generateToken = (id: ObjectId): String => {
-  //@ts-ignore
   return jwt.sign({ id }, process.env.JWT_SECRET, {
     expiresIn: "30d",
   })
