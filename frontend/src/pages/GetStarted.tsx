@@ -13,6 +13,7 @@ function GetStarted() {
     loginValues,
     setLoginValues,
     checkNoErrors,
+    setCheckNoErrors,
   } = useContext(UserContext)
   const [loginState, setLoginState] = useState(false)
 
@@ -29,6 +30,7 @@ function GetStarted() {
         .catch((error) => console.log(error?.response?.data.message))
     } else return
     setSignUpValues(initialValues)
+    setCheckNoErrors(false)
   }
   const handleLogin = (e: FormEvent) => {
     e.preventDefault()
@@ -38,6 +40,7 @@ function GetStarted() {
         .catch((error) => console.log(error?.response?.data.message))
     } else return
     setLoginValues(loginVal)
+    setCheckNoErrors(false)
   }
 
   return (
