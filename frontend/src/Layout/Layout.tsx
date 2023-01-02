@@ -6,16 +6,16 @@ type Layout = {
 }
 function Layout({ children }: Layout) {
   useEffect(() => {
-    scrollTo(0, 0)
+    scrollTo({ top: 0, left: 0, behavior: "smooth" })
   }, [])
 
   return (
     <>
-      <main className="bg-background min-h-screen">
+      <section className="bg-background min-h-screen">
         <Header />
         {children}
         <Footer />
-      </main>
+      </section>
     </>
   )
 }

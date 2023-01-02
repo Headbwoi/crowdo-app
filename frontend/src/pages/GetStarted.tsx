@@ -1,4 +1,4 @@
-import { FormEvent, useContext, useState } from "react"
+import { FormEvent, useContext, useEffect, useState } from "react"
 import { Login, Signup } from "../components/GettingStartedPage"
 import { UserContext } from "../context"
 import { userLogin, userSignUp } from "../services"
@@ -20,7 +20,7 @@ function GetStarted() {
   const navigate = useNavigate()
 
   const handleChange = () => {
-    scrollTo(0, 0)
+    scrollTo({ top: 0, left: 0, behavior: "smooth" })
     loginState ? setLoginState(false) : setLoginState(true)
   }
 
@@ -28,12 +28,16 @@ function GetStarted() {
     e.preventDefault()
     if (checkNoErrors) {
       userSignUp(signUpValues)
-        .then((res) => console.log(res))
+        .then((res) => {
+          if (res) {
+            navigate("/verify")
+            console.log(res)
+          }
+        })
         .catch((error) => console.log(error?.response?.data.message))
     } else return
     setSignUpValues(initialValues)
     setCheckNoErrors(false)
-    navigate("/verify")
   }
 
   const handleLogin = (e: FormEvent) => {
