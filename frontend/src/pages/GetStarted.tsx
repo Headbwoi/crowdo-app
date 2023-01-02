@@ -30,7 +30,7 @@ function GetStarted() {
       userSignUp(signUpValues)
         .then((res) => {
           if (res) {
-            navigate("/verify")
+            navigate("/verify", { replace: true })
             console.log(res)
           }
         })
@@ -44,7 +44,12 @@ function GetStarted() {
     e.preventDefault()
     if (checkNoErrors) {
       userLogin(loginValues)
-        .then((res) => console.log(res))
+        .then((res) => {
+          if (res) {
+            navigate("/dashboard", { replace: true })
+            console.log(res)
+          }
+        })
         .catch((error) => console.log(error?.response?.data.message))
     } else return
     setLoginValues(loginVal)
