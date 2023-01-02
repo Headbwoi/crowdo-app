@@ -1,95 +1,12 @@
-import {
-  ChangeEvent,
-  ReactNode,
-  createContext,
-  useEffect,
-  useState,
-} from "react"
+import { ChangeEvent, createContext, useState } from "react"
 import { validateLogin, validateSignUp } from "../components/GettingStartedPage"
-
-type userContextType = {
-  initialValues: {
-    firstName: string
-    lastName: string
-    email: string
-    password: string
-    cpassword: string
-  }
-  loginVal: {
-    email: string
-    password: string
-  }
-  handleSignUpValues: (e: ChangeEvent<HTMLInputElement>) => void
-  handleLoginValues: (e: ChangeEvent<HTMLInputElement>) => void
-  signUpErrors: {
-    firstName: string
-    lastName: string
-    email: string
-    password: string
-    cpassword: string
-  }
-  setSignUpErrors: React.Dispatch<
-    React.SetStateAction<{
-      firstName: string
-      lastName: string
-      email: string
-      password: string
-      cpassword: string
-    }>
-  >
-  loginErrors: {
-    email: string
-    password: string
-  }
-  setLoginErrors: React.Dispatch<
-    React.SetStateAction<{
-      email: string
-      password: string
-    }>
-  >
-  checkNoErrors: boolean
-  setCheckNoErrors: React.Dispatch<React.SetStateAction<boolean>>
-  signUpValues: {
-    firstName: string
-    lastName: string
-    email: string
-    password: string
-    cpassword: string
-  }
-  setSignUpValues: React.Dispatch<
-    React.SetStateAction<{
-      firstName: string
-      lastName: string
-      email: string
-      password: string
-      cpassword: string
-    }>
-  >
-  loginValues: {
-    email: string
-    password: string
-  }
-  setLoginValues: React.Dispatch<
-    React.SetStateAction<{
-      email: string
-      password: string
-    }>
-  >
-}
-
-type userContextProviderType = {
-  children: ReactNode
-}
-
-const initialValues = {
-  firstName: "",
-  lastName: "",
-  email: "",
-  password: "",
-  cpassword: "",
-}
-const signUpVal = initialValues
-const loginVal = { email: "", password: "" }
+import {
+  initialValues,
+  loginVal,
+  signUpVal,
+  userContextProviderType,
+  userContextType,
+} from "./types/contextTypes"
 
 export const UserContext = createContext<userContextType>({} as userContextType)
 
