@@ -19,11 +19,12 @@ import {
   Product,
   Verify,
 } from "./pages"
+import { NotFound } from "./components"
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
-      <Route path="/" element={<App />} />
+      <Route path="/" element={<App />} errorElement={<NotFound />} />
       <Route path="/discover" element={<Discover />}>
         <Route path="/discover/products/:id" element={<Product />} />
       </Route>
