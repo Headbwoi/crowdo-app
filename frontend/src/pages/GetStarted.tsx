@@ -3,6 +3,7 @@ import { Login, Signup } from "../components/GettingStartedPage"
 import { UserContext } from "../context"
 import { userLogin, userSignUp } from "../services"
 import Layout from "../Layout/Layout"
+import { useNavigate } from "react-router-dom"
 
 function GetStarted() {
   const {
@@ -16,6 +17,7 @@ function GetStarted() {
     setCheckNoErrors,
   } = useContext(UserContext)
   const [loginState, setLoginState] = useState(false)
+  const navigate = useNavigate()
 
   const handleChange = () => {
     scrollTo(0, 0)
@@ -31,7 +33,9 @@ function GetStarted() {
     } else return
     setSignUpValues(initialValues)
     setCheckNoErrors(false)
+    navigate("/verify")
   }
+
   const handleLogin = (e: FormEvent) => {
     e.preventDefault()
     if (checkNoErrors) {
