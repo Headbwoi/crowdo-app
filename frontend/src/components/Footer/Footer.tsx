@@ -63,7 +63,10 @@ export default Footer
 
 function LinkEl({ name }: LinkEl) {
   return (
-    <Link to={"/"} className="text-light_Gray text-center md:text-start">
+    <Link
+      to={"/"}
+      className="text-light_Gray text-center md:text-start hover:text-darkCyan lg:w-fit duration-200"
+    >
       {name}
     </Link>
   )
