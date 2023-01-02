@@ -14,7 +14,7 @@ function Verify() {
             <p className="text-light_Text font-normal text-center my-10 text-xl ">
               verification link has been sent to your email 👍👍.{" "}
             </p>
-            <Button name="verify your email" width="w-40" lgwidth="lg:w-48" />
+            {/* <Button name="verify your email" width="w-40" lgwidth="lg:w-48" /> */}
           </div>
         </section>
       </Layout>

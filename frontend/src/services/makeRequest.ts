@@ -1,5 +1,11 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from "axios"
 
+interface Response extends AxiosResponse {
+  email: string
+  password: string
+  token: string
+}
+
 const userAPI = axios.create({
   baseURL: import.meta.env.VITE_USER_API,
   withCredentials: true,
@@ -14,7 +20,7 @@ const productAPI = axios.create({
 export function userRequest(
   url: string,
   options?: AxiosRequestConfig<any> | undefined
-): Promise<AxiosResponse<any, any>> {
+): Promise<Response> {
   return userAPI(url, options)
     .then((res) => res.data)
     .catch((err) => Promise.reject(err))
@@ -23,7 +29,7 @@ export function userRequest(
 export function productRequest(
   url: string,
   options?: AxiosRequestConfig | undefined
-): Promise<AxiosResponse> {
+): Promise<Response> {
   return productAPI(url, options)
     .then((res) => res.data)
     .catch((err) => Promise.reject(err))
