@@ -12,8 +12,12 @@ const errors = {
   password: "",
   cpassword: "",
 }
-export const emailRegex =
+const emailRegex =
   /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+
+const passwordRegex = new RegExp(
+  "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})"
+)
 
 export function validateSignUp(
   values: initialValues,
@@ -47,8 +51,12 @@ export function validateSignUp(
 
   if (!values.password || values.password == "") {
     errors.password = "Please Enter Your Password"
-  } else if (Number(values.password.length) < 8) {
-    errors.password = "Password is too short"
+  } else if (
+    Number(values.password.length) < 9 ||
+    !passwordRegex.test(values.password)
+  ) {
+    errors.password =
+      "password should contain at least one lowercase and uppercase letter, one digit and at least 8 characters"
   } else {
     errors.password = ""
   }

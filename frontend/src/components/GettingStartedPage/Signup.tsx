@@ -25,7 +25,11 @@ function Signup({ loginState, handleSignup }: SIGNUP) {
           value={signUpValues?.firstName}
           onChange={handleSignUpValues}
         />
-        {<p className="text-error text-sm italic">{signUpErrors.firstName}</p>}
+        {
+          <p className="text-error text-xs lg:text-sm italic">
+            {signUpErrors.firstName}
+          </p>
+        }
       </div>
       {/* last name */}
       <div className="flex flex-col">
@@ -40,7 +44,11 @@ function Signup({ loginState, handleSignup }: SIGNUP) {
           value={signUpValues?.lastName}
           onChange={handleSignUpValues}
         />
-        {<p className="text-error text-sm italic">{signUpErrors.lastName}</p>}
+        {
+          <p className="text-error text-xs lg:text-sm italic">
+            {signUpErrors.lastName}
+          </p>
+        }
       </div>
       {/* email */}
       <div className="flex flex-col">
@@ -55,7 +63,11 @@ function Signup({ loginState, handleSignup }: SIGNUP) {
           value={signUpValues?.email}
           onChange={handleSignUpValues}
         />
-        {<p className="text-error text-sm italic">{signUpErrors.email}</p>}
+        {
+          <p className="text-error text-xs lg:text-sm italic">
+            {signUpErrors.email}
+          </p>
+        }
       </div>
       {/* password */}
       <div className="flex flex-col">
@@ -70,7 +82,11 @@ function Signup({ loginState, handleSignup }: SIGNUP) {
           value={signUpValues?.password}
           onChange={handleSignUpValues}
         />
-        {<p className="text-error text-sm italic">{signUpErrors.password}</p>}
+        {
+          <p className="text-error text-xs lg:text-sm italic">
+            {signUpErrors.password}
+          </p>
+        }
       </div>
       {/* confirm password */}
       <div className="flex flex-col">
@@ -85,7 +101,11 @@ function Signup({ loginState, handleSignup }: SIGNUP) {
           value={signUpValues?.cpassword}
           onChange={handleSignUpValues}
         />
-        {<p className="text-error text-sm italic">{signUpErrors.cpassword}</p>}
+        {
+          <p className="text-error text-xs lg:text-sm italic">
+            {signUpErrors.cpassword}
+          </p>
+        }
       </div>
 
       <button className="btn bg-dark_green" disabled={!checkNoErrors}>

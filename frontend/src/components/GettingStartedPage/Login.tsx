@@ -25,7 +25,7 @@ function Login({ loginState, handleLogin }: LOGIN) {
           value={loginValues.email}
           onChange={handleLoginValues}
         />
-        {<p className="text-error">{loginErrors.email}</p>}
+        {<p className="text-error text-xs lg:text-sm">{loginErrors.email}</p>}
       </div>
       {/* password */}
       <div className="flex flex-col gap-1.5">
@@ -40,7 +40,11 @@ function Login({ loginState, handleLogin }: LOGIN) {
           value={loginValues.password}
           onChange={handleLoginValues}
         />
-        {<p className="text-error">{loginErrors.password}</p>}
+        {
+          <p className="text-error text-xs lg:text-sm">
+            {loginErrors.password}
+          </p>
+        }
       </div>
       <button className="btn bg-dark_green" disabled={!checkNoErrors}>
         {loginState ? "Login" : "Sign Up"}
