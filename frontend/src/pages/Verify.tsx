@@ -5,13 +5,16 @@ function Verify() {
   return (
     <>
       <Layout>
-        <section className="flex justify-center items-center min-h-screen ">
-          <>
-            <h1>Verify your email</h1>
-          </>
-          <div>
-            <p>verification link has been sent to your email 👍👍. </p>
-            <Button name="verify your email" />
+        <section className="flex justify-center items-center min-h-screen flex-col container px-5 md:px-7">
+          <h1 className="font-bold text-4xl md:text-6xl text-white text-center leading-normal">
+            Verify <span className="text-green_Text/80">Your Email</span>
+          </h1>
+
+          <div className="grid place-items-center">
+            <p className="text-light_Text font-normal text-center my-10 text-xl ">
+              verification link has been sent to your email 👍👍.{" "}
+            </p>
+            <Button name="verify your email" width="w-40" lgwidth="lg:w-48" />
           </div>
         </section>
       </Layout>

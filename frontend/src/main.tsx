@@ -11,7 +11,14 @@ import {
   RouterProvider,
   ScrollRestoration,
 } from "react-router-dom"
-import { About, DashBoard, Discover, GetStarted, Product } from "./pages"
+import {
+  About,
+  DashBoard,
+  Discover,
+  GetStarted,
+  Product,
+  Verify,
+} from "./pages"
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -23,6 +30,7 @@ const router = createBrowserRouter(
       <Route path="/dashboard" element={<DashBoard />} />
       <Route path="/getstarted" element={<GetStarted />} />
       <Route path="/about" element={<About />} />
+      <Route path="/verify" element={<Verify />} />
 
       <Route
         element={

@@ -10,7 +10,7 @@ function About() {
     <Layout>
       <section className="my-28 w-full px-5 md:px-6 lg:px-0 container">
         <h1 className="font-bold text-4xl md:text-6xl text-white text-center leading-normal">
-          About <span className="text-green_Text">Crowdo</span>
+          About <span className="text-green_Text/80">Crowdo</span>
         </h1>
 
         <div className="text-white py-20">
