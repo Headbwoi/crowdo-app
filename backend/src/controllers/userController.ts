@@ -26,10 +26,26 @@ export const getUserData = asyncHandler(
 export const registerUser = asyncHandler(
   async (req: Request, res: Response) => {
     const { firstName, lastName, email, password } = req.body
+    const emailRegex =
+      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+
+    const passwordRegex = new RegExp(
+      "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})"
+    )
 
     if (!firstName || !lastName || !email || !password) {
       res.status(400)
       throw new Error("Please Enter All fields")
+    }
+
+    //validates inputs
+    if (!emailRegex.test(email)) {
+      res.status(400)
+      throw new Error("Please Enter A Valid Email")
+    }
+    if (!passwordRegex.test(password)) {
+      res.status(400)
+      throw new Error("Please Enter A Strong Password")
     }
 
     // checks if user exists

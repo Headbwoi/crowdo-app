@@ -12,7 +12,6 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import asyncHandler from "express-async-handler";
 const generateToken = (id) => {
-    //@ts-ignore
     return jwt.sign({ id }, process.env.JWT_SECRET, {
         expiresIn: "30d",
     });
@@ -28,9 +27,20 @@ export const getUserData = asyncHandler((req, res) => __awaiter(void 0, void 0, 
 //@access   public
 export const registerUser = asyncHandler((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { firstName, lastName, email, password } = req.body;
+    const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const passwordRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})");
     if (!firstName || !lastName || !email || !password) {
         res.status(400);
         throw new Error("Please Enter All fields");
+    }
+    //validates inputs
+    if (!emailRegex.test(email)) {
+        res.status(400);
+        throw new Error("Please Enter A Valid Email");
+    }
+    if (!passwordRegex.test(password)) {
+        res.status(400);
+        throw new Error("Please Enter A Strong Password");
     }
     // checks if user exists
     const userExists = yield User.findOne({ email });
