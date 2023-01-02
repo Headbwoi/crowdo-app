@@ -13,7 +13,7 @@ import {
 } from "react-router-dom"
 import { Product, Verify } from "./pages"
 import { NotFound, Spinner } from "./components"
-const About = React.lazy(() => wait(1000).then(() => import("./pages/About")))
+const About = React.lazy(() => import("./pages/About"))
 const DashBoard = React.lazy(() => import("./pages/DashBoard"))
 const GetStarted = React.lazy(() => import("./pages/GetStarted"))
 const Discover = React.lazy(() => import("./pages/Discover"))
@@ -59,9 +59,3 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
     </AppContextProvider>
   </React.StrictMode>
 )
-
-function wait(time: number) {
-  return new Promise((resolve) => {
-    setTimeout(resolve, time)
-  })
-}
