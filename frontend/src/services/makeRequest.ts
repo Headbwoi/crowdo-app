@@ -1,6 +1,9 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from "axios"
 
 interface Response extends AxiosResponse {
+  id: string
+  firstName: string
+  lastName: string
   email: string
   password: string
   token: string

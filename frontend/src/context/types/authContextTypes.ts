@@ -1,5 +1,11 @@
 import { ReactNode } from "react"
 
+type Payload = {
+  email: string
+  password: string
+  token: string
+}
+
 export const initialState = {
   user: null,
 }
@@ -20,5 +26,5 @@ export const enum REDUCER_ACTION_TYPE {
 
 export type ReducerAction = {
   type: REDUCER_ACTION_TYPE
-  payload?: ""
+  payload?: Payload
 }
