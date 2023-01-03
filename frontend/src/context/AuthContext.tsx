@@ -4,6 +4,7 @@ import {
   AuthContextType,
   REDUCER_ACTION_TYPE,
   ReducerAction,
+  defaultUser,
   initialState,
 } from "./types/authContextTypes"
 
@@ -17,7 +18,7 @@ export const authReducer = (
     case REDUCER_ACTION_TYPE.LOGIN:
       return { user: action.payload }
     case REDUCER_ACTION_TYPE.LOGOUT:
-      return { user: null }
+      return { user: defaultUser }
 
     default:
       return state
