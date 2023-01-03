@@ -2,6 +2,7 @@ import { useState } from "react"
 import { useAuthContext } from "./useAuth"
 import { signUpValues } from "./types"
 import { userSignUp } from "../services"
+import { REDUCER_ACTION_TYPE } from "../context/types/authContextTypes"
 
 export const useSignUp = () => {
   const [error, setError] = useState(null)
@@ -15,7 +16,7 @@ export const useSignUp = () => {
     await userSignUp(bodyData)
       .then((res) => {
         if (res) {
-          dispatch({ type: "LOGIN", payload: res })
+          dispatch({ type: REDUCER_ACTION_TYPE.LOGIN, payload: res.token })
           //   navigate("/verify", { replace: true })
           localStorage.setItem("user", JSON.stringify(res))
           console.log(res)

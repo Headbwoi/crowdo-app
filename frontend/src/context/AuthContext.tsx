@@ -2,15 +2,21 @@ import { createContext, useReducer } from "react"
 import {
   AuthContextProviderType,
   AuthContextType,
+  REDUCER_ACTION_TYPE,
+  ReducerAction,
+  initialState,
 } from "./types/authContextTypes"
 
 export const AuthContext = createContext<AuthContextType>({} as AuthContextType)
 
-export const authReducer = (state, action) => {
+export const authReducer = (
+  state: typeof initialState,
+  action: ReducerAction
+): typeof initialState => {
   switch (action.type) {
-    case "LOGIN":
+    case REDUCER_ACTION_TYPE.LOGIN:
       return { user: action.payload }
-    case "LOGOUT":
+    case REDUCER_ACTION_TYPE.LOGOUT:
       return { user: null }
 
     default:
@@ -19,9 +25,7 @@ export const authReducer = (state, action) => {
 }
 
 export const AuthContextProvider = ({ children }: AuthContextProviderType) => {
-  const [state, dispatch] = useReducer(authReducer, {
-    user: null,
-  })
+  const [state, dispatch] = useReducer(authReducer, initialState)
 
   console.log("Auth context state", state)
   return (
