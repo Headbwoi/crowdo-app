@@ -6,7 +6,7 @@ import {
 
 export const AuthContext = createContext<AuthContextType>({} as AuthContextType)
 
-const authReducer = (action) => {
+export const authReducer = (state, action) => {
   switch (action.type) {
     case "LOGIN":
       return { user: action.payload }
@@ -22,6 +22,8 @@ export const AuthContextProvider = ({ children }: AuthContextProviderType) => {
   const [state, dispatch] = useReducer(authReducer, {
     user: null,
   })
+
+  console.log("Auth context state", state)
   return (
     <AuthContext.Provider value={{ ...state, dispatch }}>
       {children}

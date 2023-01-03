@@ -4,6 +4,7 @@ import { UserContext } from "../context"
 import { userLogin, userSignUp } from "../services"
 import Layout from "../Layout/Layout"
 import { useNavigate } from "react-router-dom"
+import { useSignUp } from "../hooks/useSignUp"
 
 function GetStarted() {
   const {
@@ -18,23 +19,17 @@ function GetStarted() {
   } = useContext(UserContext)
   const [loginState, setLoginState] = useState(false)
   const navigate = useNavigate()
+  const { signup, error, loading } = useSignUp()
 
   const handleChange = () => {
     scrollTo({ top: 0, left: 0, behavior: "smooth" })
     loginState ? setLoginState(false) : setLoginState(true)
   }
 
-  const handleSignup = (e: FormEvent) => {
+  const handleSignup = async (e: FormEvent) => {
     e.preventDefault()
     if (checkNoErrors) {
-      userSignUp(signUpValues)
-        .then((res) => {
-          if (res) {
-            navigate("/verify", { replace: true })
-            console.log(res)
-          }
-        })
-        .catch((error) => console.log(error?.response?.data.message))
+      await signup(signUpValues)
     } else return
     setSignUpValues(initialValues)
     setCheckNoErrors(false)
@@ -78,6 +73,7 @@ function GetStarted() {
           >
             {loginState ? "Sign Up" : "Login"}
           </button>
+          {error && <div className="text-green_Text">{error}</div>}
         </div>
       </section>
     </Layout>
