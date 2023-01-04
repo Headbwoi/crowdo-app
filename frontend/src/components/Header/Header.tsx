@@ -4,6 +4,7 @@ import Hamburger from "../../icons/Hamburger"
 import Links from "./Links"
 import MobileMenu from "./MobileMenu"
 import { AnimatePresence } from "framer-motion"
+import LogOut from "../Button/LogOut"
 
 const navItems: string[] = ["home", "about", "discover", "get started"]
 
@@ -26,6 +27,9 @@ function Header() {
           {navItems.map((item) => (
             <Links name={item} color="white" font="normal" key={item} />
           ))}
+          <div className="">
+            <LogOut />
+          </div>
         </div>
       </nav>
       <AnimatePresence initial={false} mode="wait" onExitComplete={() => null}>

@@ -3,7 +3,7 @@ import { Login, Signup } from "../components/GettingStartedPage"
 import Layout from "../Layout/Layout"
 
 function GetStarted() {
-  const [loginState, setLoginState] = useState(false)
+  const [loginState, setLoginState] = useState(true)
 
   const handleChange = () => {
     scrollTo({ top: 0, left: 0, behavior: "smooth" })
