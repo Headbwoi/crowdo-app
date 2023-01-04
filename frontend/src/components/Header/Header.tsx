@@ -5,11 +5,13 @@ import Links from "./Links"
 import MobileMenu from "./MobileMenu"
 import { AnimatePresence } from "framer-motion"
 import LogOut from "../Button/LogOut"
+import { useAuthContext } from "../../hooks/useAuthContext"
 
 const navItems: string[] = ["home", "about", "discover", "get started"]
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false)
+  const { state } = useAuthContext()
   return (
     <header className="flex items-center justify-center  w-full h-16 md:h-20 lg:h-[5rem] bg-body/80 -mb-[1px] fixed top-0 left-0 z-50 shadow-lg px-6 md:px-10 lg:px-14 backdrop-blur-lg">
       <nav className=" w-full flex items-center justify-between">
@@ -27,9 +29,8 @@ function Header() {
           {navItems.map((item) => (
             <Links name={item} color="white" font="normal" key={item} />
           ))}
-          <div className="">
-            <LogOut />
-          </div>
+
+          <div className="">{!state.user?.token ? "" : <LogOut />}</div>
         </div>
       </nav>
       <AnimatePresence initial={false} mode="wait" onExitComplete={() => null}>

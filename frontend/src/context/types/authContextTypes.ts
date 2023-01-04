@@ -9,7 +9,18 @@ export const defaultUser = {
   token: "",
 }
 
-export const initialState: {} = {
+export const initialState: {
+  user:
+    | {
+        id: string
+        firstName: string
+        lastName: string
+        email: string
+        password: string
+        token: string
+      }
+    | undefined
+} = {
   user: {
     id: "",
     firstName: "",
