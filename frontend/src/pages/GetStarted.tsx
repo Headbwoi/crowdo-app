@@ -1,14 +1,22 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Login, Signup } from "../components/GettingStartedPage"
 import Layout from "../Layout/Layout"
+import { useAuthContext } from "../hooks/useAuthContext"
+import { useNavigate } from "react-router-dom"
 
 function GetStarted() {
   const [loginState, setLoginState] = useState(true)
+  const { state } = useAuthContext()
+  const navigate = useNavigate()
 
   const handleChange = () => {
     scrollTo({ top: 0, left: 0, behavior: "smooth" })
     loginState ? setLoginState(false) : setLoginState(true)
   }
+
+  useEffect(() => {
+    state.user?.token ? navigate("/dashboard") : navigate()
+  }, [])
 
   return (
     <Layout>
