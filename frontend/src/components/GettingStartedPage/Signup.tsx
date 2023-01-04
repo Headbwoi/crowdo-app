@@ -1,15 +1,32 @@
 import { FormEvent, useContext } from "react"
 import "./formstyle.css"
 import { UserContext } from "../../context"
+import { useSignUp } from "../../hooks/useSignUp"
 
 type SIGNUP = {
   loginState: boolean
-  handleSignup: (e: FormEvent) => void
 }
 
-function Signup({ loginState, handleSignup }: SIGNUP) {
-  const { signUpValues, handleSignUpValues, signUpErrors, checkNoErrors } =
-    useContext(UserContext)
+function Signup({ loginState }: SIGNUP) {
+  const {
+    initialValues,
+    signUpValues,
+    setSignUpValues,
+    handleSignUpValues,
+    signUpErrors,
+    checkNoErrors,
+    setCheckNoErrors,
+  } = useContext(UserContext)
+  const { signup, error, loading } = useSignUp(signUpValues)
+
+  const handleSignup = async (e: FormEvent) => {
+    e.preventDefault()
+    if (checkNoErrors) {
+      await signup()
+    } else return
+    setSignUpValues(initialValues)
+    setCheckNoErrors(false)
+  }
   return (
     <form className="flex flex-col gap-3" onSubmit={handleSignup}>
       {/* first name */}

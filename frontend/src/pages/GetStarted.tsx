@@ -1,54 +1,13 @@
-import { FormEvent, useContext, useEffect, useState } from "react"
+import { useState } from "react"
 import { Login, Signup } from "../components/GettingStartedPage"
-import { UserContext } from "../context"
-import { userLogin, userSignUp } from "../services"
 import Layout from "../Layout/Layout"
-import { useNavigate } from "react-router-dom"
-import { useSignUp } from "../hooks/useSignUp"
 
 function GetStarted() {
-  const {
-    initialValues,
-    loginVal,
-    signUpValues,
-    setSignUpValues,
-    loginValues,
-    setLoginValues,
-    checkNoErrors,
-    setCheckNoErrors,
-  } = useContext(UserContext)
   const [loginState, setLoginState] = useState(false)
-  const navigate = useNavigate()
-  const { signup, error, loading } = useSignUp()
 
   const handleChange = () => {
     scrollTo({ top: 0, left: 0, behavior: "smooth" })
     loginState ? setLoginState(false) : setLoginState(true)
-  }
-
-  const handleSignup = async (e: FormEvent) => {
-    e.preventDefault()
-    if (checkNoErrors) {
-      await signup(signUpValues)
-    } else return
-    setSignUpValues(initialValues)
-    setCheckNoErrors(false)
-  }
-
-  const handleLogin = (e: FormEvent) => {
-    e.preventDefault()
-    if (checkNoErrors) {
-      userLogin(loginValues)
-        .then((res) => {
-          if (res) {
-            navigate("/dashboard", { replace: true })
-            console.log(res)
-          }
-        })
-        .catch((error) => console.log(error?.response?.data.message))
-    } else return
-    setLoginValues(loginVal)
-    setCheckNoErrors(false)
   }
 
   return (
@@ -56,9 +15,9 @@ function GetStarted() {
       <section className="getstarted">
         <div className="heading">{loginState ? "Login" : "Sign Up"}</div>
         {loginState ? (
-          <Login loginState={loginState} handleLogin={handleLogin} />
+          <Login loginState={loginState} />
         ) : (
-          <Signup loginState={loginState} handleSignup={handleSignup} />
+          <Signup loginState={loginState} />
         )}
         <div className="mt-4 flex items-center gap-6 justify-center font-normal">
           {loginState ? (
@@ -73,7 +32,6 @@ function GetStarted() {
           >
             {loginState ? "Sign Up" : "Login"}
           </button>
-          {error && <div className="text-green_Text">{error}</div>}
         </div>
       </section>
     </Layout>

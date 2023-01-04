@@ -1,31 +1,31 @@
-import { useContext, useState } from "react"
+import { useState } from "react"
 import { useAuthContext } from "./useAuthContext"
 import { userLogin } from "../services"
-import { UserContext } from "../context"
 import { REDUCER_ACTION_TYPE } from "../context/types/authContextTypes"
+import { LOGIN_VAL } from "./types"
 
-export function useLogin() {
-  const [error, setError] = useState(false)
+export function useLogin(values: LOGIN_VAL) {
+  const [error, setError] = useState(null)
   const [loading, setLoading] = useState(false)
   const context = useAuthContext()
-  const { loginValues } = useContext(UserContext)
 
   const login = async () => {
     setLoading(true)
+    setError(null)
 
-    await userLogin(loginValues)
+    await userLogin(values)
       .then((res) => {
         if (res) {
           context.dispatch({ type: REDUCER_ACTION_TYPE.LOGIN, payload: res })
+          localStorage.setItem("user", JSON.stringify(res))
           setLoading(false)
-          setError(false)
           //   navigate("/dashboard", { replace: true })
           console.log(res)
         }
       })
       .catch((error) => {
         console.log(error?.response?.data.message)
-        setError(true)
+        setError(error?.response?.data.message)
         setLoading(false)
       })
   }

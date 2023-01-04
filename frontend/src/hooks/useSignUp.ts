@@ -4,12 +4,12 @@ import { signUpValues } from "./types"
 import { userSignUp } from "../services"
 import { REDUCER_ACTION_TYPE } from "../context/types/authContextTypes"
 
-export const useSignUp = () => {
+export const useSignUp = (bodyData: signUpValues) => {
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(false)
   const { dispatch } = useAuthContext()
 
-  const signup = async (bodyData: signUpValues) => {
+  const signup = async () => {
     setLoading(true)
     setError(null)
 

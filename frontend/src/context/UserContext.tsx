@@ -40,10 +40,10 @@ export const UserContextProvider = ({ children }: userContextProviderType) => {
     <UserContext.Provider
       value={{
         initialValues,
-        loginVal,
+        loginVal, //initial login state values for reset
         signUpValues,
         setSignUpValues,
-        loginValues,
+        loginValues, //actaul login state values with data
         setLoginValues,
         handleSignUpValues,
         handleLoginValues,
