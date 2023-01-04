@@ -31,7 +31,7 @@ function Header() {
           ))}
 
           <div className="">
-            {!state.user?.token ? "" : <LogOut color="light_Gray" width="24" />}
+            {state.user?.token == "" ? "" : <LogOut color="light_Gray" />}
           </div>
         </div>
       </nav>

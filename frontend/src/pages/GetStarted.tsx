@@ -15,7 +15,7 @@ function GetStarted() {
   }
 
   useEffect(() => {
-    state.user?.token ? navigate("/dashboard") : navigate("/getstarted")
+    state.user?.token != "" ? navigate("/dashboard") : navigate("/getstarted")
   }, [])
 
   return (
