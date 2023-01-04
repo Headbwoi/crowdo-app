@@ -107,6 +107,7 @@ export const loginUser = asyncHandler(async (req: Request, res: Response) => {
       token: generateToken(user._id),
     })
   } else {
-    throw new Error("Invalid credentials")
+    res.status(400)
+    throw new Error("Password is invalid")
   }
 })

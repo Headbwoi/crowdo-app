@@ -91,6 +91,7 @@ export const loginUser = asyncHandler((req, res) => __awaiter(void 0, void 0, vo
         });
     }
     else {
-        throw new Error("Invalid credentials");
+        res.status(400);
+        throw new Error("Password is invalid");
     }
 }));
