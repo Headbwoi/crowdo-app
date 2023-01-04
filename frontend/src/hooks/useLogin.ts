@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom"
 export function useLogin(values: LOGIN_VAL) {
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(false)
-  const context = useAuthContext()
+  const { dispatch } = useAuthContext()
   const navigate = useNavigate()
 
   const login = async () => {
@@ -18,7 +18,7 @@ export function useLogin(values: LOGIN_VAL) {
     await userLogin(values)
       .then((res) => {
         if (res) {
-          context.dispatch({ type: REDUCER_ACTION_TYPE.LOGIN, payload: res })
+          dispatch({ type: REDUCER_ACTION_TYPE.LOGIN, payload: res })
           localStorage.setItem("user", JSON.stringify(res))
           setLoading(false)
           navigate("/dashboard", { replace: true })

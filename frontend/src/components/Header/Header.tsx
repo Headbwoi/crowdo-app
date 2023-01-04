@@ -30,7 +30,9 @@ function Header() {
             <Links name={item} color="white" font="normal" key={item} />
           ))}
 
-          <div className="">{!state.user?.token ? "" : <LogOut />}</div>
+          <div className="">
+            {!state.user?.token ? "" : <LogOut color="light_Gray" width="24" />}
+          </div>
         </div>
       </nav>
       <AnimatePresence initial={false} mode="wait" onExitComplete={() => null}>
