@@ -67,7 +67,7 @@ function Login({ loginState }: LOGIN) {
         </div>
         <button
           className="btn bg-dark_green"
-          disabled={!checkNoErrors && loading}
+          disabled={!checkNoErrors && !loading}
         >
           {loginState ? "Login" : "Sign Up"}
         </button>
