@@ -3,11 +3,13 @@ import { useAuthContext } from "./useAuthContext"
 import { userLogin } from "../services"
 import { REDUCER_ACTION_TYPE } from "../context/types/authContextTypes"
 import { LOGIN_VAL } from "./types"
+import { useNavigate } from "react-router-dom"
 
 export function useLogin(values: LOGIN_VAL) {
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(false)
   const context = useAuthContext()
+  const navigate = useNavigate()
 
   const login = async () => {
     setLoading(true)
@@ -19,7 +21,7 @@ export function useLogin(values: LOGIN_VAL) {
           context.dispatch({ type: REDUCER_ACTION_TYPE.LOGIN, payload: res })
           localStorage.setItem("user", JSON.stringify(res))
           setLoading(false)
-          //   navigate("/dashboard", { replace: true })
+          navigate("/dashboard", { replace: true })
           console.log(res)
         }
       })
