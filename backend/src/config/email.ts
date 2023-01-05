@@ -1,40 +1,39 @@
-import { request } from "express"
 import nodemailer from "nodemailer"
 import SMTPTransport from "nodemailer/lib/smtp-transport"
 
-// async..await is not allowed in global scope, must use a wrapper
-async function main() {
-  // Generate test SMTP service account from ethereal.email
-  // Only needed if you don't have a real mail account for testing
-  let testAccount = await nodemailer.createTestAccount()
+const user = process.env.USER_EMAIL
+const password = process.env.USER_PASSWORD
 
-  // create reusable transporter object using the default SMTP transport
-  let transporter: nodemailer.Transporter<SMTPTransport.SentMessageInfo> =
-    nodemailer.createTransport({
-      host: "smtp.ethereal.email",
-      port: 587,
-      secure: false, // true for 465, false for other ports
-      auth: {
-        user: testAccount.user, // generated ethereal user
-        pass: testAccount.pass, // generated ethereal password
-      },
-    })
-
-  // send mail with defined transport object
-  let info: SMTPTransport.SentMessageInfo = await transporter.sendMail({
-    from: "xeuxdev@gmail.com", // sender address
-    to: `${request.user.email}`, // list of receivers
-    subject: "Email Verification Request", // Subject line
-    text: "Hello world?", // plain text body
-    html: "<b>Hello world?</b>", // html body
+const transport: nodemailer.Transporter<SMTPTransport.SentMessageInfo> =
+  nodemailer.createTransport({
+    //@ts-ignore
+    service: "Gmail",
+    auth: {
+      user: user,
+      pass: password,
+    },
   })
 
-  console.log("Message sent: %s", info.messageId)
-  // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
+export const sendConfirmationEmail = (
+  name: string,
+  email: string,
+  confirmationCode: string
+) => {
+  console.log("check if working")
 
-  // Preview only available when sending through an Ethereal account
-  console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info))
-  // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
+  transport
+    .sendMail({
+      from: user,
+      to: email,
+      subject: "Please Verify Your Account",
+      html: `
+    <h1>Email Confirmation</h1>
+    <h2> Hello ${name}</h2>
+    <p>Please Confirm Your Email By Clicking on the link below</p>
+    <a href="http://localhost:3000/verify/${confirmationCode}">Click Here</a>
+    `,
+    })
+    .catch((error) => {
+      console.log(error)
+    })
 }
-
-main().catch(console.error)

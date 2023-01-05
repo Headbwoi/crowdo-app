@@ -1,3 +1,5 @@
+import Mail from "nodemailer/lib/mailer"
+
 export {}
 
 declare global {
@@ -8,6 +10,8 @@ declare global {
       PORT: Number
       NODE_ENV: string
       JWT_SECRET: string
+      USER_EMAIL: string | Mail.Address | undefined
+      USER_PASSWORD: string
     }
   }
 }

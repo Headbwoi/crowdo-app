@@ -6,6 +6,21 @@ export interface IUser extends Document {
   lastName: string
   email: string
   password: string
+  status: {
+    type: StringConstructor
+    enum: string[]
+    default: string
+  }
+  confirmationCode: {
+    type: String
+    unique: true
+    roles: [
+      {
+        type: mongoose.Schema.Types.ObjectId
+        ref: "Role"
+      }
+    ]
+  }
 }
 
 const userSchema = new mongoose.Schema<IUser>(
@@ -26,6 +41,21 @@ const userSchema = new mongoose.Schema<IUser>(
     password: {
       type: String,
       required: true,
+    },
+    status: {
+      type: String,
+      enum: ["pending", "verified"],
+      default: "pending",
+    },
+    confirmationCode: {
+      type: String,
+      unique: true,
+      roles: [
+        {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "Role",
+        },
+      ],
     },
   },
   { timestamps: true }
