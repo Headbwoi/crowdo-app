@@ -35,7 +35,7 @@ export const getUserData = asyncHandler(
 )
 
 //@desc     Registers a User
-//@route    POST /api/user/
+//@route    POST /api/user/register
 //@access   public
 export const registerUser = asyncHandler(
   async (req: Request, res: Response) => {
@@ -110,7 +110,7 @@ export const registerUser = asyncHandler(
 )
 
 //@desc     Login a User
-//@route    POST /api/user/
+//@route    POST /api/user/login
 //@access   private
 
 export const loginUser = asyncHandler(async (req: Request, res: Response) => {
@@ -123,7 +123,7 @@ export const loginUser = asyncHandler(async (req: Request, res: Response) => {
     throw new Error("user not found")
   }
 
-  if (user.status.type != "verified") {
+  if (user.status != "verified") {
     res.status(401)
     throw new Error("Please Verify Your Email")
   }
@@ -140,4 +140,33 @@ export const loginUser = asyncHandler(async (req: Request, res: Response) => {
     res.status(400)
     throw new Error("Password is invalid")
   }
+})
+
+//@desc     Verifies a User
+//@route    GET /api/user/verify/:confirmationCode
+//@access   private
+
+export const verifyUser = asyncHandler(async (req: Request, res: Response) => {
+  const { confirmationCode } = req.params
+  User.findOne({
+    confirmationCode: confirmationCode,
+  })
+    .then((user) => {
+      if (!user) {
+        res.status(404)
+        throw new Error("User not found")
+      }
+      user.status = "verified"
+      user.save((err) => {
+        if (err) {
+          res.status(500)
+          throw new Error("Unable to Verify User")
+        }
+      })
+    })
+    .catch((err) => {
+      console.log(err)
+      res.status(500)
+      throw new Error("Unable to Verify User")
+    })
 })

@@ -6,11 +6,7 @@ export interface IUser extends Document {
   lastName: string
   email: string
   password: string
-  status: {
-    type: string
-    enum: string[]
-    default: string
-  }
+  status: string
   confirmationCode: string
 }
 
@@ -41,12 +37,6 @@ const userSchema = new mongoose.Schema<IUser>(
     confirmationCode: {
       type: String,
       unique: true,
-      // roles: [
-      //   {
-      //     type: mongoose.Schema.Types.ObjectId,
-      //     ref: "Role",
-      //   },
-      // ],
     },
   },
   { timestamps: true }
