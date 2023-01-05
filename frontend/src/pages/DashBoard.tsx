@@ -14,7 +14,7 @@ function DashBoard() {
 
   return (
     <Layout>
-      <div className="bg-light_Gray">
+      <div className="">
         <MainSection />
       </div>
     </Layout>
