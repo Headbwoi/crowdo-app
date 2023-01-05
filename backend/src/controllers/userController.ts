@@ -19,10 +19,12 @@ const generateToken = (id: ObjectId): String => {
   })
 }
 
-const generateConfirmationCode = (email: string): String => {
-  return jwt.sign({ email }, process.env.JWT_SECRET, {
-    expiresIn: "2h",
-  })
+const generateConfirmationCode = (len: number, characters: string): String => {
+  let ans = ""
+  for (let i = len; i > 0; i--) {
+    ans += characters[Math.floor(Math.random() * characters.length)]
+  }
+  return ans
 }
 
 //@desc     Gets User Data
@@ -46,6 +48,7 @@ export const registerUser = asyncHandler(
     const passwordRegex = new RegExp(
       "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})"
     )
+    const characters = `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789`
 
     if (!firstName || !lastName || !email || !password) {
       res.status(400)
@@ -80,7 +83,7 @@ export const registerUser = asyncHandler(
       lastName,
       email,
       password: hashedPassword,
-      confirmationCode: generateConfirmationCode(email),
+      confirmationCode: generateConfirmationCode(20, characters),
     })
     // const newUser = await User.create({})
 
@@ -97,7 +100,6 @@ export const registerUser = asyncHandler(
         lastName: newUser.lastName,
         email: newUser.email,
         token: generateToken(newUser.id),
-        message: "User was registered successfully! Please check your Email",
       })
 
       sendConfirmationEmail(
@@ -147,26 +149,24 @@ export const loginUser = asyncHandler(async (req: Request, res: Response) => {
 //@access   private
 
 export const verifyUser = asyncHandler(async (req: Request, res: Response) => {
-  const { confirmationCode } = req.params
-  await User.findOne({
-    confirmationCode: confirmationCode,
+  const user = await User.findOne({
+    confirmationCode: req.params.confirmationCode,
   })
-    .then((user) => {
-      if (!user) {
-        res.status(404)
-        throw new Error("User not found")
-      }
-      user.status = "verified"
-      user.save((err) => {
-        if (err) {
-          res.status(500)
-          throw new Error("Unable to Verify User")
-        }
+  if (!user) {
+    res.status(404)
+    throw new Error("User not found")
+  }
+
+  // user.status = "verified"
+  await user
+    .updateOne({ status: "verified" })
+    .then(() => {
+      res.status(200).json({
+        message: "Email verified",
       })
     })
     .catch((err) => {
-      console.log(err)
       res.status(500)
-      throw new Error("Unable to Verify User")
+      throw new Error(err)
     })
 })
