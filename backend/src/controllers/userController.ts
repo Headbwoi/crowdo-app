@@ -83,7 +83,7 @@ export const registerUser = asyncHandler(
       lastName,
       email,
       password: hashedPassword,
-      confirmationCode: generateConfirmationCode(20, characters),
+      confirmationCode: generateConfirmationCode(30, characters),
     })
     // const newUser = await User.create({})
 
