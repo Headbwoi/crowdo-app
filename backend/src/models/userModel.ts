@@ -11,16 +11,7 @@ export interface IUser extends Document {
     enum: string[]
     default: string
   }
-  confirmationCode: {
-    type: String
-    unique: true
-    roles: [
-      {
-        type: mongoose.Schema.Types.ObjectId
-        ref: "Role"
-      }
-    ]
-  }
+  confirmationCode: string
 }
 
 const userSchema = new mongoose.Schema<IUser>(
@@ -50,12 +41,12 @@ const userSchema = new mongoose.Schema<IUser>(
     confirmationCode: {
       type: String,
       unique: true,
-      roles: [
-        {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: "Role",
-        },
-      ],
+      // roles: [
+      //   {
+      //     type: mongoose.Schema.Types.ObjectId,
+      //     ref: "Role",
+      //   },
+      // ],
     },
   },
   { timestamps: true }

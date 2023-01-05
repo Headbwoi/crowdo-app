@@ -4,10 +4,24 @@ import bcrypt from "bcryptjs"
 import jwt from "jsonwebtoken"
 import { ObjectId } from "mongoose"
 import asyncHandler from "express-async-handler"
+import { sendConfirmationEmail } from "../config/email.js"
+
+type REG_USER = {
+  firstName: string
+  lastName: string
+  email: string
+  password: string
+}
 
 const generateToken = (id: ObjectId): String => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
     expiresIn: "30d",
+  })
+}
+
+const generateConfirmationCode = (email: string): String => {
+  return jwt.sign({ email }, process.env.JWT_SECRET, {
+    expiresIn: "2h",
   })
 }
 
@@ -25,7 +39,7 @@ export const getUserData = asyncHandler(
 //@access   public
 export const registerUser = asyncHandler(
   async (req: Request, res: Response) => {
-    const { firstName, lastName, email, password } = req.body
+    const { firstName, lastName, email, password }: REG_USER = req.body
     const emailRegex =
       /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
@@ -61,26 +75,37 @@ export const registerUser = asyncHandler(
 
     // creates the user
 
-    const newUser = await User.create({
+    const newUser = new User({
       firstName,
       lastName,
       email,
       password: hashedPassword,
+      confirmationCode: generateConfirmationCode(email),
     })
+    // const newUser = await User.create({})
 
-    // checks if user was created
+    await newUser.save((err) => {
+      // checks if user was created
+      if (err) {
+        res.status(500)
+        throw new Error("Failed To Register User")
+      }
 
-    if (newUser) {
       res.status(201).json({
         _id: <ObjectId>newUser.id,
         firstName: newUser.firstName,
         lastName: newUser.lastName,
         email: newUser.email,
         token: generateToken(newUser.id),
+        message: "User was registered successfully! Please check your Email",
       })
-    } else {
-      throw new Error("failed to create user")
-    }
+
+      sendConfirmationEmail(
+        newUser.firstName,
+        newUser.email,
+        newUser.confirmationCode
+      )
+    })
   }
 )
 
