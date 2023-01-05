@@ -7,7 +7,7 @@ export interface IUser extends Document {
   email: string
   password: string
   status: {
-    type: StringConstructor
+    type: string
     enum: string[]
     default: string
   }

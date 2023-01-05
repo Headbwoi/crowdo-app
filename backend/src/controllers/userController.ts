@@ -98,6 +98,11 @@ export const loginUser = asyncHandler(async (req: Request, res: Response) => {
     throw new Error("user not found")
   }
 
+  if (user.status.type != "verified") {
+    res.status(401)
+    throw new Error("Please Verify Your Email")
+  }
+
   if (user && (await bcrypt.compare(password, user.password))) {
     res.status(200).json({
       _id: user.id,
