@@ -7,6 +7,7 @@ const GetStarted = lazy(() => import("./pages/GetStarted"))
 const Discover = lazy(() => import("./pages/Discover"))
 const Verify = lazy(() => import("./pages/Verify"))
 const Product = lazy(() => import("./pages/Product"))
+const Verified = lazy(() => import("./pages/Verified"))
 import { NotFound, Spinner } from "./components"
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           <Route path="/getstarted" element={<GetStarted />} />
           <Route path="/about" element={<About />} />
           <Route path="/verify" element={<Verify />} />
+          <Route path="/verify/:confirmationCode" element={<Verified />} />
         </Routes>
       </Suspense>
     </>
