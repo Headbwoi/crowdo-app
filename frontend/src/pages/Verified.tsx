@@ -1,15 +1,17 @@
 import { Link, useParams } from "react-router-dom"
 import { verifyUser } from "../services"
 import Layout from "../Layout/Layout"
+import { useEffect } from "react"
 
 const Verified = () => {
   const { confirmationCode } = useParams()
 
-  if (confirmationCode) {
+  useEffect(() => {
     verifyUser(confirmationCode)
       .then((res) => console.log(res))
       .catch((err) => console.log(err))
-  }
+  }, [confirmationCode])
+
   return (
     <>
       <Layout>

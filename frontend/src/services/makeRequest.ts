@@ -38,14 +38,8 @@ export function productRequest(
     .catch((err) => Promise.reject(err))
 }
 
-export async function verificationRequest(
-  url: string,
-  options?: AxiosRequestConfig<any> | undefined
-): Promise<Response> {
-  try {
-    const res = await userAPI(url, options)
-    return res.data
-  } catch (err) {
-    return await Promise.reject(err)
-  }
+export function verificationRequest(url: string): Promise<Response> {
+  return userAPI(url)
+    .then((res) => res.data)
+    .catch((err) => Promise.reject(err))
 }
