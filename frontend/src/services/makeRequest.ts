@@ -22,7 +22,7 @@ const productAPI = axios.create({
 
 export function userRequest(
   url: string,
-  options?: AxiosRequestConfig<any> | undefined
+  options: AxiosRequestConfig<any> | undefined
 ): Promise<Response> {
   return userAPI(url, options)
     .then((res) => res.data)
@@ -34,6 +34,15 @@ export function productRequest(
   options?: AxiosRequestConfig | undefined
 ): Promise<Response> {
   return productAPI(url, options)
+    .then((res) => res.data)
+    .catch((err) => Promise.reject(err))
+}
+
+export function verificationRequest(
+  url: string,
+  options?: AxiosRequestConfig<any> | undefined
+): Promise<Response> {
+  return userAPI(url, options)
     .then((res) => res.data)
     .catch((err) => Promise.reject(err))
 }

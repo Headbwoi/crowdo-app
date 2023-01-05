@@ -148,7 +148,7 @@ export const loginUser = asyncHandler(async (req: Request, res: Response) => {
 
 export const verifyUser = asyncHandler(async (req: Request, res: Response) => {
   const { confirmationCode } = req.params
-  User.findOne({
+  await User.findOne({
     confirmationCode: confirmationCode,
   })
     .then((user) => {
