@@ -17,6 +17,7 @@ export const initialState: {
         lastName: string
         email: string
         password: string
+        status: string
         token: string
       }
     | undefined
@@ -27,6 +28,7 @@ export const initialState: {
     lastName: "",
     email: "",
     password: "",
+    status: "",
     token: "",
   },
 }

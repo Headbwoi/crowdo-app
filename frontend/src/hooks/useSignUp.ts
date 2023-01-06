@@ -20,7 +20,7 @@ export const useSignUp = (bodyData: signUpValues) => {
         if (res) {
           dispatch({ type: REDUCER_ACTION_TYPE.LOGIN, payload: res })
           navigate("/verify", { replace: true })
-          localStorage.setItem("user", JSON.stringify(res.token))
+          localStorage.setItem("user", JSON.stringify(res))
           console.log(res)
           setLoading(false)
         }

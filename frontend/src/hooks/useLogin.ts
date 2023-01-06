@@ -19,7 +19,7 @@ export function useLogin(values: LOGIN_VAL) {
       .then((res) => {
         if (res) {
           dispatch({ type: REDUCER_ACTION_TYPE.LOGIN, payload: res })
-          localStorage.setItem("user", JSON.stringify(res.token))
+          localStorage.setItem("user", JSON.stringify(res))
           setLoading(false)
           navigate("/dashboard", { replace: true })
           console.log(res)

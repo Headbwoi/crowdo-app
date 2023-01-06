@@ -10,6 +10,10 @@ function DashBoard() {
 
   useEffect(() => {
     state.user?.token == "" ? navigate("/getstarted") : navigate("/dashboard")
+    state.user?.status == "pending"
+      ? navigate("/verify")
+      : navigate("/verified")
+    console.log(state.user)
   }, [state.user])
 
   return (
