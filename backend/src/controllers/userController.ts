@@ -99,6 +99,7 @@ export const registerUser = asyncHandler(
         firstName: newUser.firstName,
         lastName: newUser.lastName,
         email: newUser.email,
+        status: newUser.status,
         token: generateToken(newUser.id),
       })
 
@@ -136,6 +137,7 @@ export const loginUser = asyncHandler(async (req: Request, res: Response) => {
       firstName: user.firstName,
       lastName: user.lastName,
       email: user.email,
+      status: user.status,
       token: generateToken(user._id),
     })
   } else {
