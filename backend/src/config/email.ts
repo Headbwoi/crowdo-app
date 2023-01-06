@@ -32,7 +32,7 @@ export const sendConfirmationEmail = (
   <h2> Hello ${name}</h2>
   <p>Please Confirm Your Email By Clicking on the link below</p>
   <a href="http://localhost:5173/verify/${confirmationCode}">Click Here</a>
-  <p>or copy the code</p>
+  <p>or copy the code below and paste in your browser.</p>
   <p>http://localhost:5173/verify/${confirmationCode}</p>
 
   `,
