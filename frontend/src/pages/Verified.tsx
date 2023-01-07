@@ -1,13 +1,20 @@
-import { Link, useParams } from "react-router-dom"
+import { Link, useParams, useNavigate } from "react-router-dom"
 import { verifyUser } from "../services"
 import Layout from "../Layout/Layout"
 import { useEffect } from "react"
+import { useAuthContext } from "../hooks/useAuthContext"
 
 const Verified = () => {
   const { confirmationCode } = useParams()
+  const { state } = useAuthContext()
+  const navigate = useNavigate()
 
   useEffect(() => {
     verifyUser(confirmationCode)
+
+    state.user?.stat == "verified"
+      ? navigate("/dashboard")
+      : navigate(`/verify/${confirmationCode}`)
   }, [confirmationCode])
 
   return (
@@ -20,13 +27,13 @@ const Verified = () => {
 
           <div className="grid place-items-center">
             <p className="text-light_Text font-normal text-center my-10 text-xl ">
-              Please Login
+              Go to your DashBoard
             </p>
-            <button
+            {/* <button
               className={`w-32 h-12 lg:w-40 lg:h-14 rounded-full bg-darkCyan text-white font-semibold text-sm md:text-lg hover:bg-moderate_Cyan duration-300`}
             >
               <Link to={"/dashboard"}>Login</Link>
-            </button>
+            </button> */}
           </div>
         </section>
       </Layout>
