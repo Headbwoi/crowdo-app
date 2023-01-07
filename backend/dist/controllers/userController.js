@@ -79,7 +79,7 @@ export const registerUser = asyncHandler((req, res) => __awaiter(void 0, void 0,
             firstName: newUser.firstName,
             lastName: newUser.lastName,
             email: newUser.email,
-            status: newUser.status,
+            stat: newUser.stat,
             token: generateToken(newUser.id),
         });
         sendConfirmationEmail(newUser.firstName, newUser.email, newUser.confirmationCode);
@@ -96,7 +96,7 @@ export const loginUser = asyncHandler((req, res) => __awaiter(void 0, void 0, vo
         throw new Error("user not found");
     }
     if (user && (yield bcrypt.compare(password, user.password))) {
-        if (user.status != "verified") {
+        if (user.stat != "verified") {
             res.status(401);
             throw new Error("Please Verify Your Email");
         }
@@ -105,7 +105,7 @@ export const loginUser = asyncHandler((req, res) => __awaiter(void 0, void 0, vo
             firstName: user.firstName,
             lastName: user.lastName,
             email: user.email,
-            status: user.status,
+            stat: user.stat,
             token: generateToken(user._id),
         });
     }
@@ -126,14 +126,14 @@ export const verifyUser = asyncHandler((req, res) => __awaiter(void 0, void 0, v
         throw new Error("User not found");
     }
     yield user
-        .updateOne({ status: "verified" })
+        .updateOne({ stat: "verified" })
         .then(() => {
         res.status(200).json({
             _id: user.id,
             firstName: user.firstName,
             lastName: user.lastName,
             email: user.email,
-            status: user.status,
+            stat: user.stat,
             token: generateToken(user._id),
         });
     })

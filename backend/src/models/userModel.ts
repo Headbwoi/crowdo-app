@@ -6,7 +6,7 @@ export interface IUser extends Document {
   lastName: string
   email: string
   password: string
-  status: string
+  stat: string
   confirmationCode: string
 }
 
@@ -29,7 +29,7 @@ const userSchema = new mongoose.Schema<IUser>(
       type: String,
       required: true,
     },
-    status: {
+    stat: {
       type: String,
       enum: ["pending", "verified"],
       default: "pending",

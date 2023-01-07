@@ -99,7 +99,7 @@ export const registerUser = asyncHandler(
         firstName: newUser.firstName,
         lastName: newUser.lastName,
         email: newUser.email,
-        status: newUser.status,
+        stat: newUser.stat,
         token: generateToken(newUser.id),
       })
 
@@ -127,7 +127,7 @@ export const loginUser = asyncHandler(async (req: Request, res: Response) => {
   }
 
   if (user && (await bcrypt.compare(password, user.password))) {
-    if (user.status != "verified") {
+    if (user.stat != "verified") {
       res.status(401)
       throw new Error("Please Verify Your Email")
     }
@@ -137,7 +137,7 @@ export const loginUser = asyncHandler(async (req: Request, res: Response) => {
       firstName: user.firstName,
       lastName: user.lastName,
       email: user.email,
-      status: user.status,
+      stat: user.stat,
       token: generateToken(user._id),
     })
   } else {
@@ -160,16 +160,16 @@ export const verifyUser = asyncHandler(async (req: Request, res: Response) => {
   }
 
   await user
-    .updateOne({ status: "verified" })
+    .updateOne({ stat: "verified" })
     .then(() => {
       res.status(200).json({
-      _id: user.id,
-      firstName: user.firstName,
-      lastName: user.lastName,
-      email: user.email,
-      status: user.status,
-      token: generateToken(user._id),
-    })
+        _id: user.id,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+        stat: user.stat,
+        token: generateToken(user._id),
+      })
     })
     .catch((err) => {
       res.status(500)
