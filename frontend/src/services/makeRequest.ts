@@ -6,7 +6,7 @@ interface Response extends AxiosResponse {
   lastName: string
   email: string
   password: string
-  Status: string
+  stat: string
   token: string
 }
 

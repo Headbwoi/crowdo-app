@@ -33,7 +33,7 @@ export const AuthContextProvider = ({ children }: AuthContextProviderType) => {
     if (user) {
       dispatch({ type: REDUCER_ACTION_TYPE.LOGIN, payload: user })
     }
-  }, [])
+  }, [state.user?.token, state.user?.stat])
 
   console.log("Auth context state", state)
   return (

@@ -6,7 +6,7 @@ export const defaultUser = {
   lastName: "",
   email: "",
   password: "",
-  status: "",
+  stat: "",
   token: "",
 }
 
@@ -18,7 +18,7 @@ export const initialState: {
         lastName: string
         email: string
         password: string
-        status: string
+        stat: string
         token: string
       }
     | undefined
@@ -29,7 +29,7 @@ export const initialState: {
     lastName: "",
     email: "",
     password: "",
-    status: "",
+    stat: "",
     token: "",
   },
 }

@@ -7,7 +7,7 @@ import { Navigate } from "react-router-dom"
 function Verify() {
   const { state } = useAuthContext()
   useEffect(() => {
-    state.user?.status == "pending" ? (
+    state.user?.stat == "pending" ? (
       <Navigate to={"/verify"} />
     ) : (
       <Navigate to={"/dashboard"} />

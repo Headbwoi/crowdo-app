@@ -24,7 +24,7 @@ function App() {
           <Route
             path="/dashboard"
             element={
-              state.user?.token !== "" && state.user?.status !== "pending" ? (
+              state.user?.token !== "" && state.user?.stat !== "pending" ? (
                 <DashBoard />
               ) : (
                 <GetStarted />

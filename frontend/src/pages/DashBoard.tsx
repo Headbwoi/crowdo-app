@@ -10,11 +10,9 @@ function DashBoard() {
 
   useEffect(() => {
     state.user?.token == "" ? navigate("/getstarted") : navigate("/dashboard")
-    state.user?.status == "pending"
-      ? navigate("/verify")
-      : navigate("/dashboard")
+    state.user?.stat == "pending" ? navigate("/verify") : navigate("/dashboard")
     console.log(state.user)
-  }, [state.user?.token, state.user?.status])
+  }, [state.user?.token, state.user?.stat])
 
   return (
     <Layout>
