@@ -12,9 +12,9 @@ function DashBoard() {
     state.user?.token == "" ? navigate("/getstarted") : navigate("/dashboard")
     state.user?.status == "pending"
       ? navigate("/verify")
-      : navigate("/verified")
+      : navigate("/dashboard")
     console.log(state.user)
-  }, [state.user])
+  }, [state.user?.token, state.user?.status])
 
   return (
     <Layout>

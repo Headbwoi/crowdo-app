@@ -1,7 +1,19 @@
+import { useEffect } from "react"
 import Layout from "../Layout/Layout"
 import { Button } from "../components"
+import { useAuthContext } from "../hooks/useAuthContext"
+import { Navigate } from "react-router-dom"
 
 function Verify() {
+  const { state } = useAuthContext()
+  useEffect(() => {
+    state.user?.status == "pending" ? (
+      <Navigate to={"/verify"} />
+    ) : (
+      <Navigate to={"/dashboard"} />
+    )
+  }, [])
+
   return (
     <>
       <Layout>

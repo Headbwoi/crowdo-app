@@ -9,8 +9,10 @@ const Verify = lazy(() => import("./pages/Verify"))
 const Product = lazy(() => import("./pages/Product"))
 const Verified = lazy(() => import("./pages/Verified"))
 import { NotFound, Spinner } from "./components"
+import { useAuthContext } from "./hooks/useAuthContext"
 
 function App() {
+  const { state } = useAuthContext()
   return (
     <>
       <Suspense fallback={<Spinner />}>
@@ -19,7 +21,16 @@ function App() {
           <Route path="/discover" element={<Discover />}>
             <Route path="/discover/products/:id" element={<Product />} />
           </Route>
-          <Route path="/dashboard" element={<DashBoard />} />
+          <Route
+            path="/dashboard"
+            element={
+              state.user?.token !== "" && state.user?.status !== "pending" ? (
+                <DashBoard />
+              ) : (
+                <GetStarted />
+              )
+            }
+          />
           <Route path="/getstarted" element={<GetStarted />} />
           <Route path="/about" element={<About />} />
           <Route path="/verify" element={<Verify />} />

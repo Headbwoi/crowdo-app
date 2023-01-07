@@ -6,6 +6,7 @@ export const defaultUser = {
   lastName: "",
   email: "",
   password: "",
+  status: "",
   token: "",
 }
 
