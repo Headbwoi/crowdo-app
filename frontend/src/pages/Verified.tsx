@@ -8,8 +8,6 @@ const Verified = () => {
 
   useEffect(() => {
     verifyUser(confirmationCode)
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err))
   }, [confirmationCode])
 
   return (

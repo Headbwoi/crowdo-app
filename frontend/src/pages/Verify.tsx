@@ -2,16 +2,15 @@ import { useEffect } from "react"
 import Layout from "../Layout/Layout"
 import { Button } from "../components"
 import { useAuthContext } from "../hooks/useAuthContext"
-import { Navigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 function Verify() {
   const { state } = useAuthContext()
+  const navigate = useNavigate()
   useEffect(() => {
-    state.user?.stat == "pending" ? (
-      <Navigate to={"/verify"} />
-    ) : (
-      <Navigate to={"/dashboard"} />
-    )
+    state.user?.token !== "" && state.user?.stat == "pending"
+      ? navigate("/verify")
+      : navigate("/getstarted")
   }, [])
 
   return (

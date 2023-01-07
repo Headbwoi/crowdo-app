@@ -15,7 +15,11 @@ function GetStarted() {
   }
 
   useEffect(() => {
-    state.user?.token != "" ? navigate("/dashboard") : navigate("/getstarted")
+    state.user?.token !== "" && state.user?.stat == "pending"
+      ? navigate("/verify")
+      : state.user?.stat == "verified" && state.user.token !== ""
+      ? navigate("/dashboard")
+      : navigate("/getstarted")
   }, [])
 
   return (

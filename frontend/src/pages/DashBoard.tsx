@@ -9,10 +9,12 @@ function DashBoard() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    state.user?.token == "" ? navigate("/getstarted") : navigate("/dashboard")
-    state.user?.stat == "pending" ? navigate("/verify") : navigate("/dashboard")
-    console.log(state.user)
-  }, [state.user?.token, state.user?.stat])
+    state.user?.token !== "" && state.user?.stat === "verified"
+      ? navigate("/dashboard")
+      : state.user?.stat === "pending"
+      ? navigate("/verify")
+      : navigate("/getstarted")
+  }, [state.user])
 
   return (
     <Layout>
