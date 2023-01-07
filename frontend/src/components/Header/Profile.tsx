@@ -22,7 +22,7 @@ const Profile = () => {
 
   return (
     <>
-      <div className="flex items-center md:order-2 relative">
+      <div className="flex items-center relative">
         <button
           type="button"
           className="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600 relative"
@@ -41,13 +41,14 @@ const Profile = () => {
         </button>
         {/* <!-- Dropdown menu --> */}
         <div
-          className="z-50 hidden my-4 text-base list-none bg-background divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600 absolute top-7 left-1/2 -translate-x-1/2"
+          className="z-50 hidden my-4 text-base list-none bg-background divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600 absolute top-7 -right-10 px-2"
           id="user-dropdown"
           ref={dropdownRef}
         >
           <div className="px-4 py-3">
-            <span className="block text-sm text-gray-900 dark:text-white">
+            <span className="block text-sm text-gray-900 dark:text-white capitalize">
               {state.user?.firstName}
+              {"  "}
               {state.user?.lastName}
             </span>
             <span className="block text-sm font-medium text-gray-500 truncate dark:text-gray-400">
@@ -79,13 +80,11 @@ const Profile = () => {
                 Earnings
               </a>
             </li>
-            <li onClick={() => handleSignOut()}>
-              <a
-                href="/dashboard"
-                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-              >
-                Sign out
-              </a>
+            <li
+              onClick={() => handleSignOut()}
+              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+            >
+              Sign out
             </li>
           </ul>
         </div>
