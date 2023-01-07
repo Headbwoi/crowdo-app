@@ -126,12 +126,17 @@ export const loginUser = asyncHandler(async (req: Request, res: Response) => {
     throw new Error("user not found")
   }
 
-  if (user.status != "verified") {
-    res.status(401)
-    throw new Error("Please Verify Your Email")
-  }
+  // if (!bcrypt.compare(password, user.password)) {
+  //   res.status(400)
+  //   throw new Error("Wrong Password")
+  // }
 
   if (user && (await bcrypt.compare(password, user.password))) {
+    if (user.status != "verified") {
+      res.status(401)
+      throw new Error("Please Verify Your Email")
+    }
+
     res.status(200).json({
       _id: user.id,
       firstName: user.firstName,
@@ -164,8 +169,13 @@ export const verifyUser = asyncHandler(async (req: Request, res: Response) => {
     .updateOne({ status: "verified" })
     .then(() => {
       res.status(200).json({
-        message: "Email verified",
-      })
+      _id: user.id,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      email: user.email,
+      status: user.status,
+      token: generateToken(user._id),
+    })
     })
     .catch((err) => {
       res.status(500)
