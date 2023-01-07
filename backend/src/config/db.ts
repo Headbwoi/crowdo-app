@@ -6,7 +6,7 @@ mongoose.set("strictQuery", true)
 const connectDB = async () => {
   try {
     await mongoose
-      .connect(`${process.env.MONGO_LOCAL_URI}`)
+      .connect(`${process.env.MONGO_URI}`)
       .then(() =>
         console.log(`MongoDb connected ${mongoose.connection.collection.name}`)
       )
