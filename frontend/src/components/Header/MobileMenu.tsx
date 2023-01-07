@@ -1,5 +1,3 @@
-import { useAuthContext } from "../../hooks/useAuthContext"
-import LogOut from "../Button/LogOut"
 import Links from "./Links"
 import { motion } from "framer-motion"
 const menuVariant = {
@@ -19,7 +17,6 @@ const menuVariant = {
 const navItems: string[] = ["home", "about", "discover", "get started"]
 
 const MobileMenu = () => {
-  const { state } = useAuthContext()
   return (
     <motion.div
       className="absolute top-20 left-1/2 -translate-x-1/2 bg-white rounded-lg h-56 mobile z-30 shadow-2xl lg:hidden"
@@ -37,9 +34,6 @@ const MobileMenu = () => {
             <Links name={item} color="black" font="medium" />
           </li>
         ))}
-        <div className="px-6">
-          {state.user?.token == "" ? "" : <LogOut color="black" />}
-        </div>
       </div>
     </motion.div>
   )
