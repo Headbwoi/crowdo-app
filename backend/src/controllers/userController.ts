@@ -126,11 +126,6 @@ export const loginUser = asyncHandler(async (req: Request, res: Response) => {
     throw new Error("user not found")
   }
 
-  // if (!bcrypt.compare(password, user.password)) {
-  //   res.status(400)
-  //   throw new Error("Wrong Password")
-  // }
-
   if (user && (await bcrypt.compare(password, user.password))) {
     if (user.status != "verified") {
       res.status(401)
@@ -164,7 +159,6 @@ export const verifyUser = asyncHandler(async (req: Request, res: Response) => {
     throw new Error("User not found")
   }
 
-  // user.status = "verified"
   await user
     .updateOne({ status: "verified" })
     .then(() => {
