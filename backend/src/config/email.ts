@@ -1,7 +1,8 @@
-import nodemailer from "nodemailer"
-import SMTPTransport from "nodemailer/lib/smtp-transport"
 import dotenv from "dotenv"
 dotenv.config()
+import nodemailer from "nodemailer"
+import SMTPTransport from "nodemailer/lib/smtp-transport"
+import Mailgen from "mailgen"
 
 const user = process.env.USER_EMAIL
 const password = process.env.USER_PASSWORD
@@ -16,26 +17,46 @@ let transport: nodemailer.Transporter<SMTPTransport.SentMessageInfo> =
     },
   })
 
+let mailGenerator = new Mailgen({
+  theme: "default",
+  product: {
+    name: "Crowdo App - crowdund your bills",
+    link: "https://crowdo-app.vercel.app/",
+    logo: "https://crowdo-app.vercel.app/icons/logo.svg",
+  },
+})
+
 export const sendConfirmationEmail = (
   name: string,
   email: string,
   confirmationCode: string
 ) => {
-  console.log("check if working")
+  let emailToBeSent = {
+    body: {
+      name: `${name}`,
+      intro: "Welcome to Crowdo App, Please Confirm your Email Addresss",
+      action: {
+        instructions: "To get started with Crowdo App, please click here:",
+        button: {
+          color: "#22BC66", // Optional action button color
+          text: "Confirm your account",
+          link: `${process.env.FRONTEND_URL}/${confirmationCode}`,
+          fallback: true,
+        },
+      },
+      outro:
+        "Need help, or have questions? Just reply to this email, we'd love to help.",
+    },
+  }
+
+  // Generate an HTML email with the provided contents
+  let emailBody = mailGenerator.generate(emailToBeSent)
 
   const message = {
     from: user,
     to: email,
     subject: "Please Verify Your Account",
-    html: `
-  <h1>Email Confirmation</h1>
-  <h2> Hello ${name}</h2>
-  <p>Please Confirm Your Email By Clicking on the link below</p>
-  <a href="http://localhost:5173/verify/${confirmationCode}">Click Here</a>
-  <p>or copy the code below and paste in your browser.</p>
-  <p>http://localhost:5173/verify/${confirmationCode}</p>
-
-  `,
+    html: emailBody,
   }
 
   transport
@@ -44,6 +65,6 @@ export const sendConfirmationEmail = (
       console.log("User was registered successfully! Please check your Email")
     })
     .catch((err) => {
-      console.log(err)
+      throw new Error(err)
     })
 }

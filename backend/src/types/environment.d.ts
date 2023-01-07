@@ -12,6 +12,7 @@ declare global {
       JWT_SECRET: string
       USER_EMAIL: string | Mail.Address | undefined
       USER_PASSWORD: string
+      FRONTEND_URL: string
     }
   }
 }
