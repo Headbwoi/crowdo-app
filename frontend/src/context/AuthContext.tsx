@@ -35,7 +35,7 @@ export const AuthContextProvider = ({ children }: AuthContextProviderType) => {
     }
   }, [state.user?.token, state.user?.stat])
 
-  console.log("Auth context state", state)
+  // console.log("Auth context state", state)
   return (
     <AuthContext.Provider value={{ ...state, dispatch, state }}>
       {children}

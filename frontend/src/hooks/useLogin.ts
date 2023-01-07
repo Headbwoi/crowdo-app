@@ -22,11 +22,11 @@ export function useLogin(values: LOGIN_VAL) {
           localStorage.setItem("user", JSON.stringify(res))
           setLoading(false)
           navigate("/dashboard", { replace: true })
-          console.log(res)
+          // console.log(res)
         }
       })
       .catch((error) => {
-        console.log(error?.response?.data.message)
+        // console.log(error?.response?.data.message)
         setError(error?.response?.data.message)
         setLoading(false)
       })

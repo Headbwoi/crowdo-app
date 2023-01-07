@@ -21,12 +21,12 @@ export const useSignUp = (bodyData: signUpValues) => {
           dispatch({ type: REDUCER_ACTION_TYPE.LOGIN, payload: res })
           navigate("/verify", { replace: true })
           localStorage.setItem("user", JSON.stringify(res))
-          console.log(res)
+          // console.log(res)
           setLoading(false)
         }
       })
       .catch((error) => {
-        console.log(error?.response?.data.message)
+        // console.log(error?.response?.data.message)
         setError(error?.response?.data.message)
       })
   }
