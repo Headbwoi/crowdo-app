@@ -1,13 +1,17 @@
-import { FormEvent, useContext } from "react"
+import { FormEvent, useContext, useRef, useState } from "react"
 import "./formstyle.css"
 import { UserContext } from "../../context"
 import { useLogin } from "../../hooks/useLogin"
+import EmailIcon from "../../icons/EmailIcon"
+import Eye from "../../icons/Eye"
+import EyeSlash from "../../icons/EyeSlash"
 
 type LOGIN = {
   loginState: boolean
 }
 
 function Login({ loginState }: LOGIN) {
+  const [passwordType, setPasswordType] = useState("password")
   const {
     loginVal,
     loginValues,
@@ -19,6 +23,7 @@ function Login({ loginState }: LOGIN) {
   } = useContext(UserContext)
 
   const { login, error, loading } = useLogin(loginValues)
+  const passRef = useRef({} as HTMLInputElement)
 
   const handleLogin = async (e: FormEvent) => {
     e.preventDefault()
@@ -29,6 +34,12 @@ function Login({ loginState }: LOGIN) {
     setCheckNoErrors(false)
   }
 
+  const handlePass = () => {
+    passRef.current.type == "password"
+      ? setPasswordType("text")
+      : setPasswordType("password")
+  }
+
   return (
     <>
       <form className="flex flex-col gap-3" onSubmit={handleLogin}>
@@ -36,14 +47,19 @@ function Login({ loginState }: LOGIN) {
           <label htmlFor="email" className="text-light_Gray">
             Email
           </label>
-          <input
-            type="email"
-            name="email"
-            placeholder="Enter Your Email"
-            className="form-input"
-            value={loginValues.email}
-            onChange={handleLoginValues}
-          />
+          <div className="relative flex flex-col">
+            <input
+              type="email"
+              name="email"
+              placeholder="Enter Your Email"
+              className="form-input"
+              value={loginValues.email}
+              onChange={handleLoginValues}
+            />
+            <div className="absolute top-1/2 -translate-y-1/2 right-5 w-5 h-5">
+              <EmailIcon />
+            </div>
+          </div>
           {<p className="text-error text-xs lg:text-sm">{loginErrors.email}</p>}
         </div>
         {/* password */}
@@ -51,14 +67,23 @@ function Login({ loginState }: LOGIN) {
           <label htmlFor="Password" className="text-light_Gray">
             Password
           </label>
-          <input
-            type="password"
-            name="password"
-            placeholder="Enter Your Password"
-            className="form-input"
-            value={loginValues.password}
-            onChange={handleLoginValues}
-          />
+          <div className="relative flex flex-col">
+            <input
+              type={passwordType}
+              name="password"
+              placeholder="Enter Your Password"
+              className="form-input"
+              value={loginValues.password}
+              onChange={handleLoginValues}
+              ref={passRef}
+            />
+            <div
+              className="absolute top-1/2 -translate-y-1/2 right-5 w-5 h-5"
+              onClick={handlePass}
+            >
+              {passwordType === "password" ? <EyeSlash /> : <Eye />}
+            </div>
+          </div>
           {
             <p className="text-error text-xs lg:text-sm">
               {loginErrors.password}
